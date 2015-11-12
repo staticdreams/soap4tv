@@ -66,6 +66,14 @@ class TVShowCollectionController: UICollectionViewController {
 		let tvshow = data[indexPath.row]
 		cell.show = tvshow
 		cell.title.text = tvshow.title
+		cell.titleRu.text = tvshow.title_ru
+		if let imdb_rating = tvshow.imdb_rating {
+			cell.imdb.text = "IMDB: \(String(imdb_rating))"
+		} else {}
+		if let kp_rating = tvshow.kinopoisk_rating where kp_rating != 0.0 {
+			cell.kinopoisk.text = "Кинопоиск: \(String(kp_rating))"
+		} else {}
+		cell.year.text = "(\(String(tvshow.year!)))"
 		if cell.gestureRecognizers?.count == nil {
 			let tap = UITapGestureRecognizer(target: self, action: "tapped:")
 			tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
@@ -93,13 +101,15 @@ class TVShowCollectionController: UICollectionViewController {
 			next.setNeedsUpdateConstraints()
 			UIView.animateWithDuration(0.1, animations: {
 				next.transform = CGAffineTransformMakeScale(1.1,1.1)
-				
+				next.layer.shadowColor = UIColor.blackColor().CGColor
+				next.layer.shadowOffset = CGSizeMake(0, 4)
+				next.layer.shadowRadius = 10
+				next.layer.shadowOpacity = 0.35
 			})
-			next.overlayHeightConstraint.constant = 200
+			next.overlayHeightConstraint.constant = 300
 			UIView.animateWithDuration(0.5, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
 				self.view.layoutIfNeeded()
 			}, completion: nil)
-			
 		}
 		
 		if let prev = context.previouslyFocusedView as? MovieCollectionCell {
@@ -107,7 +117,7 @@ class TVShowCollectionController: UICollectionViewController {
 			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
 			})
-			prev.overlayHeightConstraint.constant = 0
+			prev.overlayHeightConstraint.constant = 90
 			UIView.animateWithDuration(0.5, delay: 0.1, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
 				self.view.layoutIfNeeded()
 			}, completion: nil)
