@@ -16,18 +16,13 @@ class TVShowCollectionController: UICollectionViewController {
 	
 	var data = [TVShow]()
 	var token = ""
-
-	let defaultSize = CGSizeMake(400, 400)
-	let focusedSize = CGSizeMake(420, 420)
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+		self.clearsSelectionOnViewWillAppear = false
+		self.collectionView!.remembersLastFocusedIndexPath = true
 
-        // Register cell classes
-//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		self.collectionView!.registerNib(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		token = Defaults[.token]!
 		loadData()

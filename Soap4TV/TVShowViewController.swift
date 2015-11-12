@@ -12,11 +12,11 @@ class TVShowViewController: UIViewController {
 	
 	var show: TVShow?
 
-	@IBOutlet weak var showtitle: UILabel!
+//	@IBOutlet weak var showtitle: UILabel!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		showtitle.text = show?.title
+//		showtitle.text = show?.title
     }
 
     override func didReceiveMemoryWarning() {
