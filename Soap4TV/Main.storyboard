@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gvO-2Q-WFQ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="Pix-rZ-SvP">
+            <objects>
+                <viewController id="gvO-2Q-WFQ" customClass="LoginViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jnv-Kq-gcq"/>
+                        <viewControllerLayoutGuide type="bottom" id="EJK-gW-X5z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sk8-c6-Zwr">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка подключения!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK9-Q2-oT4">
+                                <rect key="frame" x="808" y="443" width="304" height="35"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="EYS-y1-Ihc">
+                                <rect key="frame" x="700" y="120" width="521" height="278"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="521" id="SaY-w0-3XL"/>
+                                    <constraint firstAttribute="height" constant="278" id="f2u-ON-t87"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kernelpanic" borderStyle="roundedRect" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JET-MI-n9R">
+                                <rect key="frame" x="668" y="588" width="585" height="66"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="3u8-BN-ZSn"/>
+                                    <constraint firstAttribute="width" constant="585" id="6wp-KI-0tC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="marinka" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qP7-Oe-Ely">
+                                <rect key="frame" x="668" y="702" width="585" height="66"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="585" id="WgR-hL-Bs6"/>
+                                    <constraint firstAttribute="height" constant="66" id="zII-2T-yqm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9m-dE-Y2o">
+                                <rect key="frame" x="876" y="817" width="168" height="86"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="ZMc-MK-s4a"/>
+                                    <constraint firstAttribute="width" constant="168" id="tZW-hc-LlI"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Вход"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="gvO-2Q-WFQ" eventType="primaryActionTriggered" id="6VV-yf-jcO"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный логин или пароль" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azq-ND-bH4">
+                                <rect key="frame" x="668" y="491" width="585" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="585" id="Wzn-ZC-U3l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="JET-MI-n9R" firstAttribute="top" secondItem="EYS-y1-Ihc" secondAttribute="bottom" constant="190" id="6Wz-lR-CC0"/>
+                            <constraint firstItem="EYS-y1-Ihc" firstAttribute="top" secondItem="Jnv-Kq-gcq" secondAttribute="bottom" constant="120" id="Auh-Ht-1IR"/>
+                            <constraint firstItem="JET-MI-n9R" firstAttribute="centerX" secondItem="Sk8-c6-Zwr" secondAttribute="centerX" id="GEb-td-VGD"/>
+                            <constraint firstItem="qP7-Oe-Ely" firstAttribute="top" secondItem="JET-MI-n9R" secondAttribute="bottom" constant="48" id="HG0-VV-8AS"/>
+                            <constraint firstItem="o9m-dE-Y2o" firstAttribute="top" secondItem="qP7-Oe-Ely" secondAttribute="bottom" constant="49" id="KOm-Mf-GV1"/>
+                            <constraint firstItem="o9m-dE-Y2o" firstAttribute="centerX" secondItem="Sk8-c6-Zwr" secondAttribute="centerX" id="MkL-zg-Oil"/>
+                            <constraint firstItem="fK9-Q2-oT4" firstAttribute="top" secondItem="EYS-y1-Ihc" secondAttribute="bottom" constant="45" id="PIM-FS-AtQ"/>
+                            <constraint firstItem="qP7-Oe-Ely" firstAttribute="centerX" secondItem="Sk8-c6-Zwr" secondAttribute="centerX" id="Tco-0t-nkW"/>
+                            <constraint firstItem="azq-ND-bH4" firstAttribute="top" secondItem="fK9-Q2-oT4" secondAttribute="bottom" constant="13" id="WKc-t3-m1M"/>
+                            <constraint firstItem="EYS-y1-Ihc" firstAttribute="centerX" secondItem="Sk8-c6-Zwr" secondAttribute="centerX" id="gqo-Q1-dz0"/>
+                            <constraint firstItem="azq-ND-bH4" firstAttribute="centerX" secondItem="Sk8-c6-Zwr" secondAttribute="centerX" id="sjd-Ru-Yx6"/>
+                            <constraint firstItem="fK9-Q2-oT4" firstAttribute="centerX" secondItem="Sk8-c6-Zwr" secondAttribute="centerX" id="th9-TI-Nee"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="errorMessage" destination="azq-ND-bH4" id="9K5-bG-YBy"/>
+                        <outlet property="errorTitle" destination="fK9-Q2-oT4" id="lAW-Pj-6hh"/>
+                        <outlet property="loginButton" destination="o9m-dE-Y2o" id="bk3-TZ-MYD"/>
+                        <outlet property="loginField" destination="JET-MI-n9R" id="aiq-oi-WGl"/>
+                        <outlet property="passwordField" destination="qP7-Oe-Ely" id="7l1-VB-kYd"/>
+                        <segue destination="Jpu-oM-po1" kind="show" identifier="openAppSegue" id="ePT-i0-YUq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uII-UQ-AYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="-754"/>
+        </scene>
+        <!--Все сериалы-->
+        <scene sceneID="G2O-ma-0gc">
+            <objects>
+                <collectionViewController id="Phr-kn-yGI" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dbv-Tc-z3v">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="80" minimumInteritemSpacing="50" id="xOZ-90-sSZ">
+                            <size key="itemSize" width="400" height="400"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="40" minY="90" maxX="20" maxY="90"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="Phr-kn-yGI" id="9rI-5E-9JQ"/>
+                            <outlet property="delegate" destination="Phr-kn-yGI" id="acw-Wv-GHu"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Все сериалы" id="sLp-SQ-P9C" userLabel="All TV Series"/>
+                    <navigationItem key="navigationItem" id="pNS-eP-V7U"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lgd-X5-Slx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4630" y="537"/>
+        </scene>
+        <!--Show View Controller-->
+        <scene sceneID="qeM-CZ-g4n">
+            <objects>
+                <viewController storyboardIdentifier="tvshowController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KVt-Xw-rcF" customClass="TVShowViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fau-le-hcY"/>
+                        <viewControllerLayoutGuide type="bottom" id="uFr-hm-u07"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uOC-WB-EBZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TV Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db0-jP-wRS">
+                                <rect key="frame" x="912" y="529" width="69" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                    </view>
+                    <connections>
+                        <outlet property="showtitle" destination="Db0-jP-wRS" id="sA3-sS-hyA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vdd-I0-U4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4630" y="1913"/>
+        </scene>
+        <!--Мои сериалы-->
+        <scene sceneID="v8I-eL-tFM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwO-gK-C4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="lEV-fV-4i1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fz5-8Q-NuC"/>
+                        <viewControllerLayoutGuide type="bottom" id="jm0-kf-ePr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hCy-yI-CYM">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Мои сериалы" id="Yd7-Qf-EXs" userLabel="My TV Series"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2458" y="1913"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qk8-BC-WlL">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jpu-oM-po1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="pzN-PZ-vQ9">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Phr-kn-yGI" kind="relationship" relationship="viewControllers" id="RXH-7z-WSX"/>
+                        <segue destination="lEV-fV-4i1" kind="relationship" relationship="viewControllers" id="DBo-0f-OnW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-Ts-tey" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="537"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="578" height="598"/>
+    </resources>
+</document>

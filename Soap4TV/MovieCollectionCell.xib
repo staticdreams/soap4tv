@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="Rz2-K0-ksD" customClass="MovieCollectionCell" customModule="Soap4TV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="478" translatesAutoresizingMaskIntoConstraints="NO" id="J30-yU-GdP">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="400" id="Joy-PO-nbN"/>
+                            <constraint firstAttribute="width" constant="400" id="bf1-mY-9zs"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-Bb-2lz">
+                        <rect key="frame" x="0.0" y="400" width="400" height="0.0"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The 12 monkeys" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRj-g3-Mse">
+                                <rect key="frame" x="8" y="30" width="384" height="35"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PRj-g3-Mse" secondAttribute="trailing" constant="8" id="4y0-HH-m4N"/>
+                            <constraint firstAttribute="height" id="DG5-se-hUU"/>
+                            <constraint firstItem="PRj-g3-Mse" firstAttribute="leading" secondItem="cjq-Bb-2lz" secondAttribute="leading" constant="8" id="mVs-h2-6an"/>
+                            <constraint firstItem="PRj-g3-Mse" firstAttribute="top" secondItem="cjq-Bb-2lz" secondAttribute="top" constant="30" id="xgW-K9-h4Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="cjq-Bb-2lz" secondAttribute="trailing" id="4tK-D6-hgZ"/>
+                <constraint firstAttribute="trailing" secondItem="J30-yU-GdP" secondAttribute="trailing" id="Cbb-sa-87U"/>
+                <constraint firstItem="cjq-Bb-2lz" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="Njl-m7-WdB"/>
+                <constraint firstItem="J30-yU-GdP" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="X17-95-cHj"/>
+                <constraint firstItem="J30-yU-GdP" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="bvp-pU-RM3"/>
+                <constraint firstAttribute="bottom" secondItem="cjq-Bb-2lz" secondAttribute="bottom" id="wWi-XM-UgV"/>
+            </constraints>
+            <size key="customSize" width="221" height="192"/>
+            <connections>
+                <outlet property="cover" destination="J30-yU-GdP" id="Uhr-iR-yBH"/>
+                <outlet property="overlay" destination="cjq-Bb-2lz" id="yBq-x3-Ehj"/>
+                <outlet property="overlayHeightConstraint" destination="DG5-se-hUU" id="t0g-ra-w0K"/>
+                <outlet property="title" destination="PRj-g3-Mse" id="8j6-Zh-SPH"/>
+            </connections>
+            <point key="canvasLocation" x="629" y="392"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="478" width="400" height="400"/>
+    </resources>
+</document>
