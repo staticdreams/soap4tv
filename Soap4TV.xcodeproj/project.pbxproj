@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		839A9CB46C97900F4783D92E /* Pods_Soap4TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACA1DDEDF2C73FB901964CA /* Pods_Soap4TV.framework */; };
+		D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */; };
+		D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */; };
+		D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7171BF5EE8B006AC142 /* Episode.swift */; };
+		D000B71A1BF6184C006AC142 /* SeasonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */; };
 		D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */; };
 		D0301F731BF364800093ADDC /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0301F721BF364800093ADDC /* TVShow.swift */; };
 		D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */; };
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		1C0BC9E64A0351B7723A4A84 /* Pods-Soap4TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soap4TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.release.xcconfig"; sourceTree = "<group>"; };
 		1E72DBACB42E968977C948E2 /* Pods-Soap4TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soap4TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.debug.xcconfig"; sourceTree = "<group>"; };
+		D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
+		D000B7171BF5EE8B006AC142 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsTableViewController.swift; sourceTree = "<group>"; };
 		D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowCollectionController.swift; sourceTree = "<group>"; };
 		D0301F721BF364800093ADDC /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 		D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
@@ -77,6 +85,7 @@
 				D07373851BF0C2C900229B92 /* Config.swift */,
 				D073738A1BF0C8D700229B92 /* Extensions.swift */,
 				D0301F721BF364800093ADDC /* TVShow.swift */,
+				D000B7171BF5EE8B006AC142 /* Episode.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -86,6 +95,8 @@
 			children = (
 				D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */,
 				D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */,
+				D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */,
+				D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -97,6 +108,7 @@
 				D07373871BF0C67000229B92 /* API.swift */,
 				D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */,
 				D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */,
+				D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -195,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D07373801BF0C23800229B92 /* MovieCollectionCell.xib in Resources */,
+				D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */,
 				D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */,
 				D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */,
 			);
@@ -258,9 +271,12 @@
 				D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */,
 				D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */,
 				D0301F731BF364800093ADDC /* TVShow.swift in Sources */,
+				D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */,
 				D07373861BF0C2C900229B92 /* Config.swift in Sources */,
+				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
 				D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */,
 				D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */,
+				D000B71A1BF6184C006AC142 /* SeasonsTableViewController.swift in Sources */,
 				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,
 				D07373881BF0C67000229B92 /* API.swift in Sources */,
 				D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */,

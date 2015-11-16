@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import AlamofireObjectMapper
+import ObjectMapper
 
 struct API {
 	
@@ -47,6 +48,62 @@ struct API {
 				case .Failure(let error):
 					completionHandler(responseObject: nil, error: error)
 				}
+		}
+	}
+	
+	func getEpisodes(token: String, show: Int, completionHandler: (responseObject: [Episode]?, error: ErrorType?) -> ()) {
+		let headers = [
+			"X-Api-Token": token,
+			"User-Agent": "xbmc for soap",
+			"Accept-Language": "ru",
+			"Connection": "keep-alive"
+		]
+		Alamofire.request(.GET, Config.URL.base+"/api/episodes/"+String(show), headers: headers)
+			.responseJSON { response in
+				var array = [Episode]()
+				switch response.result {
+				case .Success(let data):
+					let episodes = JSON(data)
+					var currentEpisode = -1
+					var entry: Episode?
+					for (index,episode):(String, JSON) in episodes {
+						if episode["episode"].intValue != currentEpisode && entry != nil  { // we finished looping. adding & resetting.
+//							print("and we're finaly writing single episode with all versions")
+							array.append(entry!)
+							entry = nil
+						}
+						
+						var version = Version()
+						version.hash = episode["hash"].stringValue
+						version.quality = episode["quality"].stringValue
+						version.translate = episode["translate"].stringValue
+						if entry == nil { // Current episode has no version whatsoever
+//							print("ok, this is a new episode: \(episode["episode"].intValue). Creating separate entry")
+							entry = Mapper<Episode>().map(episode.dictionaryObject)
+							entry?.version?.append(version)
+							if Int(index)!+1 == episodes.count {
+								array.append(entry!)
+							}
+							// if last - write
+						} else if currentEpisode == episode["episode"].intValue {
+//							print("this is where we apend existing episode with new entry")
+							entry?.version?.append(version)
+						}
+						currentEpisode = episode["episode"].intValue
+					}
+					completionHandler(responseObject: array, error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+				
+/*			.responseArray { (response: Response<[Episode], NSError>) in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: data, error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+*/
 		}
 	}
 	

@@ -81,8 +81,10 @@ class TVShowCollectionController: UICollectionViewController {
 		}
 		if let sid = tvshow.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
-			let placeholderImage = UIImage(named: "placeholder")!
-			cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+			dispatch_async(dispatch_get_main_queue(), {
+				let placeholderImage = UIImage(named: "placeholder")!
+				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+			})
 		}
         return cell
     }

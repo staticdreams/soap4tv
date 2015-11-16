@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gvO-2Q-WFQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -142,12 +143,148 @@
                     <view key="view" contentMode="scaleToFill" id="uOC-WB-EBZ">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="478" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-Tf-ymK">
+                                <rect key="frame" x="70" y="50" width="400" height="400"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-zO-L1P">
+                                <rect key="frame" x="70" y="492" width="400" height="36"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="CZt-KQ-Sye"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
+                                <rect key="frame" x="70" y="599" width="400" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="7DN-xv-3iF"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Descrioption here">
+                                        <attributes>
+                                            <color key="NSColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="25" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-OA-AoD">
+                                <rect key="frame" x="70" y="543" width="400" height="36"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="MI9-M9-2Fr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-qy-JT9">
+                                <rect key="frame" x="530" y="60" width="800" height="960"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="800" id="rlq-L1-018"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="KVt-Xw-rcF" id="Quj-hE-gHM"/>
+                                    <outlet property="delegate" destination="KVt-Xw-rcF" id="VMR-U1-iM7"/>
+                                </connections>
+                            </tableView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLW-Ud-QLI">
+                                <rect key="frame" x="1365" y="160" width="519" height="860"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="pKz-d3-dOn" kind="embed" identifier="seasonsSegue" id="EEC-va-MvI"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-u2-ozR">
+                                <rect key="frame" x="1365" y="60" width="519" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="Перевод"/>
+                                    <segment title="Оригинал"/>
+                                </segments>
+                                <connections>
+                                    <action selector="translationChanged:" destination="KVt-Xw-rcF" eventType="valueChanged" id="cdJ-VD-hwB"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <animations/>
+                        <constraints>
+                            <constraint firstItem="RTZ-qy-JT9" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="60" id="5Sn-FB-IQk"/>
+                            <constraint firstItem="5Id-Tf-ymK" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="50" id="8MA-vI-XoM"/>
+                            <constraint firstItem="5Id-Tf-ymK" firstAttribute="leading" secondItem="uOC-WB-EBZ" secondAttribute="leadingMargin" constant="50" id="ACK-Id-Q5Q"/>
+                            <constraint firstItem="hbx-Df-yLc" firstAttribute="top" secondItem="8fB-OA-AoD" secondAttribute="bottom" constant="20" id="En8-wQ-TAa"/>
+                            <constraint firstItem="8fB-OA-AoD" firstAttribute="centerX" secondItem="5Id-Tf-ymK" secondAttribute="centerX" id="Fnt-1Y-sgs"/>
+                            <constraint firstItem="0PP-zO-L1P" firstAttribute="top" secondItem="5Id-Tf-ymK" secondAttribute="bottom" constant="42" id="Gby-8H-xhb"/>
+                            <constraint firstItem="0PP-zO-L1P" firstAttribute="leading" secondItem="8fB-OA-AoD" secondAttribute="leading" id="PbF-qB-ozc"/>
+                            <constraint firstItem="RTZ-qy-JT9" firstAttribute="leading" secondItem="5Id-Tf-ymK" secondAttribute="trailing" constant="60" id="YMh-kB-6Ve"/>
+                            <constraint firstItem="hbx-Df-yLc" firstAttribute="centerX" secondItem="5Id-Tf-ymK" secondAttribute="centerX" id="cPY-By-S3A"/>
+                            <constraint firstItem="uFr-hm-u07" firstAttribute="top" secondItem="RTZ-qy-JT9" secondAttribute="bottom" constant="60" id="epw-XS-ox0"/>
+                            <constraint firstItem="8fB-OA-AoD" firstAttribute="top" secondItem="0PP-zO-L1P" secondAttribute="bottom" constant="15" id="owE-0v-DSv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cover" destination="5Id-Tf-ymK" id="Exx-bD-noB"/>
+                        <outlet property="introduction" destination="hbx-Df-yLc" id="aQR-eN-Way"/>
+                        <outlet property="seasonContainer" destination="fLW-Ud-QLI" id="EyG-Vm-oQu"/>
+                        <outlet property="showtitle" destination="0PP-zO-L1P" id="lIk-bu-k3K"/>
+                        <outlet property="showtitle_ru" destination="8fB-OA-AoD" id="V3J-fj-iju"/>
+                        <outlet property="tableView" destination="RTZ-qy-JT9" id="n9u-RA-jYg"/>
+                        <outlet property="translationSwitch" destination="4Na-u2-ozR" id="apu-3F-KrZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdd-I0-U4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4630" y="1913"/>
+            <point key="canvasLocation" x="5090" y="1927"/>
+        </scene>
+        <!--Seasons Table View Controller-->
+        <scene sceneID="7hc-SK-5uy">
+            <objects>
+                <tableViewController id="pKz-d3-dOn" customClass="SeasonsTableViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" id="ANu-Bs-rAH">
+                        <rect key="frame" x="0.0" y="0.0" width="519" height="860"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
+                                <rect key="frame" x="0.0" y="54" width="479" height="66"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
+                                    <rect key="frame" x="0.0" y="0.0" width="503" height="66"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Season 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sir-i9-FU9">
+                                            <rect key="frame" x="20" y="0.0" width="463" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pKz-d3-dOn" id="6uU-n9-dVS"/>
+                            <outlet property="delegate" destination="pKz-d3-dOn" id="r6h-E9-7R5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gT0-hG-0vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6410" y="1926.5"/>
         </scene>
         <!--Мои сериалы-->
         <scene sceneID="v8I-eL-tFM">
@@ -189,6 +326,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="478" width="400" height="400"/>
         <image name="logo" width="578" height="598"/>
     </resources>
 </document>
