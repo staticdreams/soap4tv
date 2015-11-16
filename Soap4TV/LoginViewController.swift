@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
 			}
 			if let result = result {
 				if result["ok"] == 1 {
+					print("Current token is: \(result["token"].stringValue)")
 					Defaults[.token] = result["token"].stringValue
 					Defaults[.till] = result["till"].intValue
 					Defaults[.sid] = result["sid"].stringValue

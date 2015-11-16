@@ -11,8 +11,8 @@ import ObjectMapper
 
 struct Episode: Mappable {
 	
-	var eid: Int?
-	var sid: Int?
+//	var eid: Int?
+	var sid: String?
 	var episode: Int?
 	var season: Int?
 //	var quality: String?
@@ -23,7 +23,7 @@ struct Episode: Mappable {
 	var spoiler: String?
 	var season_id: Int?
 	var watched: Bool?
-	var version: [Version]?
+	var version = [Version]()
 	
 	init?(_ map: Map){}
 	
@@ -42,8 +42,8 @@ struct Episode: Mappable {
 	})
 	
 	mutating func mapping(map: Map) {
-		eid <- (map["eid"], convertToInt)
-		sid <- (map["sid"], convertToInt)
+//		eid <- (map["eid"], convertToInt)
+		sid <- map["sid"]
 		episode <- (map["episode"], convertToInt)
 		season <- (map["season"], convertToInt)
 //		quality <- map["quality"] //
@@ -61,6 +61,7 @@ struct Version {
 	var hash: String?
 	var quality: String?
 	var translate: String?
+	var eid: String?
 }
 
 

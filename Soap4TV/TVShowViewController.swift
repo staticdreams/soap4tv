@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyUserDefaults
+import AVFoundation
+import AVKit
 
 private let reuseIdentifier = "EpisodeCell"
 
@@ -54,13 +56,11 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		didSet { loadSeasons() }
 	}
 	var currentTranslation: String?
-	
 	var seasonsController = SeasonsTableViewController()
-//	
-//	@IBOutlet weak var qualitySwitch: UISegmentedControl!
+	var qualityView: UIView!
+	var playerController: AVPlayerViewController?
+	
 	@IBOutlet weak var translationSwitch: UISegmentedControl!
-//
-
 	@IBOutlet weak var cover: UIImageView!
 	@IBOutlet weak var showtitle: UILabel!
 	@IBOutlet weak var showtitle_ru: UILabel!
@@ -71,7 +71,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		//currentTranslation = Defaults.hasKey(.quality) ? Defaults[.quality] : Translation().rawValue
+		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
 		
 		showtitle.text = show?.title!
 		showtitle_ru.text = show?.title_ru!
@@ -87,6 +87,13 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
 //		Defaults[.translation] = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
 		loadEpisodes()
+		
+//		let rect = CGRectMake(view.frame.width/2, view.frame.height/2, 500, 300)
+//		qualityView = UIView(frame: rect)
+//		qualityView.hidden = true
+//		qualityView.backgroundColor = UIColor.whiteColor()
+//		self.view.addSubview(qualityView)
+		
     }
 	
 	override func viewDidAppear(animated: Bool) {
@@ -98,22 +105,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		return self.tableView
 	}
  
-//	@IBAction func qualityChanged(sender: UISegmentedControl) {
-//		print(sender)
-//		switch qualitySwitch.selectedSegmentIndex {
-//			case 0:
-//				print("Quality HD")
-//			break
-//			case 1:
-//				print("Quality SD")
-//			break
-//			default:
-//				
-//			break
-//		}
-//	}
-//	
-	
 	@IBAction func translationChanged(sender: UISegmentedControl) {
 		switch translationSwitch.selectedSegmentIndex {
 		case 0:
@@ -126,8 +117,8 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			
 			break
 		}
+		self.tableView.reloadData()
 	}
-
 
 	/**
 	Load all the episodes for current TV show and construct a list of Seasons
@@ -140,19 +131,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 				for episode in result {
 					let s = Season(number: episode.season!, id: episode.season_id!)
 					if !seasons.contains(s) { seasons.append(s) } // Since Season is Equatable :)
-					// Get latest season
-//						if subtitles {
-//							if episode.translate == Translation.Subtitles.rawValue {
-//								episodes.append(episode)
-//							}
-//						} else {
-//							if episode.translate != Translation.Subtitles.rawValue {
-//								episodes.append(episode)
-//							}
-//						}
-						//}
 				}
-				
 				self.seasons = seasons
 				self.allEpisodes = result
 				let latestSeason = seasons.maxElement({ $0.seasonNumber < $1.seasonNumber })
@@ -164,7 +143,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	}
 	
 	func filterSeason(season: Int) {
-		print("Season selected \(season)")
+//		print("Season selected \(season)")
 		var episodes = [Episode]()
 		for episode in self.allEpisodes {
 			if episode.season == season {
@@ -179,10 +158,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 				self.tableView.reloadData()
 			},
 			completion: nil);
-	}
-	
-	func filterTranslation() {
-	
 	}
 	
 	/**
@@ -218,11 +193,71 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EpisodeTableViewCell
 		let episode = episodes[indexPath.row]
+		var version = [Version]()
 		cell.title.text = episode.title_en
 		cell.episode.text = String(episode.episode!)
-//		cell.quality.text = episode.quality
-//		cell.translate.text = episode.version?.translate
+		if Defaults[.subtitles] == false { // Translated version
+			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
+		} else { // Subtitled original version
+			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
+		}
+		
+		if version.count > 0 {
+			cell.translate.text = version[0].translate
+			cell.title.textColor = UIColor.blackColor()
+			cell.episode.textColor = UIColor.blackColor()
+			cell.userInteractionEnabled = true
+		} else {
+			cell.translate.text = "-"
+			cell.title.textColor = UIColor.grayColor()
+			cell.episode.textColor = UIColor.grayColor()
+			cell.userInteractionEnabled = false
+		}
+		
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let episode = episodes[indexPath.row]
+		var version = [Version]()
+		if Defaults[.subtitles] == false { // Translated version
+			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
+		} else { // Subtitled original version
+			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
+		}
+		
+		let alert = UIAlertController(title: "Качество просмотра", message: "В каком качестве будем смотреть?", preferredStyle: UIAlertControllerStyle.Alert)
+
+		for button in version {
+			let button = UIAlertAction(title: button.quality, style: UIAlertActionStyle.Default) { action in
+				if let videohash = button.hash, eid = button.eid, sid = episode.sid {
+					
+					print("Launching video")
+					print("My token: \(self.token)")
+					print("My episode ID: \(eid)")
+					print("My season ID: \(sid)")
+					print("My video hash: \(videohash)")
+					
+					let hashString =  md5(string: "\(self.token)\(eid)\(sid)\(videohash)")
+					let url = "\(Config.URL.cdn)/\(self.token)/\(eid)/\(hashString)/"
+					
+					print("Calculated hash string: \(hashString)")
+					print("My URL: \(url)")
+			
+					API().callback(hashString, token: self.token, eid: eid) { result in
+						print(result)
+						let player = AVPlayer(URL: NSURL(string: url)!)
+						let playerController = self.storyboard?.instantiateViewControllerWithIdentifier("player") as! AVPlayerViewController
+						playerController.player = player
+						self.presentViewController(playerController, animated: true, completion: nil)
+						playerController.player?.play()
+					}
+
+				}
+			}
+			alert.addAction(button)
+		}
+		self.presentViewController(alert, animated: true, completion: nil)
 	}
 
 }

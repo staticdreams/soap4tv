@@ -24,6 +24,7 @@
 		D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D089A3791BF0AE20006C6F0E /* Assets.xcassets */; };
 		D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D089A3811BF0B172006C6F0E /* Main.storyboard */; };
 		D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */; };
+		D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsTableViewController.swift; sourceTree = "<group>"; };
 		D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowCollectionController.swift; sourceTree = "<group>"; };
 		D0301F721BF364800093ADDC /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
+		D05862491BFA5CF0004F20F3 /* Soap4TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soap4TV-Bridging-Header.h"; sourceTree = "<group>"; };
 		D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 		D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCollectionCell.xib; sourceTree = "<group>"; };
 		D07373821BF0C28900229B92 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		D089A37B1BF0AE20006C6F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D089A3811BF0B172006C6F0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
+		D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		DACA1DDEDF2C73FB901964CA /* Pods_Soap4TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soap4TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,6 +112,7 @@
 				D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */,
 				D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */,
 				D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */,
+				D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -141,6 +145,7 @@
 				D089A3811BF0B172006C6F0E /* Main.storyboard */,
 				D089A3791BF0AE20006C6F0E /* Assets.xcassets */,
 				D089A37B1BF0AE20006C6F0E /* Info.plist */,
+				D05862491BFA5CF0004F20F3 /* Soap4TV-Bridging-Header.h */,
 			);
 			path = Soap4TV;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				D07373861BF0C2C900229B92 /* Config.swift in Sources */,
 				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
 				D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */,
+				D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */,
 				D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */,
 				D000B71A1BF6184C006AC142 /* SeasonsTableViewController.swift in Sources */,
 				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,
@@ -373,10 +379,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Soap4TV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.staticdreams.Soap4TV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Soap4TV/Soap4TV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -386,10 +395,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Soap4TV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.staticdreams.Soap4TV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Soap4TV/Soap4TV-Bridging-Header.h";
 			};
 			name = Release;
 		};

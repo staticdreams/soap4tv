@@ -34,10 +34,13 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1R-s7-wJt">
-                        <rect key="frame" x="678" y="16" width="148" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1R-s7-wJt">
+                        <rect key="frame" x="660" y="8" width="182" height="34"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="182" id="WJ1-we-JOg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -48,8 +51,11 @@
                     <constraint firstItem="Xmf-6F-UJC" firstAttribute="bottom" secondItem="S0Q-fX-qc8" secondAttribute="bottomMargin" id="fBw-5P-646"/>
                     <constraint firstItem="hE1-NE-iw7" firstAttribute="leading" secondItem="S0Q-fX-qc8" secondAttribute="leadingMargin" id="fnk-Ao-kTt"/>
                     <constraint firstItem="hE1-NE-iw7" firstAttribute="top" secondItem="S0Q-fX-qc8" secondAttribute="topMargin" id="gLm-XO-eMu"/>
+                    <constraint firstItem="G1R-s7-wJt" firstAttribute="top" secondItem="S0Q-fX-qc8" secondAttribute="topMargin" id="jMP-vb-4dS"/>
+                    <constraint firstItem="G1R-s7-wJt" firstAttribute="trailing" secondItem="S0Q-fX-qc8" secondAttribute="trailingMargin" id="l4s-Yl-fb9"/>
                     <constraint firstItem="Xmf-6F-UJC" firstAttribute="top" secondItem="S0Q-fX-qc8" secondAttribute="topMargin" id="oQf-C0-Rfb"/>
                     <constraint firstItem="Xmf-6F-UJC" firstAttribute="leading" secondItem="hE1-NE-iw7" secondAttribute="trailing" constant="30" id="p3d-qD-t4G"/>
+                    <constraint firstItem="G1R-s7-wJt" firstAttribute="bottom" secondItem="S0Q-fX-qc8" secondAttribute="bottomMargin" id="wvt-pE-1nQ"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>

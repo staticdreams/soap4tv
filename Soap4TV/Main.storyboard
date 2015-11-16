@@ -246,6 +246,14 @@
             </objects>
             <point key="canvasLocation" x="5090" y="1927"/>
         </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="Pxs-pm-e5e">
+            <objects>
+                <avPlayerViewController storyboardIdentifier="player" useStoryboardIdentifierAsRestorationIdentifier="YES" videoGravity="AVLayerVideoGravityResizeAspect" id="DII-Bn-sQ3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nea-hk-Jmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5094" y="3235"/>
+        </scene>
         <!--Seasons Table View Controller-->
         <scene sceneID="7hc-SK-5uy">
             <objects>
