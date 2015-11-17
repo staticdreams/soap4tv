@@ -86,6 +86,7 @@ class TVShowCollectionController: UICollectionViewController {
 				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
 			})
 		}
+		
         return cell
     }
 	
@@ -101,28 +102,61 @@ class TVShowCollectionController: UICollectionViewController {
 		
 		if let next = context.nextFocusedView as? MovieCollectionCell {
 			next.setNeedsUpdateConstraints()
+			/**
+			*   Makes cell bigger
+			*/
 			UIView.animateWithDuration(0.1, animations: {
 				next.transform = CGAffineTransformMakeScale(1.1,1.1)
-				next.layer.shadowColor = UIColor.blackColor().CGColor
-				next.layer.shadowOffset = CGSizeMake(0, 4)
-				next.layer.shadowRadius = 10
-				next.layer.shadowOpacity = 0.35
 			})
+			
+			/**
+			*   Animates white box
+			*/
 			next.overlayHeightConstraint.constant = 300
 			UIView.animateWithDuration(0.5, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
 				self.view.layoutIfNeeded()
-			}, completion: nil)
+				}) { completed in
+			}
+			/**
+			*	Animating text within the white box after it appears
+			*/
+			UIView.animateWithDuration(0.3, delay: 0.5, options: [.TransitionCrossDissolve], animations: { () -> Void in
+				next.titleRu.alpha = 1
+				next.year.alpha = 1
+				next.imdb.alpha = 1
+				next.kinopoisk.alpha = 1
+				}, completion: nil)
 		}
 		
 		if let prev = context.previouslyFocusedView as? MovieCollectionCell {
+			
+			/**
+			*   Makes cell smaller
+			*/
 			prev.setNeedsUpdateConstraints()
 			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
+				prev.titleRu.alpha = 0
+				prev.year.alpha = 0
+				prev.imdb.alpha = 0
+				prev.kinopoisk.alpha = 0
 			})
+			
+			/**
+			*   Animates white box
+			*/
 			prev.overlayHeightConstraint.constant = 90
 			UIView.animateWithDuration(0.5, delay: 0.1, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
 				self.view.layoutIfNeeded()
-			}, completion: nil)
+				}) { completed in
+			}
+			
+			/**
+			*	Hiding text within the white box after it disappears
+			*/
+//			UIView.animateWithDuration(0.3, delay: 0.0, options: [.TransitionCrossDissolve], animations: { () -> Void in
+//				
+//			}, completion: nil)
 		}
 		
 	}
