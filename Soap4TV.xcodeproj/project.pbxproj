@@ -14,6 +14,8 @@
 		D000B71A1BF6184C006AC142 /* SeasonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */; };
 		D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */; };
 		D0301F731BF364800093ADDC /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0301F721BF364800093ADDC /* TVShow.swift */; };
+		D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */; };
+		D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */; };
 		D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */; };
 		D07373801BF0C23800229B92 /* MovieCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */; };
 		D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373821BF0C28900229B92 /* LoginViewController.swift */; };
@@ -37,6 +39,8 @@
 		D0301F701BF362EA0093ADDC /* TVShowCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowCollectionController.swift; sourceTree = "<group>"; };
 		D0301F721BF364800093ADDC /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 		D05862491BFA5CF0004F20F3 /* Soap4TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soap4TV-Bridging-Header.h"; sourceTree = "<group>"; };
+		D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 		D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCollectionCell.xib; sourceTree = "<group>"; };
 		D07373821BF0C28900229B92 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */,
 				D000B7191BF6184C006AC142 /* SeasonsTableViewController.swift */,
 				D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */,
+				D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */,
+				D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -273,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */,
 				D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */,
 				D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */,
 				D0301F731BF364800093ADDC /* TVShow.swift in Sources */,
@@ -281,6 +288,7 @@
 				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
 				D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */,
 				D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */,
+				D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */,
 				D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */,
 				D000B71A1BF6184C006AC142 /* SeasonsTableViewController.swift in Sources */,
 				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,

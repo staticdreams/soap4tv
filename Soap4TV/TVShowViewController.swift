@@ -85,14 +85,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		token = Defaults[.token]!
 		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
 		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
-//		Defaults[.translation] = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
 		loadEpisodes()
-		
-//		let rect = CGRectMake(view.frame.width/2, view.frame.height/2, 500, 300)
-//		qualityView = UIView(frame: rect)
-//		qualityView.hidden = true
-//		qualityView.backgroundColor = UIColor.whiteColor()
-//		self.view.addSubview(qualityView)
 		
     }
 	
@@ -143,7 +136,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	}
 	
 	func filterSeason(season: Int) {
-//		print("Season selected \(season)")
 		var episodes = [Episode]()
 		for episode in self.allEpisodes {
 			if episode.season == season {
@@ -157,7 +149,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			animations: { () -> Void in
 				self.tableView.reloadData()
 			},
-			completion: nil);
+		completion: nil);
 	}
 	
 	/**
@@ -201,7 +193,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		} else { // Subtitled original version
 			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
 		}
-		
 		if version.count > 0 {
 			cell.translate.text = version[0].translate
 			cell.title.textColor = UIColor.blackColor()
@@ -213,7 +204,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			cell.episode.textColor = UIColor.grayColor()
 			cell.userInteractionEnabled = false
 		}
-		
 		return cell
 	}
 	
@@ -232,20 +222,10 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			let button = UIAlertAction(title: button.quality, style: UIAlertActionStyle.Default) { action in
 				if let videohash = button.hash, eid = button.eid, sid = episode.sid {
 					
-					print("Launching video")
-					print("My token: \(self.token)")
-					print("My episode ID: \(eid)")
-					print("My season ID: \(sid)")
-					print("My video hash: \(videohash)")
-					
 					let hashString =  md5(string: "\(self.token)\(eid)\(sid)\(videohash)")
 					let url = "\(Config.URL.cdn)/\(self.token)/\(eid)/\(hashString)/"
-					
-					print("Calculated hash string: \(hashString)")
-					print("My URL: \(url)")
-			
 					API().callback(hashString, token: self.token, eid: eid) { result in
-						print(result)
+//						print(result)
 						let player = AVPlayer(URL: NSURL(string: url)!)
 						let playerController = self.storyboard?.instantiateViewControllerWithIdentifier("player") as! AVPlayerViewController
 						playerController.player = player
@@ -257,6 +237,9 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			}
 			alert.addAction(button)
 		}
+		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Destructive) { (btn) -> Void in }
+		alert.addAction(cancelButton)
+		
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
 

@@ -108,7 +108,7 @@
         <!--Все сериалы-->
         <scene sceneID="G2O-ma-0gc">
             <objects>
-                <collectionViewController id="Phr-kn-yGI" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="tvshowsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Phr-kn-yGI" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dbv-Tc-z3v">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
                                 <rect key="frame" x="70" y="50" width="400" height="400"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-zO-L1P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-zO-L1P">
                                 <rect key="frame" x="70" y="492" width="400" height="36"/>
                                 <animations/>
                                 <constraints>
@@ -158,24 +158,17 @@
                                 <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
-                                <rect key="frame" x="70" y="599" width="400" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Descrioption here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
+                                <rect key="frame" x="70" y="599" width="400" height="421"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="7DN-xv-3iF"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Descrioption here">
-                                        <attributes>
-                                            <color key="NSColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="25" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-OA-AoD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-OA-AoD">
                                 <rect key="frame" x="70" y="543" width="400" height="36"/>
                                 <animations/>
                                 <constraints>
@@ -219,13 +212,15 @@
                         </subviews>
                         <animations/>
                         <constraints>
+                            <constraint firstItem="hbx-Df-yLc" firstAttribute="top" secondItem="8fB-OA-AoD" secondAttribute="bottom" constant="20" id="4Hp-Ie-0bn"/>
                             <constraint firstItem="RTZ-qy-JT9" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="60" id="5Sn-FB-IQk"/>
                             <constraint firstItem="5Id-Tf-ymK" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="50" id="8MA-vI-XoM"/>
                             <constraint firstItem="5Id-Tf-ymK" firstAttribute="leading" secondItem="uOC-WB-EBZ" secondAttribute="leadingMargin" constant="50" id="ACK-Id-Q5Q"/>
-                            <constraint firstItem="hbx-Df-yLc" firstAttribute="top" secondItem="8fB-OA-AoD" secondAttribute="bottom" constant="20" id="En8-wQ-TAa"/>
                             <constraint firstItem="8fB-OA-AoD" firstAttribute="centerX" secondItem="5Id-Tf-ymK" secondAttribute="centerX" id="Fnt-1Y-sgs"/>
                             <constraint firstItem="0PP-zO-L1P" firstAttribute="top" secondItem="5Id-Tf-ymK" secondAttribute="bottom" constant="42" id="Gby-8H-xhb"/>
+                            <constraint firstItem="uFr-hm-u07" firstAttribute="top" secondItem="hbx-Df-yLc" secondAttribute="bottom" constant="60" id="Ofr-df-v1v"/>
                             <constraint firstItem="0PP-zO-L1P" firstAttribute="leading" secondItem="8fB-OA-AoD" secondAttribute="leading" id="PbF-qB-ozc"/>
+                            <constraint firstItem="hbx-Df-yLc" firstAttribute="leading" secondItem="uOC-WB-EBZ" secondAttribute="leadingMargin" constant="50" id="Wi7-as-T0Y"/>
                             <constraint firstItem="RTZ-qy-JT9" firstAttribute="leading" secondItem="5Id-Tf-ymK" secondAttribute="trailing" constant="60" id="YMh-kB-6Ve"/>
                             <constraint firstItem="hbx-Df-yLc" firstAttribute="centerX" secondItem="5Id-Tf-ymK" secondAttribute="centerX" id="cPY-By-S3A"/>
                             <constraint firstItem="uFr-hm-u07" firstAttribute="top" secondItem="RTZ-qy-JT9" secondAttribute="bottom" constant="60" id="epw-XS-ox0"/>
@@ -244,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdd-I0-U4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5090" y="1927"/>
+            <point key="canvasLocation" x="4630" y="1913"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="Pxs-pm-e5e">
@@ -292,31 +287,31 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gT0-hG-0vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6410" y="1926.5"/>
+            <point key="canvasLocation" x="6069.5" y="1913"/>
         </scene>
-        <!--Мои сериалы-->
-        <scene sceneID="v8I-eL-tFM">
+        <!--Поиск-->
+        <scene sceneID="XaS-43-MW1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WwO-gK-C4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="lEV-fV-4i1" sceneMemberID="viewController">
+                <viewController id="wLw-r8-dhx" customClass="SearchViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fz5-8Q-NuC"/>
-                        <viewControllerLayoutGuide type="bottom" id="jm0-kf-ePr"/>
+                        <viewControllerLayoutGuide type="top" id="GOG-eG-EsR"/>
+                        <viewControllerLayoutGuide type="bottom" id="DTa-ok-bcM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hCy-yI-CYM">
+                    <view key="view" contentMode="scaleToFill" id="lOz-xo-fMs">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Мои сериалы" id="Yd7-Qf-EXs" userLabel="My TV Series"/>
+                    <tabBarItem key="tabBarItem" title="Поиск" id="IfU-NS-Tpr"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29U-tW-PdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2458" y="1913"/>
+            <point key="canvasLocation" x="4630" y="-754"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Navigation Controller-->
         <scene sceneID="qk8-BC-WlL">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jpu-oM-po1" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jpu-oM-po1" customClass="MainNavigationController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="pzN-PZ-vQ9">
                         <autoresizingMask key="autoresizingMask"/>
@@ -325,12 +320,40 @@
                     </tabBar>
                     <connections>
                         <segue destination="Phr-kn-yGI" kind="relationship" relationship="viewControllers" id="RXH-7z-WSX"/>
-                        <segue destination="lEV-fV-4i1" kind="relationship" relationship="viewControllers" id="DBo-0f-OnW"/>
+                        <segue destination="TEe-FJ-XWQ" kind="relationship" relationship="viewControllers" id="zE1-4C-Znj"/>
+                        <segue destination="wLw-r8-dhx" kind="relationship" relationship="viewControllers" id="935-NM-XIB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-Ts-tey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2466" y="537"/>
+        </scene>
+        <!--Мои сериалы-->
+        <scene sceneID="SNi-mK-Yx1">
+            <objects>
+                <collectionViewController storyboardIdentifier="mytvshowsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TEe-FJ-XWQ" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="x50-Y6-IhF">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="80" minimumInteritemSpacing="50" id="Tqh-1T-1wt">
+                            <size key="itemSize" width="400" height="400"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="40" minY="90" maxX="20" maxY="90"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="TEe-FJ-XWQ" id="tHW-cz-9OT"/>
+                            <outlet property="delegate" destination="TEe-FJ-XWQ" id="NLc-6H-Zuk"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Мои сериалы" id="JEm-uo-xfh" userLabel="All TV Series"/>
+                    <navigationItem key="navigationItem" id="2G9-IX-aFV"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RGF-q8-Qyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="1913"/>
         </scene>
     </scenes>
     <resources>

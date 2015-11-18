@@ -52,14 +52,15 @@ struct API {
 		}
 	}
 	
-	func getTVShows(token: String, completionHandler: (responseObject: [TVShow]?, error: ErrorType?) -> ()) {
+	func getTVShows(token: String, view: PresentedView, completionHandler: (responseObject: [TVShow]?, error: ErrorType?) -> ()) {
 		let headers = [
 			"X-Api-Token": token,
 			"User-Agent": "xbmc for soap",
 			"Accept-Language": "ru",
 			"Connection": "keep-alive"
 		]
-		Alamofire.request(.GET, Config.URL.base+"/api/soap", headers: headers)
+		let suffix = view == .MyShows ? "/my/" : ""
+		Alamofire.request(.GET, Config.URL.base+"/api/soap"+suffix, headers: headers)
 			.responseArray { (response: Response<[TVShow], NSError>) in
 				switch response.result {
 				case .Success(let data):

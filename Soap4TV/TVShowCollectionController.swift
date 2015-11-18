@@ -10,12 +10,22 @@ import UIKit
 import SwiftyUserDefaults
 import AlamofireImage
 
+enum PresentedView {
+	case AllShows
+	case MyShows
+	case Search
+	init() {
+		self = .AllShows
+	}
+}
+
 private let reuseIdentifier = "MovieCell"
 
-class TVShowCollectionController: UICollectionViewController {
+class TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
 	
 	var data = [TVShow]()
 	var token = ""
+	var currentView = PresentedView()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +39,7 @@ class TVShowCollectionController: UICollectionViewController {
     }
 
 	private func loadData() {
-		API().getTVShows(token) { objects, error in
+		API().getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				self.data = tvshows
 				self.collectionView?.reloadData()
@@ -40,16 +50,6 @@ class TVShowCollectionController: UICollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -159,6 +159,12 @@ class TVShowCollectionController: UICollectionViewController {
 //			}, completion: nil)
 		}
 		
+	}
+	
+	// MARK: UISearchResultsUpdating
+	
+	func updateSearchResultsForSearchController(searchController: UISearchController) {
+//		filterString = searchController.searchBar.text ?? ""
 	}
 
     // MARK: UICollectionViewDelegate
