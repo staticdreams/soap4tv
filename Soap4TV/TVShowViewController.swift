@@ -81,7 +81,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	@IBOutlet weak var showtitle_ru: UILabel!
 	@IBOutlet weak var introduction: UILabel!
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var seasonContainer: UIView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,6 +192,12 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			if let destination = segue.destinationViewController as? SeasonsTableViewController {
 				seasonsController = destination
 				seasonsController.tvshowController = self
+			}
+		}
+		if segue.identifier == "scheduleSegue" {
+			if let destination = segue.destinationViewController as? ScheduleTableViewController {
+				destination.sid = show?.sid
+				destination.token = self.token
 			}
 		}
 	}

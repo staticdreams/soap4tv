@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" rowHeight="112" id="fBs-An-CcD" customClass="ScheduleTableViewCell" customModule="Soap4TV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="112"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBs-An-CcD" id="S0Q-fX-qc8">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="112"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zd7-lP-Xmj">
+                        <rect key="frame" x="10" y="10" width="356" height="101"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26.05.2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wg-ZQ-eM0">
+                                <rect key="frame" x="0.0" y="0.0" width="356" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сезон 2 - Эпизод 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvQ-XE-wzB">
+                                <rect key="frame" x="0.0" y="37" width="356" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добро пожаловать в гости к нам" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfQ-25-tgn">
+                                <rect key="frame" x="0.0" y="74" width="356" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                    </stackView>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="zd7-lP-Xmj" firstAttribute="top" secondItem="S0Q-fX-qc8" secondAttribute="top" constant="10" id="Lh5-rk-U3n"/>
+                    <constraint firstItem="zd7-lP-Xmj" firstAttribute="leading" secondItem="S0Q-fX-qc8" secondAttribute="leading" constant="10" id="dqd-fF-Sed"/>
+                    <constraint firstAttribute="trailing" secondItem="zd7-lP-Xmj" secondAttribute="trailing" constant="10" id="sTt-aT-k6c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="date" destination="4Wg-ZQ-eM0" id="ujz-hs-pph"/>
+                <outlet property="seasonEpisode" destination="PvQ-XE-wzB" id="5gr-Cr-BI9"/>
+                <outlet property="title" destination="ZfQ-25-tgn" id="1rD-Zx-4Uz"/>
+            </connections>
+            <point key="canvasLocation" x="-30" y="631"/>
+        </tableViewCell>
+    </objects>
+</document>

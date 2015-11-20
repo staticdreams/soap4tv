@@ -23,6 +23,8 @@ class LoginViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		loginField.text = Defaults.hasKey(.login) ? Defaults[.login]! : ""
+		passwordField.text = Defaults.hasKey(.password) ? Defaults[.password]! : ""
     }
 
 	func doLogin() {
@@ -42,6 +44,8 @@ class LoginViewController: UIViewController {
 			if let result = result {
 				if result["ok"] == 1 {
 					print("Current token is: \(result["token"].stringValue)")
+					Defaults[.login] = login
+					Defaults[.password] = password
 					Defaults[.token] = result["token"].stringValue
 					Defaults[.till] = result["till"].intValue
 					Defaults[.sid] = result["sid"].stringValue

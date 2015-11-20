@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="278" id="f2u-ON-t87"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="kernelpanic" borderStyle="roundedRect" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JET-MI-n9R">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JET-MI-n9R">
                                 <rect key="frame" x="668" y="588" width="585" height="66"/>
                                 <animations/>
                                 <constraints>
@@ -42,7 +42,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="marinka" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qP7-Oe-Ely">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qP7-Oe-Ely">
                                 <rect key="frame" x="668" y="702" width="585" height="66"/>
                                 <animations/>
                                 <constraints>
@@ -151,13 +151,13 @@
                                 <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Descrioption here" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Descrioption here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
                                 <rect key="frame" x="529" y="272" width="1348" height="180"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="Uhu-7e-HMU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -176,12 +176,11 @@
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-qy-JT9">
-                                <rect key="frame" x="530" y="578" width="800" height="442"/>
+                                <rect key="frame" x="530" y="492" width="880" height="528"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="800" id="M79-ZZ-nSW"/>
-                                    <constraint firstAttribute="width" constant="800" id="rlq-L1-018"/>
+                                    <constraint firstAttribute="width" constant="880" id="rlq-L1-018"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="KVt-Xw-rcF" id="Quj-hE-gHM"/>
@@ -220,6 +219,24 @@
                                     <action selector="translationTapped:" destination="KVt-Xw-rcF" eventType="primaryActionTriggered" id="8ha-sr-4bv"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="K6T-dQ-Eqx">
+                                <rect key="frame" x="1501" y="497" width="54" height="49"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Расписание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-px-9tc">
+                                <rect key="frame" x="1570" y="497" width="245" height="49"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ls6-n5-mGX">
+                                <rect key="frame" x="1501" y="586" width="376" height="434"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="Ka5-MP-Oqv" kind="embed" identifier="scheduleSegue" id="glf-E0-DWX"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -241,7 +258,7 @@
                             <constraint firstItem="5Id-Tf-ymK" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="50" id="paa-Lj-ywk"/>
                             <constraint firstItem="ohM-if-0F9" firstAttribute="centerY" secondItem="uOC-WB-EBZ" secondAttribute="centerY" id="pbB-92-sVV"/>
                             <constraint firstItem="hbx-Df-yLc" firstAttribute="top" secondItem="8fB-OA-AoD" secondAttribute="bottom" constant="60" id="t4S-ia-3rQ"/>
-                            <constraint firstItem="RTZ-qy-JT9" firstAttribute="top" secondItem="hbx-Df-yLc" secondAttribute="bottom" constant="126" id="thh-TZ-ZMJ"/>
+                            <constraint firstItem="RTZ-qy-JT9" firstAttribute="top" secondItem="hbx-Df-yLc" secondAttribute="bottom" constant="40" id="thh-TZ-ZMJ"/>
                             <constraint firstItem="ohM-if-0F9" firstAttribute="bottom" secondItem="nnl-dM-yoc" secondAttribute="bottom" id="uHU-za-Hc4"/>
                             <constraint firstItem="fLW-Ud-QLI" firstAttribute="top" secondItem="ohM-if-0F9" secondAttribute="bottom" constant="61" id="vPH-E5-iCO"/>
                             <constraint firstAttribute="trailing" secondItem="hbx-Df-yLc" secondAttribute="trailing" constant="43" id="ycr-BU-C4f"/>
@@ -252,7 +269,6 @@
                         <outlet property="cover" destination="5Id-Tf-ymK" id="Exx-bD-noB"/>
                         <outlet property="introduction" destination="hbx-Df-yLc" id="aQR-eN-Way"/>
                         <outlet property="likeButton" destination="nnl-dM-yoc" id="yPv-7V-Xea"/>
-                        <outlet property="seasonContainer" destination="fLW-Ud-QLI" id="EyG-Vm-oQu"/>
                         <outlet property="showtitle" destination="0PP-zO-L1P" id="lIk-bu-k3K"/>
                         <outlet property="showtitle_ru" destination="8fB-OA-AoD" id="V3J-fj-iju"/>
                         <outlet property="tableView" destination="RTZ-qy-JT9" id="n9u-RA-jYg"/>
@@ -280,8 +296,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
-                                <rect key="frame" x="0.0" y="54" width="360" height="66"/>
+                            <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
+                                <rect key="frame" x="0.0" y="54" width="400" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="66"/>
@@ -291,7 +307,7 @@
                                             <rect key="frame" x="20" y="0.0" width="344" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -310,6 +326,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gT0-hG-0vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6069.5" y="1913"/>
+        </scene>
+        <!--Schedule Table View Controller-->
+        <scene sceneID="eRy-iy-Ijx">
+            <objects>
+                <tableViewController id="Ka5-MP-Oqv" customClass="ScheduleTableViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="40" sectionFooterHeight="40" id="g8w-ng-0W0">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="434"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <connections>
+                            <outlet property="dataSource" destination="Ka5-MP-Oqv" id="uia-GT-uuc"/>
+                            <outlet property="delegate" destination="Ka5-MP-Oqv" id="hwg-it-GEe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mtb-0V-fKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6057" y="2406"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="qk8-BC-WlL">
@@ -388,6 +422,7 @@
     </scenes>
     <resources>
         <image name="478" width="400" height="400"/>
+        <image name="calendar" width="58" height="58"/>
         <image name="fav-icon" width="52" height="49"/>
         <image name="like" width="52" height="49"/>
         <image name="logo" width="578" height="598"/>

@@ -71,3 +71,19 @@ struct TVShow: Mappable {
 		unwatched <- (map["unwatched"], convertToBool)
 	}
 }
+
+
+struct Schedule: Mappable {
+	
+	var episode: String?
+	var date: String?
+	var title: String?
+	
+	init?(_ map: Map){}
+	
+	mutating func mapping(map: Map) {
+		title <- map["title"]
+		date <- map["date"]
+		episode <- map["episode"]
+	}
+}

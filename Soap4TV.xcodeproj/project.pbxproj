@@ -25,6 +25,9 @@
 		D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089A3701BF0AE20006C6F0E /* AppDelegate.swift */; };
 		D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D089A3791BF0AE20006C6F0E /* Assets.xcassets */; };
 		D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D089A3811BF0B172006C6F0E /* Main.storyboard */; };
+		D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C801BFF3D0E001448B7 /* ScheduleTableViewCell.swift */; };
+		D0A29C831BFF3D0E001448B7 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */; };
+		D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */; };
 		D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */; };
 		D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +55,9 @@
 		D089A3791BF0AE20006C6F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D089A37B1BF0AE20006C6F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D089A3811BF0B172006C6F0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D0A29C801BFF3D0E001448B7 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		DACA1DDEDF2C73FB901964CA /* Pods_Soap4TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soap4TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +110,8 @@
 				D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */,
 				D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */,
 				D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */,
+				D0A29C801BFF3D0E001448B7 /* ScheduleTableViewCell.swift */,
+				D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 				D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */,
 				D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */,
 				D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */,
+				D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -222,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A29C831BFF3D0E001448B7 /* ScheduleTableViewCell.xib in Resources */,
 				D07373801BF0C23800229B92 /* MovieCollectionCell.xib in Resources */,
 				D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */,
 				D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */,
@@ -284,12 +294,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */,
 				D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */,
 				D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */,
 				D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */,
 				D0301F731BF364800093ADDC /* TVShow.swift in Sources */,
 				D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */,
 				D07373861BF0C2C900229B92 /* Config.swift in Sources */,
+				D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */,
 				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
 				D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */,
 				D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */,

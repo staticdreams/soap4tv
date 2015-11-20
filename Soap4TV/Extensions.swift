@@ -45,6 +45,8 @@ extension SequenceType where Generator.Element: Equatable {
 }
 
 extension DefaultsKeys {
+	static let login = DefaultsKey<String?>("login")
+	static let password = DefaultsKey<String?>("password")
 	static let token = DefaultsKey<String?>("token")
 	static let till = DefaultsKey<Int?>("till")
 	static let sid = DefaultsKey<String?>("sid")
