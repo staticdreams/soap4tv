@@ -8,18 +8,13 @@
 
 import UIKit
 
-class SearchViewController: UISearchController, UISearchControllerDelegate {
+class SearchViewController: UISearchContainerViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		let collectionController = storyboard?.instantiateViewControllerWithIdentifier("tvshowsController") as! TVShowCollectionController
-		self.searchResultsUpdater = collectionController
-		self.hidesNavigationBarDuringPresentation = false
-		
+		searchController.hidesNavigationBarDuringPresentation = false
 		let searchPlaceholderText = NSLocalizedString("Поиск", comment: "")
-		self.searchBar.placeholder = searchPlaceholderText
-		
+		searchController.searchBar.placeholder = searchPlaceholderText
     }
 
     override func didReceiveMemoryWarning() {

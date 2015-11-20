@@ -29,12 +29,29 @@ enum Translation: String {
 	}
 }
 
+enum ButtonState: String {
+	case Like = "like"
+	case Dislike = "unlike"
+	case Subtitle = "speech-bubble"
+	case Translation = "talk"
+	func image() -> UIImage {
+		return UIImage(named: self.rawValue)!
+	}
+}
+
 struct Season {
 	let seasonNumber: Int
 	let seasonId: Int
 	init(number: Int, id: Int) {
 		self.seasonNumber = number
 		self.seasonId = id
+	}
+}
+
+struct LikeSwitch {
+	var currentState: Bool = false
+	mutating func switchState() {
+		currentState = !currentState
 	}
 }
 
@@ -59,8 +76,13 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	var seasonsController = SeasonsTableViewController()
 	var qualityView: UIView!
 	var playerController: AVPlayerViewController?
+	var userLikes = [Int]()
 	
-	@IBOutlet weak var translationSwitch: UISegmentedControl!
+	var currentShowLiked: Bool = false
+	
+	@IBOutlet weak var translationButton: UIButton!
+	@IBOutlet weak var likeButton: UIButton!
+	
 	@IBOutlet weak var cover: UIImageView!
 	@IBOutlet weak var showtitle: UILabel!
 	@IBOutlet weak var showtitle_ru: UILabel!
@@ -70,8 +92,12 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
+		currentShowLiked = Defaults.hasKey(.like) && Defaults[.like]!.contains(show?.sid) ? true : false
+		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
+		token = Defaults[.token]!
+		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
+		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
 		
 		showtitle.text = show?.title!
 		showtitle_ru.text = show?.title_ru!
@@ -82,35 +108,46 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
 		}
 		self.tableView.registerNib(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-		token = Defaults[.token]!
-		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
-		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
 		loadEpisodes()
-		
     }
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		translationSwitch.selectedSegmentIndex = Defaults[.subtitles] == false ? 0 : 1
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		let likeImage = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeButton.setImage(likeImage, forState: UIControlState.Normal)
+		let translationImage = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+		translationButton.setImage(translationImage, forState: UIControlState.Normal)
 	}
 
 	override var preferredFocusedView: UIView? {
 		return self.tableView
 	}
- 
-	@IBAction func translationChanged(sender: UISegmentedControl) {
-		switch translationSwitch.selectedSegmentIndex {
-		case 0:
-			Defaults[.subtitles] = false
-			break
-		case 1:
-			Defaults[.subtitles] = true
-			break
-		default:
-			
-			break
+	
+	
+	@IBAction func likeTapped(sender: AnyObject) {
+		currentShowLiked = !currentShowLiked
+		if currentShowLiked {
+			userLikes.append((show?.sid)!)
+		} else {
+			userLikes = userLikes.filter() { $0 != show?.sid! }
 		}
-		self.tableView.reloadData()
+		Defaults[.like] = userLikes
+		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeButton.setImage(image, forState: UIControlState.Normal)
+		print("Favorite shows \(Defaults[.like])")
+	}
+
+	@IBAction func translationTapped(sender: AnyObject) {
+		if let state = Defaults[.subtitles] {
+			Defaults[.subtitles] = !state
+			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+			translationButton.setImage(image, forState: UIControlState.Normal)
+			self.tableView.reloadData()
+		}
 	}
 
 	/**

@@ -39,6 +39,7 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
     }
 
 	private func loadData() {
+		print("Loading shows..")
 		API().getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				self.data = tvshows

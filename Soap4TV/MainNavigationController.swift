@@ -8,33 +8,54 @@
 
 import UIKit
 
-class MainNavigationController: UITabBarController {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, UISearchControllerDelegate {
 
+	var showsController = TVShowCollectionController()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		delegate = self
+		
 		let controllers = self.viewControllers
 		
 		for (index, controller) in controllers!.enumerate() {
 			if let tvshowController = controller as? TVShowCollectionController {
 				if index == 0 {
 					tvshowController.currentView = .AllShows
+					showsController = tvshowController
 				}
-				if index == 1 {
+				else if index == 1 {
 					tvshowController.currentView = .MyShows
 				}
+				else {return}
 			}
+//			if let search = controller as? SearchViewController {
+//				let searchController = UISearchController(searchResultsController: showsController)
+//				searchController.searchResultsUpdater = showsController
+//			}
 		}
 		
+//		let searchController = UISearchController(searchResultsController: showsController)
+//		searchController.searchResultsUpdater = showsController
+//		searchController.hidesNavigationBarDuringPresentation = false
+//		
+//		let searchPlaceholderText = NSLocalizedString("Enter keyword (e.g. iceland)", comment: "")
+//		searchController.searchBar.placeholder = searchPlaceholderText
+//		
+//		let searchItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
+//		searchController.tabBarItem = searchItem
+//		
+//		let searchContainer = UISearchContainerViewController(searchController: searchController)
+//		let navController = UINavigationController(rootViewController: searchContainer)
+//		controllers?.append(searchContainer)
 		
-//		if let showsController = controllers![0] as? TVShowCollectionController {
-//			showsController.currentView = .AllShows
-//		}
-//		if let showsController = controllers![1] as? TVShowCollectionController {
-//			showsController.currentView = .MyShows
-//		}
+//		controllers?.append(searchController)
+//		self.viewControllers = controllers
     }
-	
-	// TODO: showAll should be a enum
+
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

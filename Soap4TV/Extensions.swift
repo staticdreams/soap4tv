@@ -51,6 +51,7 @@ extension DefaultsKeys {
 	static let quality = DefaultsKey<String?>("quality")
 	static let translation = DefaultsKey<String?>("translation")
 	static let subtitles = DefaultsKey<Bool?>("subtitles")
+	static let like = DefaultsKey<[Int]?>("like")
 }
 
 func delay(delay:Double, closure:()->()) {

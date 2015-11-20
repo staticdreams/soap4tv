@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gvO-2Q-WFQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -144,42 +143,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="478" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-Tf-ymK">
-                                <rect key="frame" x="70" y="50" width="400" height="400"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" fixedFrame="YES" text="Adventures of Puss in Boots" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-zO-L1P">
+                                <rect key="frame" x="530" y="50" width="1347" height="96"/>
                                 <animations/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-zO-L1P">
-                                <rect key="frame" x="70" y="492" width="400" height="36"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="CZt-KQ-Sye"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="80"/>
                                 <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Descrioption here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
-                                <rect key="frame" x="70" y="599" width="400" height="421"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Descrioption here" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-Df-yLc">
+                                <rect key="frame" x="530" y="272" width="1347" height="178"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="7DN-xv-3iF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="12 Monkeys" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-OA-AoD">
-                                <rect key="frame" x="70" y="543" width="400" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" fixedFrame="YES" text="Приключения Кота в сапогах" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-OA-AoD">
+                                <rect key="frame" x="530" y="154" width="1347" height="58"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="MI9-M9-2Fr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <color key="textColor" red="0.17033520340919495" green="0.18545651435852051" blue="0.49375885725021362" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-qy-JT9">
-                                <rect key="frame" x="530" y="60" width="800" height="960"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLW-Ud-QLI">
+                                <rect key="frame" x="61" y="651" width="400" height="369"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="pKz-d3-dOn" kind="embed" identifier="seasonsSegue" id="EEC-va-MvI"/>
+                                </connections>
+                            </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="RTZ-qy-JT9">
+                                <rect key="frame" x="530" y="576" width="800" height="444"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -190,51 +183,40 @@
                                     <outlet property="delegate" destination="KVt-Xw-rcF" id="VMR-U1-iM7"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLW-Ud-QLI">
-                                <rect key="frame" x="1365" y="160" width="519" height="860"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="478" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-Tf-ymK">
+                                <rect key="frame" x="61" y="50" width="400" height="400"/>
                                 <animations/>
-                                <connections>
-                                    <segue destination="pKz-d3-dOn" kind="embed" identifier="seasonsSegue" id="EEC-va-MvI"/>
-                                </connections>
-                            </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-u2-ozR">
-                                <rect key="frame" x="1365" y="60" width="519" height="70"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnl-dM-yoc">
+                                <rect key="frame" x="61" y="493" width="150" height="98"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                <segments>
-                                    <segment title="Перевод"/>
-                                    <segment title="Оригинал"/>
-                                </segments>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" image="like"/>
                                 <connections>
-                                    <action selector="translationChanged:" destination="KVt-Xw-rcF" eventType="valueChanged" id="cdJ-VD-hwB"/>
+                                    <action selector="likeTapped:" destination="KVt-Xw-rcF" eventType="primaryActionTriggered" id="39F-9m-gcb"/>
                                 </connections>
-                            </segmentedControl>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohM-if-0F9">
+                                <rect key="frame" x="311" y="489" width="150" height="101"/>
+                                <animations/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" image="talk"/>
+                                <connections>
+                                    <action selector="translationTapped:" destination="KVt-Xw-rcF" eventType="primaryActionTriggered" id="8ha-sr-4bv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
-                        <constraints>
-                            <constraint firstItem="hbx-Df-yLc" firstAttribute="top" secondItem="8fB-OA-AoD" secondAttribute="bottom" constant="20" id="4Hp-Ie-0bn"/>
-                            <constraint firstItem="RTZ-qy-JT9" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="60" id="5Sn-FB-IQk"/>
-                            <constraint firstItem="5Id-Tf-ymK" firstAttribute="top" secondItem="fau-le-hcY" secondAttribute="bottom" constant="50" id="8MA-vI-XoM"/>
-                            <constraint firstItem="5Id-Tf-ymK" firstAttribute="leading" secondItem="uOC-WB-EBZ" secondAttribute="leadingMargin" constant="50" id="ACK-Id-Q5Q"/>
-                            <constraint firstItem="8fB-OA-AoD" firstAttribute="centerX" secondItem="5Id-Tf-ymK" secondAttribute="centerX" id="Fnt-1Y-sgs"/>
-                            <constraint firstItem="0PP-zO-L1P" firstAttribute="top" secondItem="5Id-Tf-ymK" secondAttribute="bottom" constant="42" id="Gby-8H-xhb"/>
-                            <constraint firstItem="uFr-hm-u07" firstAttribute="top" secondItem="hbx-Df-yLc" secondAttribute="bottom" constant="60" id="Ofr-df-v1v"/>
-                            <constraint firstItem="0PP-zO-L1P" firstAttribute="leading" secondItem="8fB-OA-AoD" secondAttribute="leading" id="PbF-qB-ozc"/>
-                            <constraint firstItem="hbx-Df-yLc" firstAttribute="leading" secondItem="uOC-WB-EBZ" secondAttribute="leadingMargin" constant="50" id="Wi7-as-T0Y"/>
-                            <constraint firstItem="RTZ-qy-JT9" firstAttribute="leading" secondItem="5Id-Tf-ymK" secondAttribute="trailing" constant="60" id="YMh-kB-6Ve"/>
-                            <constraint firstItem="hbx-Df-yLc" firstAttribute="centerX" secondItem="5Id-Tf-ymK" secondAttribute="centerX" id="cPY-By-S3A"/>
-                            <constraint firstItem="uFr-hm-u07" firstAttribute="top" secondItem="RTZ-qy-JT9" secondAttribute="bottom" constant="60" id="epw-XS-ox0"/>
-                            <constraint firstItem="8fB-OA-AoD" firstAttribute="top" secondItem="0PP-zO-L1P" secondAttribute="bottom" constant="15" id="owE-0v-DSv"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cover" destination="5Id-Tf-ymK" id="Exx-bD-noB"/>
                         <outlet property="introduction" destination="hbx-Df-yLc" id="aQR-eN-Way"/>
+                        <outlet property="likeButton" destination="nnl-dM-yoc" id="yPv-7V-Xea"/>
                         <outlet property="seasonContainer" destination="fLW-Ud-QLI" id="EyG-Vm-oQu"/>
                         <outlet property="showtitle" destination="0PP-zO-L1P" id="lIk-bu-k3K"/>
                         <outlet property="showtitle_ru" destination="8fB-OA-AoD" id="V3J-fj-iju"/>
                         <outlet property="tableView" destination="RTZ-qy-JT9" id="n9u-RA-jYg"/>
-                        <outlet property="translationSwitch" destination="4Na-u2-ozR" id="apu-3F-KrZ"/>
+                        <outlet property="translationButton" destination="ohM-if-0F9" id="cyB-9Q-iaX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdd-I0-U4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,26 +229,26 @@
                 <avPlayerViewController storyboardIdentifier="player" useStoryboardIdentifierAsRestorationIdentifier="YES" videoGravity="AVLayerVideoGravityResizeAspect" id="DII-Bn-sQ3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nea-hk-Jmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5094" y="3235"/>
+            <point key="canvasLocation" x="4630" y="3233"/>
         </scene>
         <!--Seasons Table View Controller-->
         <scene sceneID="7hc-SK-5uy">
             <objects>
                 <tableViewController id="pKz-d3-dOn" customClass="SeasonsTableViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" id="ANu-Bs-rAH">
-                        <rect key="frame" x="0.0" y="0.0" width="519" height="860"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="369"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
-                                <rect key="frame" x="0.0" y="54" width="479" height="66"/>
+                                <rect key="frame" x="0.0" y="54" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
-                                    <rect key="frame" x="0.0" y="0.0" width="503" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Season 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sir-i9-FU9">
-                                            <rect key="frame" x="20" y="0.0" width="463" height="66"/>
+                                            <rect key="frame" x="20" y="0.0" width="344" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
@@ -289,25 +271,6 @@
             </objects>
             <point key="canvasLocation" x="6069.5" y="1913"/>
         </scene>
-        <!--Поиск-->
-        <scene sceneID="XaS-43-MW1">
-            <objects>
-                <viewController id="wLw-r8-dhx" customClass="SearchViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GOG-eG-EsR"/>
-                        <viewControllerLayoutGuide type="bottom" id="DTa-ok-bcM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lOz-xo-fMs">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Поиск" id="IfU-NS-Tpr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="29U-tW-PdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4630" y="-754"/>
-        </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="qk8-BC-WlL">
             <objects>
@@ -321,7 +284,6 @@
                     <connections>
                         <segue destination="Phr-kn-yGI" kind="relationship" relationship="viewControllers" id="RXH-7z-WSX"/>
                         <segue destination="TEe-FJ-XWQ" kind="relationship" relationship="viewControllers" id="zE1-4C-Znj"/>
-                        <segue destination="wLw-r8-dhx" kind="relationship" relationship="viewControllers" id="935-NM-XIB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-Ts-tey" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,6 +320,8 @@
     </scenes>
     <resources>
         <image name="478" width="400" height="400"/>
+        <image name="like" width="52" height="49"/>
         <image name="logo" width="578" height="598"/>
+        <image name="talk" width="35" height="61"/>
     </resources>
 </document>
