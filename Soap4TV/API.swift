@@ -66,6 +66,7 @@ struct API {
 				case .Success(let data):
 					completionHandler(responseObject: data, error: nil)
 				case .Failure(let error):
+					print(error)
 					completionHandler(responseObject: nil, error: error)
 				}
 		}

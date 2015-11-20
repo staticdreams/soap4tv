@@ -31,27 +31,32 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
 		self.clearsSelectionOnViewWillAppear = false
 		self.collectionView!.remembersLastFocusedIndexPath = true
-
 		self.collectionView!.registerNib(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		token = Defaults[.token]!
-		loadData()
     }
 
 	private func loadData() {
-		print("Loading shows..")
 		API().getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				if self.currentView == .FavShows {
 					self.data = tvshows.filter {self.userLikes.contains($0.sid)}
+					if self.data.count == 0 {
+						print("No shows in favorites")
+					}
 				} else {
 					self.data = tvshows
 				}
 				self.collectionView?.reloadData()
 			}
 		}
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
+		loadData()
 	}
 
     override func didReceiveMemoryWarning() {
