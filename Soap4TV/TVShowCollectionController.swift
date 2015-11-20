@@ -25,7 +25,7 @@ private let reuseIdentifier = "MovieCell"
 class TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
 	
 	var data = [TVShow]()
-	var token = ""
+//	var token = ""
 	var currentView = PresentedView()
 	var userLikes = [Int]()
 	
@@ -34,10 +34,15 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 		self.clearsSelectionOnViewWillAppear = false
 		self.collectionView!.remembersLastFocusedIndexPath = true
 		self.collectionView!.registerNib(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-		token = Defaults[.token]!
+//		token = Defaults[.token]!
     }
 
 	private func loadData() {
+		guard let token = Defaults[.token] else {
+			print("Failed to get token")
+			return
+		}
+		print("token is: \(token)")
 		API().getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				if self.currentView == .FavShows {
@@ -98,6 +103,9 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
 			})
 		}
+		
+		cell.alpha = 0
+		UIView.animateWithDuration(0.5, animations: { cell.alpha = 1 })
 		
         return cell
     }

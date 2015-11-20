@@ -61,10 +61,22 @@ struct API {
 		]
 		let suffix = view == .MyShows ? "/my/" : ""
 		Alamofire.request(.GET, Config.URL.base+"/api/soap"+suffix, headers: headers)
-			.responseArray { (response: Response<[TVShow], NSError>) in
+//			.responseArray { (response: Response<[TVShow], NSError>) in
+			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
-					completionHandler(responseObject: data, error: nil)
+					print(data.count)
+					var shows = [TVShow]()
+					let tvshows = JSON(data)
+					for (_,show):(String, JSON) in tvshows {
+						let item = Mapper<TVShow>().map(show.dictionaryObject)
+						if let entry = item {
+							shows.append(entry)
+						}
+					}
+					delay(0.5) {
+						completionHandler(responseObject: shows, error: nil)
+					}
 				case .Failure(let error):
 					print(error)
 					completionHandler(responseObject: nil, error: error)
@@ -88,7 +100,10 @@ struct API {
 					let episodes = JSON(data)
 					var currentEpisode = -1
 					var entry: Episode?
-					for (index,episode):(String, JSON) in episodes {
+					let lastElement = episodes[episodes.count-1]
+//					print(lastElement)
+					for (_,episode):(String, JSON) in episodes {
+						
 						if episode["episode"].intValue != currentEpisode && entry != nil  { // we finished looping. adding & resetting.
 //							print("and we're finaly writing single episode with all versions")
 							array.append(entry!)
@@ -105,13 +120,16 @@ struct API {
 //							print("ok, this is a new episode: \(episode["episode"].intValue). Creating separate entry")
 							entry = Mapper<Episode>().map(episode.dictionaryObject)
 							entry?.version.append(version)
-							if Int(index)!+1 == episodes.count {
+							if episode == lastElement  {
 								array.append(entry!)
 							}
 							// if last - write
 						} else if currentEpisode == episode["episode"].intValue {
 //							print("this is where we apend existing episode with new entry")
 							entry?.version.append(version)
+							if episode == lastElement  {
+								array.append(entry!)
+							}
 						}
 						currentEpisode = episode["episode"].intValue
 					

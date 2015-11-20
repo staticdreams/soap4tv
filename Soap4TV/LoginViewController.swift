@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var errorTitle: UILabel!
 	@IBOutlet weak var errorMessage: UILabel!
 	
-	
 	@IBAction func loginAction(sender: AnyObject) { doLogin()}
 	
     override func viewDidLoad() {
@@ -33,12 +32,23 @@ class LoginViewController: UIViewController {
 			return
 		}
 		
+		let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+		
+		activityIndicator.center = self.view.center
+		activityIndicator.hidesWhenStopped = true
+		view.addSubview(activityIndicator)
+		activityIndicator.startAnimating()
+		loginButton.userInteractionEnabled = false
+		
+		
 		API().login(login, password: password) { result, error in
 			self.errorTitle.hidden = true
 			self.errorMessage.hidden = true
 			if let error = error {
 				print("Network error, \(error)")
 				self.errorTitle.hidden = false
+				activityIndicator.stopAnimating()
+				self.loginButton.userInteractionEnabled = true
 				return
 			}
 			if let result = result {
@@ -49,10 +59,16 @@ class LoginViewController: UIViewController {
 					Defaults[.token] = result["token"].stringValue
 					Defaults[.till] = result["till"].intValue
 					Defaults[.sid] = result["sid"].stringValue
-					self.performSegueWithIdentifier("openAppSegue", sender: nil)
+					delay(2) {
+						self.loginButton.userInteractionEnabled = true
+						activityIndicator.stopAnimating()
+						self.performSegueWithIdentifier("openAppSegue", sender: nil)
+					}
 				} else {
+					activityIndicator.stopAnimating()
 					self.errorTitle.hidden = false
 					self.errorMessage.hidden = false
+					self.loginButton.userInteractionEnabled = true
 					return
 				}
 			}
@@ -61,15 +77,18 @@ class LoginViewController: UIViewController {
 	
 	
 	
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//		if segue.identifier == "openAppSegue" {
+//			if let destination = segue.destinationViewController as? TVShowCollectionController {
+//				destination.token = Defaults[.token]!
+//			}
+//		}
+//    }
+
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
