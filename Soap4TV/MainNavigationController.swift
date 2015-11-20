@@ -27,6 +27,9 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 				else if index == 1 {
 					tvshowController.currentView = .MyShows
 				}
+				else if index == 2 {
+					tvshowController.currentView = .FavShows
+				}
 				else {return}
 			}
 //			if let search = controller as? SearchViewController {

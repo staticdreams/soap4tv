@@ -13,6 +13,7 @@ import AlamofireImage
 enum PresentedView {
 	case AllShows
 	case MyShows
+	case FavShows
 	case Search
 	init() {
 		self = .AllShows
@@ -26,10 +27,11 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 	var data = [TVShow]()
 	var token = ""
 	var currentView = PresentedView()
+	var userLikes = [Int]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
 		self.clearsSelectionOnViewWillAppear = false
 		self.collectionView!.remembersLastFocusedIndexPath = true
 
@@ -42,7 +44,11 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 		print("Loading shows..")
 		API().getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
-				self.data = tvshows
+				if self.currentView == .FavShows {
+					self.data = tvshows.filter {self.userLikes.contains($0.sid)}
+				} else {
+					self.data = tvshows
+				}
 				self.collectionView?.reloadData()
 			}
 		}

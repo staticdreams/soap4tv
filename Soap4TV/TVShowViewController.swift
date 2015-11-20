@@ -48,13 +48,6 @@ struct Season {
 	}
 }
 
-struct LikeSwitch {
-	var currentState: Bool = false
-	mutating func switchState() {
-		currentState = !currentState
-	}
-}
-
 extension Season: Equatable {}
 
 func ==(lhs: Season, rhs: Season) -> Bool {
@@ -138,7 +131,6 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		Defaults[.like] = userLikes
 		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
 		likeButton.setImage(image, forState: UIControlState.Normal)
-		print("Favorite shows \(Defaults[.like])")
 	}
 
 	@IBAction func translationTapped(sender: AnyObject) {
