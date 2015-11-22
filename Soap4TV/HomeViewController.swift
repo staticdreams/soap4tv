@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	@IBOutlet weak var topBanner: UIImageView!
 	@IBOutlet weak var newShowsCollectionView: UICollectionView!
+	@IBOutlet weak var poster: UIImageView!
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -39,6 +40,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 				self.newShowsCollectionView.reloadData()
 			}
 		}
+	}
+	
+	func getFeaturedShowInfo(show: TVShow) {
+		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else {
+			return
+		}
+		TVDB().getShow(tvdb, token: token) { response, error in
+			if let _ = response {
+				TVDB().getPoster(tvdb, token: token) { response, error in
+					guard let response = response else {return}
+					let object = response["data"].first
+					if let poster = object {
+						guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(poster.1["fileName"])") else {
+							return
+						}
+						self.poster.kf_setImageWithURL(url)
+					}
+				}
+			}
+		}
+		
+		
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -75,7 +98,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let show = featuredShows[indexPath.row]
-		
+		getFeaturedShowInfo(show)
 	}
 	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
@@ -94,6 +117,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 			})
 		}
 	}
+	
+	
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

@@ -95,7 +95,6 @@ struct API {
 					var currentEpisode = -1
 					var entry: Episode?
 					let lastElement = episodes[episodes.count-1]
-//					print(lastElement)
 					for (_,episode):(String, JSON) in episodes {
 						
 						if episode["episode"].intValue != currentEpisode && entry != nil  { // we finished looping. adding & resetting.
@@ -190,4 +189,40 @@ struct TVDB {
 				}
 		}
 	}
+	
+	func getShow(showId: Int, token: String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = [
+			"Content-Type": "application/json",
+			"Authorization": "Bearer \(token)",
+			"Accept-Language": "en"
+		]
+		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId), headers: headers)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: JSON(data), error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
+	
+	func getPoster(showId: Int, token: String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = [
+			"Content-Type": "application/json",
+			"Authorization": "Bearer \(token)",
+			"Accept-Language": "en"
+		]
+		let parameters = ["keyType": "poster"]
+		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/images/query", headers: headers, parameters: parameters)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: JSON(data), error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
+	
 }
