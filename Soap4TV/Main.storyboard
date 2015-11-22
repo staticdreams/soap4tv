@@ -65,7 +65,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0090942932235948959" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginAction:" destination="gvO-2Q-WFQ" eventType="primaryActionTriggered" id="6VV-yf-jcO"/>
+                                    <action selector="loginAction:" destination="gvO-2Q-WFQ" eventType="primaryActionTriggered" id="rpK-HZ-hP6"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный логин или пароль" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azq-ND-bH4">
@@ -101,7 +101,7 @@
                         <outlet property="loginButton" destination="o9m-dE-Y2o" id="bk3-TZ-MYD"/>
                         <outlet property="loginField" destination="JET-MI-n9R" id="aiq-oi-WGl"/>
                         <outlet property="passwordField" destination="qP7-Oe-Ely" id="7l1-VB-kYd"/>
-                        <segue destination="Jpu-oM-po1" kind="show" identifier="openAppSegue" id="ePT-i0-YUq"/>
+                        <segue destination="Jpu-oM-po1" kind="show" identifier="openAppSegue" id="0oA-3f-cPD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uII-UQ-AYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,6 +348,87 @@
             </objects>
             <point key="canvasLocation" x="6057" y="2406"/>
         </scene>
+        <!--Главная-->
+        <scene sceneID="emM-1P-Ux6">
+            <objects>
+                <viewController id="D3v-bU-Jwl" customClass="HomeViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hXo-Fe-R9H"/>
+                        <viewControllerLayoutGuide type="bottom" id="bqG-yd-Je3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="grG-C3-p62">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRb-js-Qoj">
+                                <rect key="frame" x="0.0" y="140" width="1920" height="940"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ST-ra-mJU">
+                                        <rect key="frame" x="0.0" y="0.0" width="1920" height="400"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="8Ud-DT-gfi"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новинки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J5-Mu-M91">
+                                        <rect key="frame" x="32" y="429" width="193" height="58"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mp1-B5-ZzX">
+                                        <rect key="frame" x="0.0" y="486" width="1920" height="340"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="340" id="Zoo-fL-SmV"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="70" minimumInteritemSpacing="40" id="h2z-BW-ndM">
+                                            <size key="itemSize" width="250" height="250"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="D3v-bU-Jwl" id="nc2-GZ-yWC"/>
+                                            <outlet property="delegate" destination="D3v-bU-Jwl" id="Fd1-ZO-2Kx"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="8J5-Mu-M91" firstAttribute="leading" secondItem="cRb-js-Qoj" secondAttribute="leading" constant="32" id="1Et-SO-nQ9"/>
+                                    <constraint firstItem="8J5-Mu-M91" firstAttribute="top" secondItem="6ST-ra-mJU" secondAttribute="bottom" constant="29" id="HGZ-s1-Pyv"/>
+                                    <constraint firstItem="Mp1-B5-ZzX" firstAttribute="leading" secondItem="cRb-js-Qoj" secondAttribute="leading" id="Pot-hW-Ehq"/>
+                                    <constraint firstItem="6ST-ra-mJU" firstAttribute="leading" secondItem="cRb-js-Qoj" secondAttribute="leading" id="QLj-OK-YSa"/>
+                                    <constraint firstAttribute="bottom" secondItem="6ST-ra-mJU" secondAttribute="bottom" constant="400" id="YHv-6h-ok8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mp1-B5-ZzX" secondAttribute="trailing" id="dpR-iN-zuk"/>
+                                    <constraint firstAttribute="trailing" secondItem="6ST-ra-mJU" secondAttribute="trailing" id="gBN-1o-KPU"/>
+                                    <constraint firstItem="6ST-ra-mJU" firstAttribute="top" secondItem="cRb-js-Qoj" secondAttribute="top" id="ojU-wJ-sW2"/>
+                                    <constraint firstItem="6ST-ra-mJU" firstAttribute="centerX" secondItem="cRb-js-Qoj" secondAttribute="centerX" id="qEY-0c-Uwe"/>
+                                    <constraint firstItem="Mp1-B5-ZzX" firstAttribute="top" secondItem="8J5-Mu-M91" secondAttribute="bottom" constant="-1" id="r6e-N0-m7V"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="bqG-yd-Je3" firstAttribute="top" secondItem="cRb-js-Qoj" secondAttribute="bottom" id="9rM-zo-0RF"/>
+                            <constraint firstAttribute="trailing" secondItem="cRb-js-Qoj" secondAttribute="trailing" id="AQi-TF-h8U"/>
+                            <constraint firstItem="cRb-js-Qoj" firstAttribute="top" secondItem="hXo-Fe-R9H" secondAttribute="bottom" id="J3o-Ot-uu1"/>
+                            <constraint firstItem="cRb-js-Qoj" firstAttribute="leading" secondItem="grG-C3-p62" secondAttribute="leading" id="c4b-Ke-qYI"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Главная" image="spotlight" id="blN-W4-a3Q"/>
+                    <connections>
+                        <outlet property="newShowsCollectionView" destination="Mp1-B5-ZzX" id="p9h-s6-M29"/>
+                        <outlet property="topBanner" destination="6ST-ra-mJU" id="DRF-Va-heW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eU7-2X-Gfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117" y="1919"/>
+        </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="qk8-BC-WlL">
             <objects>
@@ -359,6 +440,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="D3v-bU-Jwl" kind="relationship" relationship="viewControllers" id="iDB-Rq-Med"/>
                         <segue destination="Phr-kn-yGI" kind="relationship" relationship="viewControllers" id="RXH-7z-WSX"/>
                         <segue destination="TEe-FJ-XWQ" kind="relationship" relationship="viewControllers" id="zE1-4C-Znj"/>
                         <segue destination="hj4-Il-zCQ" kind="relationship" relationship="viewControllers" id="JWZ-nR-omt"/>
@@ -430,6 +512,7 @@
         <image name="like" width="52" height="49"/>
         <image name="logo" width="578" height="598"/>
         <image name="movie-icon" width="59" height="60"/>
+        <image name="spotlight" width="60" height="60"/>
         <image name="star-icon" width="50" height="49"/>
         <image name="talk" width="35" height="61"/>
     </resources>

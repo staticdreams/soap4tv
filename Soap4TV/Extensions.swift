@@ -78,3 +78,95 @@ func md5(string string: String) -> String {
 	
 	return digestHex
 }
+
+func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+	
+	let contextImage: UIImage = UIImage(CGImage: image.CGImage!)
+	
+	let contextSize: CGSize = contextImage.size
+	
+	var posX: CGFloat = 0.0
+	var posY: CGFloat = 0.0
+	var cgwidth: CGFloat = CGFloat(width)
+	var cgheight: CGFloat = CGFloat(height)
+	
+	// See what size is longer and create the center off of that
+	if contextSize.width > contextSize.height {
+		posX = ((contextSize.width - contextSize.height) / 2)
+		posY = 0
+		cgwidth = contextSize.height
+		cgheight = contextSize.height
+	} else {
+		posX = 0
+		posY = ((contextSize.height - contextSize.width) / 2)
+		cgwidth = contextSize.width
+		cgheight = contextSize.width
+	}
+	
+	let rect: CGRect = CGRectMake(posX, posY, cgwidth, cgheight)
+	
+	// Create bitmap image from context using the rect
+	let imageRef: CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, rect)!
+	
+	// Create a new image based on the imageRef and rotate back to the original orientation
+	let image: UIImage = UIImage(CGImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+	
+	return image
+}
+
+
+struct FixedSizeArray<T> {
+	private var maxSize: Int
+	private var defaultValue: T
+	private var array: [T]
+	private (set) var count = 0
+	
+	init(maxSize: Int, defaultValue: T) {
+		self.maxSize = maxSize
+		self.defaultValue = defaultValue
+		self.array = [T](count: maxSize, repeatedValue: defaultValue)
+	}
+	
+	subscript(index: Int) -> T {
+		assert(index >= 0)
+		assert(index < count)
+		return array[index]
+	}
+	
+	mutating func append(newElement: T) {
+		assert(count < maxSize)
+		array[count] = newElement
+		count += 1
+	}
+	
+	mutating func removeAtIndex(index: Int) -> T {
+		assert(index >= 0)
+		assert(index < count)
+		count -= 1
+		let result = array[index]
+		array[index] = array[count]
+		array[count] = defaultValue
+		return result
+	}
+}
+
+
+extension CollectionType {
+	func last(count:Int) -> [Self.Generator.Element] {
+		let selfCount = self.count as! Int
+		if selfCount <= count - 1 {
+			return Array(self)
+		} else {
+			return Array(self.reverse()[0...count - 1].reverse())
+		}
+	}
+}
+
+extension Array {
+	func takeElements(var elementCount: Int) -> Array {
+		if (elementCount > count) {
+			elementCount = count
+		}
+		return Array(self[0..<elementCount])
+	}
+}

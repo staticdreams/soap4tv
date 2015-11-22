@@ -13,8 +13,14 @@ struct Config {
 	struct URL {
 		static let base = "http://soap4.me"
 		static let covers = "http://covers.s4me.ru"
-//		static let cdn = "http://cdn-d3.soap4.me"
 		static let cdn = "http://storage.soap4.me"
 	}
+	
+	struct tvdb {
+		static let baseURL = "http://thetvdb.com/"
+		static let vignettePath = "banners/fanart/vignette/"
+	}
+	
+	static let maxNumberFeatured = 20
 	
 }

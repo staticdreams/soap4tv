@@ -24,8 +24,13 @@ private let reuseIdentifier = "MovieCell"
 
 class TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
 	
-	var data = [TVShow]()
-//	var token = ""
+	var allShows = [TVShow]()
+	
+	var data = [TVShow]() {
+		didSet {
+			self.collectionView?.reloadData()
+		}
+	}
 	var currentView = PresentedView()
 	var userLikes = [Int]()
 	
@@ -34,10 +39,11 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 		self.clearsSelectionOnViewWillAppear = false
 		self.collectionView!.remembersLastFocusedIndexPath = true
 		self.collectionView!.registerNib(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-//		token = Defaults[.token]!
+		if data.count == 0 {loadData()}
     }
 
 	private func loadData() {
+		print("Priliminary data load")
 		guard let token = Defaults[.token] else {
 			print("Failed to get token")
 			return
@@ -45,23 +51,33 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 		print("token is: \(token)")
 		API().getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
-				if self.currentView == .FavShows {
-					self.data = tvshows.filter {self.userLikes.contains($0.sid)}
-					if self.data.count == 0 {
-						print("No shows in favorites")
-					}
-				} else {
-					self.data = tvshows
-				}
-				self.collectionView?.reloadData()
+				self.allShows = tvshows
+				self.refresh(tvshows)
 			}
+		}
+	}
+	
+	func refresh(shows: [TVShow]) {
+		print("Refreshing data")
+		if self.currentView == .FavShows {
+			self.data = shows.filter {self.userLikes.contains($0.sid)}
+			if self.data.count == 0 {
+				print("No shows in favorites")
+			}
+		} else {
+			self.data = shows
 		}
 	}
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
-		loadData()
+		 
+		// FIXME: Temporary solution for refreshing favs view. which is ugly
+		let filteredData = allShows.filter {self.userLikes.contains($0.sid)}
+		if data != filteredData && self.currentView == .FavShows {
+			refresh(allShows)
+		}
 	}
 
     override func didReceiveMemoryWarning() {

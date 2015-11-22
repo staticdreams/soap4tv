@@ -72,6 +72,16 @@ struct TVShow: Mappable {
 	}
 }
 
+extension TVShow: Equatable, Comparable {}
+
+func ==(lhs: TVShow, rhs: TVShow) -> Bool {
+	return lhs.sid == rhs.sid && lhs.sid == rhs.sid
+}
+
+func <(lhs: TVShow, rhs: TVShow) -> Bool {
+	return lhs.sid < rhs.sid
+}
+
 
 struct Schedule: Mappable {
 	

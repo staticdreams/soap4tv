@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="featuredCell" id="Rz2-K0-ksD" customClass="FeaturedCollectionViewCell" customModule="Soap4TV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Yo-fv-En7">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <animations/>
+                    </imageView>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <constraints>
+                <constraint firstItem="8Yo-fv-En7" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="9yo-TK-toE"/>
+                <constraint firstAttribute="trailing" secondItem="8Yo-fv-En7" secondAttribute="trailing" id="Hw8-Ni-gfQ"/>
+                <constraint firstItem="8Yo-fv-En7" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="beI-j4-npF"/>
+                <constraint firstAttribute="bottom" secondItem="8Yo-fv-En7" secondAttribute="bottom" id="kaA-Cr-aog"/>
+            </constraints>
+            <size key="customSize" width="250" height="250"/>
+            <connections>
+                <outlet property="cover" destination="8Yo-fv-En7" id="Hee-w4-k7A"/>
+            </connections>
+            <point key="canvasLocation" x="644" y="459"/>
+        </collectionViewCell>
+    </objects>
+</document>

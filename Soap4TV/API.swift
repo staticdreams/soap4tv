@@ -23,11 +23,6 @@ struct API {
 		]
 		let parameters = ["login": login, "password": password, "allow_nonpro": 1]
 		
-		Alamofire.request(.GET, Config.URL.base+"/logout/", headers: headers)
-			.responseJSON { response in
-			
-		}
-		
 		Alamofire.request(.POST, Config.URL.base+"/login", headers: headers, parameters:parameters as? [String : AnyObject])
 			.responseJSON { response in
 			switch response.result {
@@ -52,7 +47,7 @@ struct API {
 		}
 	}
 	
-	func getTVShows(token: String, view: PresentedView, completionHandler: (responseObject: [TVShow]?, error: ErrorType?) -> ()) {
+	func getTVShows(token: String, view: PresentedView?, completionHandler: (responseObject: [TVShow]?, error: ErrorType?) -> ()) {
 		let headers = [
 			"X-Api-Token": token,
 			"User-Agent": "xbmc for soap",
@@ -65,7 +60,6 @@ struct API {
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
-					print(data.count)
 					var shows = [TVShow]()
 					let tvshows = JSON(data)
 					for (_,show):(String, JSON) in tvshows {
@@ -161,6 +155,4 @@ struct API {
 				}
 		}
 	}
-	
-
 }

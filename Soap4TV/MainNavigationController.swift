@@ -20,14 +20,14 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 		
 		for (index, controller) in controllers!.enumerate() {
 			if let tvshowController = controller as? TVShowCollectionController {
-				if index == 0 {
+				if index == 1 {
 					tvshowController.currentView = .AllShows
 					showsController = tvshowController
 				}
-				else if index == 1 {
+				else if index == 2 {
 					tvshowController.currentView = .MyShows
 				}
-				else if index == 2 {
+				else if index == 3 {
 					tvshowController.currentView = .FavShows
 				}
 				else {return}

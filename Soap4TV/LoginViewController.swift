@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var errorTitle: UILabel!
 	@IBOutlet weak var errorMessage: UILabel!
 	
+	var token = ""
+	
 	@IBAction func loginAction(sender: AnyObject) { doLogin()}
 	
     override func viewDidLoad() {
@@ -40,7 +42,6 @@ class LoginViewController: UIViewController {
 		activityIndicator.startAnimating()
 		loginButton.userInteractionEnabled = false
 		
-		
 		API().login(login, password: password) { result, error in
 			self.errorTitle.hidden = true
 			self.errorMessage.hidden = true
@@ -49,17 +50,17 @@ class LoginViewController: UIViewController {
 				self.errorTitle.hidden = false
 				activityIndicator.stopAnimating()
 				self.loginButton.userInteractionEnabled = true
-				return
 			}
 			if let result = result {
 				if result["ok"] == 1 {
-					print("Current token is: \(result["token"].stringValue)")
+//					print("Current token is: \(result["token"].stringValue)")
 					Defaults[.login] = login
 					Defaults[.password] = password
 					Defaults[.token] = result["token"].stringValue
 					Defaults[.till] = result["till"].intValue
 					Defaults[.sid] = result["sid"].stringValue
-					delay(2) {
+					self.token = result["token"].stringValue
+					delay(0.5) {
 						self.loginButton.userInteractionEnabled = true
 						activityIndicator.stopAnimating()
 						self.performSegueWithIdentifier("openAppSegue", sender: nil)
@@ -75,19 +76,16 @@ class LoginViewController: UIViewController {
 		}
 	}
 	
-	
-	
-	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//		if segue.identifier == "openAppSegue" {
-//			if let destination = segue.destinationViewController as? TVShowCollectionController {
-//				destination.token = Defaults[.token]!
-//			}
-//		}
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "openAppSegue" {
+			if let destination = (segue.destinationViewController as! MainNavigationController).childViewControllers.first as? HomeViewController {
+				destination.token = token
+			}
+		}
+    }
 
 	
 	override func didReceiveMemoryWarning() {
