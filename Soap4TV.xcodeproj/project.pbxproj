@@ -24,6 +24,7 @@
 		D07373861BF0C2C900229B92 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373851BF0C2C900229B92 /* Config.swift */; };
 		D07373881BF0C67000229B92 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373871BF0C67000229B92 /* API.swift */; };
 		D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073738A1BF0C8D700229B92 /* Extensions.swift */; };
+		D0835AC51C02628200684DF7 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0835AC41C02628200684DF7 /* SwiftyTimer.swift */; };
 		D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089A3701BF0AE20006C6F0E /* AppDelegate.swift */; };
 		D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D089A3791BF0AE20006C6F0E /* Assets.xcassets */; };
 		D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D089A3811BF0B172006C6F0E /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		D07373851BF0C2C900229B92 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D07373871BF0C67000229B92 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D073738A1BF0C8D700229B92 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D0835AC41C02628200684DF7 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		D089A36D1BF0AE20006C6F0E /* Soap4TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soap4TV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D089A3701BF0AE20006C6F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D089A3791BF0AE20006C6F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				D073738A1BF0C8D700229B92 /* Extensions.swift */,
 				D0301F721BF364800093ADDC /* TVShow.swift */,
 				D000B7171BF5EE8B006AC142 /* Episode.swift */,
+				D0835AC41C02628200684DF7 /* SwiftyTimer.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,
 				D07373881BF0C67000229B92 /* API.swift in Sources */,
 				D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */,
+				D0835AC51C02628200684DF7 /* SwiftyTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

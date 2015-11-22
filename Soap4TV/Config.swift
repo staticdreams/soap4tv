@@ -19,6 +19,10 @@ struct Config {
 	struct tvdb {
 		static let baseURL = "http://thetvdb.com/"
 		static let vignettePath = "banners/fanart/vignette/"
+		static let apiURL = "https://api-beta.thetvdb.com"
+		static let username = "kernelpanic"
+		static let password = "marinka"
+		static let apikey = "229B5C0EC556FF90"
 	}
 	
 	static let maxNumberFeatured = 20

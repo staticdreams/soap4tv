@@ -54,6 +54,7 @@ extension DefaultsKeys {
 	static let translation = DefaultsKey<String?>("translation")
 	static let subtitles = DefaultsKey<Bool?>("subtitles")
 	static let like = DefaultsKey<[Int]?>("like")
+	static let TVDBToken = DefaultsKey<String?>("tvdbtoken")
 }
 
 func delay(delay:Double, closure:()->()) {

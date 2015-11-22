@@ -156,3 +156,38 @@ struct API {
 		}
 	}
 }
+
+
+struct TVDB {
+	
+	func login(login: String, password:String, apikey:String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = ["Content-Type": "application/json"]
+		let parameters = ["username": login, "userpass": password, "apikey": apikey]
+		
+		Alamofire.request(.POST, Config.tvdb.apiURL+"/login", headers: headers, parameters:parameters, encoding: .JSON)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: JSON(data), error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
+	
+	func refresh(token: String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = [
+			"Content-Type": "application/json",
+			"Authorization": "Bearer \(token)"
+		]
+		Alamofire.request(.GET, Config.tvdb.apiURL+"/refresh_token", headers: headers)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: JSON(data), error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
+}

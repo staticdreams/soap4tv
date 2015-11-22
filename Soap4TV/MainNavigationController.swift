@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
+import Chronos
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, UISearchControllerDelegate {
 
@@ -16,6 +18,10 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         super.viewDidLoad()
 		delegate = self
 		
+		NSTimer.every(55.minute) { // just to be sure we have enough time
+			self.registerTokenRefresh()
+		}
+
 		let controllers = self.viewControllers
 		
 		for (index, controller) in controllers!.enumerate() {
@@ -55,6 +61,30 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 //		controllers?.append(searchController)
 //		self.viewControllers = controllers
     }
+	
+	func registerTokenRefresh() {
+			
+			if Defaults.hasKey(.TVDBToken) {
+				guard let token = Defaults[.TVDBToken] else {
+					print("No token has been saved...?")
+					return
+				}
+				TVDB().refresh(token) { result, error in
+					if let error = error {
+						print("Failed to refresh token for TVDB: \(error)")
+					}
+					if let result = result {
+						if result["token"] != nil {
+							print("Alrighty! Token refreshed!")
+							Defaults[.TVDBToken] = result["token"].stringValue
+						}
+					}
+				}
+			} else {
+				print("No TVDB token has been previously registered")
+			}
+	
+	}
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)

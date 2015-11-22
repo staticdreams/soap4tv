@@ -26,6 +26,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 		loginField.text = Defaults.hasKey(.login) ? Defaults[.login]! : ""
 		passwordField.text = Defaults.hasKey(.password) ? Defaults[.password]! : ""
+		TVDB().login(Config.tvdb.username, password: Config.tvdb.password, apikey: Config.tvdb.apikey) { result, error in
+			if let error = error {
+				print("Error logging into TVDB: \(error)")
+				Defaults[.TVDBToken] = nil
+			}
+			if let result = result {
+				if result["token"] != nil {
+					Defaults[.TVDBToken] = result["token"].stringValue
+				}
+			}
+		}
     }
 
 	func doLogin() {

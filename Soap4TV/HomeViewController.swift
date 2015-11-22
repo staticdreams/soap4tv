@@ -51,14 +51,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		let blurView = UIVisualEffectView(effect: blurEffect)
 		blurView.frame = topBanner.bounds
 		topBanner.addSubview(blurView)
-		
-		
-		
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
@@ -80,13 +73,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		return cell
 	}
 	
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		let show = featuredShows[indexPath.row]
+		
+	}
+	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
 		
 		if let next = context.nextFocusedView as? FeaturedCollectionViewCell {
 			next.setNeedsUpdateConstraints()
-//			UIView.animateWithDuration(0.1, animations: {
-//				next.transform = CGAffineTransformMakeScale(1.2,1.2)
-//			})
 			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
 				}, completion: nil)
@@ -100,9 +95,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		}
 	}
 	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
+	
 	/*
 	
-	1. Get 6 latest tv shows
+	1. Get 20 latest tv shows
 	2. Get /my tv shows schedule
 	3. Get popular tv shows
 
