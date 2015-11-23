@@ -20,10 +20,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBOutlet weak var topBanner: UIImageView!
 	@IBOutlet weak var newShowsCollectionView: UICollectionView!
 	@IBOutlet weak var poster: UIImageView!
+	@IBOutlet weak var title_en: UILabel!
+	@IBOutlet weak var title_ru: UILabel!
+//	@IBOutlet weak var text: FocusableLabel!
+	@IBOutlet weak var text: FocusableText!
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
-		print(token)
+		text.selectable = true
+		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
+		topBanner.image = UIImage(named: "featured-background")
+		//	topBanner.kf_setImageWithURL(NSURL(string: "http://thetvdb.com/banners/fanart/original/298156-1.jpg")!)
+		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+		let blurView = UIVisualEffectView(effect: blurEffect)
+		blurView.frame = topBanner.bounds
+		topBanner.addSubview(blurView)
 		loadFeaturedData()
 	}
 	
@@ -46,6 +57,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else {
 			return
 		}
+		self.text.show = show
+		self.text.parentView = self
 		TVDB().getShow(tvdb, token: token) { response, error in
 			if let _ = response {
 				TVDB().getPoster(tvdb, token: token) { response, error in
@@ -56,24 +69,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 							return
 						}
 						self.poster.kf_setImageWithURL(url)
+						self.title_en.text = show.title
+						self.title_ru.text = show.title_ru
+						self.text.text = show.description
 					}
 				}
 			}
 		}
-		
-		
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		
-		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
-		
-		topBanner.kf_setImageWithURL(NSURL(string: "http://thetvdb.com/banners/fanart/original/298156-1.jpg")!)
-		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-		let blurView = UIVisualEffectView(effect: blurEffect)
-		blurView.frame = topBanner.bounds
-		topBanner.addSubview(blurView)
 	}
 	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

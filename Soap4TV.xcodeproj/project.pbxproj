@@ -16,6 +16,7 @@
 		D0301F731BF364800093ADDC /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0301F721BF364800093ADDC /* TVShow.swift */; };
 		D0419EE51C0218C1005EC129 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0419EE31C0218C1005EC129 /* FeaturedCollectionViewCell.swift */; };
 		D0419EE61C0218C1005EC129 /* FeaturedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0419EE41C0218C1005EC129 /* FeaturedCollectionViewCell.xib */; };
+		D04FCA5E1C03432400E3A218 /* FocusableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04FCA5D1C03432400E3A218 /* FocusableText.swift */; };
 		D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */; };
 		D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */; };
 		D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */; };
@@ -25,6 +26,7 @@
 		D07373881BF0C67000229B92 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373871BF0C67000229B92 /* API.swift */; };
 		D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073738A1BF0C8D700229B92 /* Extensions.swift */; };
 		D0835AC51C02628200684DF7 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0835AC41C02628200684DF7 /* SwiftyTimer.swift */; };
+		D086BD051C03660B001424FF /* MovieDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086BD041C03660B001424FF /* MovieDescriptionViewController.swift */; };
 		D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089A3701BF0AE20006C6F0E /* AppDelegate.swift */; };
 		D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D089A3791BF0AE20006C6F0E /* Assets.xcassets */; };
 		D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D089A3811BF0B172006C6F0E /* Main.storyboard */; };
@@ -47,6 +49,7 @@
 		D0301F721BF364800093ADDC /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 		D0419EE31C0218C1005EC129 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0419EE41C0218C1005EC129 /* FeaturedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCollectionViewCell.xib; sourceTree = "<group>"; };
+		D04FCA5D1C03432400E3A218 /* FocusableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusableText.swift; sourceTree = "<group>"; };
 		D05862491BFA5CF0004F20F3 /* Soap4TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soap4TV-Bridging-Header.h"; sourceTree = "<group>"; };
 		D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		D07373871BF0C67000229B92 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D073738A1BF0C8D700229B92 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0835AC41C02628200684DF7 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
+		D086BD041C03660B001424FF /* MovieDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDescriptionViewController.swift; sourceTree = "<group>"; };
 		D089A36D1BF0AE20006C6F0E /* Soap4TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soap4TV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D089A3701BF0AE20006C6F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D089A3791BF0AE20006C6F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,7 +116,7 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		D07373811BF0C26200229B92 /* Cells */ = {
+		D07373811BF0C26200229B92 /* Custom Elements */ = {
 			isa = PBXGroup;
 			children = (
 				D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */,
@@ -123,8 +127,9 @@
 				D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */,
 				D0419EE31C0218C1005EC129 /* FeaturedCollectionViewCell.swift */,
 				D0419EE41C0218C1005EC129 /* FeaturedCollectionViewCell.xib */,
+				D04FCA5D1C03432400E3A218 /* FocusableText.swift */,
 			);
-			name = Cells;
+			name = "Custom Elements";
 			sourceTree = "<group>";
 		};
 		D07373841BF0C29800229B92 /* App */ = {
@@ -140,6 +145,7 @@
 				D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */,
 				D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */,
 				D09040051C00B39E005E7974 /* HomeViewController.swift */,
+				D086BD041C03660B001424FF /* MovieDescriptionViewController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -167,7 +173,7 @@
 			children = (
 				D02C46EE1BF2B535000B7238 /* Helpers */,
 				D07373841BF0C29800229B92 /* App */,
-				D07373811BF0C26200229B92 /* Cells */,
+				D07373811BF0C26200229B92 /* Custom Elements */,
 				D089A3701BF0AE20006C6F0E /* AppDelegate.swift */,
 				D089A3811BF0B172006C6F0E /* Main.storyboard */,
 				D089A3791BF0AE20006C6F0E /* Assets.xcassets */,
@@ -319,6 +325,8 @@
 				D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */,
 				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
 				D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */,
+				D086BD051C03660B001424FF /* MovieDescriptionViewController.swift in Sources */,
+				D04FCA5E1C03432400E3A218 /* FocusableText.swift in Sources */,
 				D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */,
 				D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */,
 				D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */,
