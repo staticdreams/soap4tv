@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SwiftyUserDefaults
+import Cosmos
 
 let featuredCellIdentifier = "featuredCell"
 
@@ -22,8 +23,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBOutlet weak var poster: UIImageView!
 	@IBOutlet weak var title_en: UILabel!
 	@IBOutlet weak var title_ru: UILabel!
-//	@IBOutlet weak var text: FocusableLabel!
 	@IBOutlet weak var text: FocusableText!
+	@IBOutlet weak var watchLabel: UILabel!
+	@IBOutlet weak var likeLabel: UILabel!
+	@IBOutlet weak var rating: CosmosView!
+	@IBOutlet weak var genres: UILabel!
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -59,8 +63,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		}
 		self.text.show = show
 		self.text.parentView = self
+		self.genres.text = ""
 		TVDB().getShow(tvdb, token: token) { response, error in
-			if let _ = response {
+			if let item = response {
+				for genre in item["data"]["genre"] {
+					let g = GenreType(rawValue: String(genre.1))
+					if let gType = g {
+						let string = self.genres.text?.stringByAppendingFormat("\n %@", "\(gType.translate())")
+						self.genres.text = string
+					}
+					
+				}
+				
 				TVDB().getPoster(tvdb, token: token) { response, error in
 					guard let response = response else {return}
 					let object = response["data"].first
@@ -72,6 +86,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						self.title_en.text = show.title
 						self.title_ru.text = show.title_ru
 						self.text.text = show.description
+						if let imdbRating = show.imdb_rating {
+							self.rating.rating = Double(imdbRating/2)
+						}
 					}
 				}
 			}
@@ -93,7 +110,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = newShowsCollectionView.dequeueReusableCellWithReuseIdentifier(featuredCellIdentifier, forIndexPath: indexPath) as! FeaturedCollectionViewCell
 		let show = featuredShows[indexPath.row]
-		print(show.title)
+		print(show.tvdb_id)
 		if let sid = show.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
 			let placeholderImage = UIImage(named: "placeholder")!

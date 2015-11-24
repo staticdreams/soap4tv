@@ -36,6 +36,7 @@
 		D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */; };
 		D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */; };
 		D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */; };
+		D0DF97681C0397B10045BF9C /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF97671C0397B10045BF9C /* Genres.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		D0DF97671C0397B10045BF9C /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		DACA1DDEDF2C73FB901964CA /* Pods_Soap4TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soap4TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				D0301F721BF364800093ADDC /* TVShow.swift */,
 				D000B7171BF5EE8B006AC142 /* Episode.swift */,
 				D0835AC41C02628200684DF7 /* SwiftyTimer.swift */,
+				D0DF97671C0397B10045BF9C /* Genres.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				D09040061C00B39E005E7974 /* HomeViewController.swift in Sources */,
 				D0419EE51C0218C1005EC129 /* FeaturedCollectionViewCell.swift in Sources */,
 				D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */,
+				D0DF97681C0397B10045BF9C /* Genres.swift in Sources */,
 				D07373861BF0C2C900229B92 /* Config.swift in Sources */,
 				D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */,
 				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
