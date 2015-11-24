@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	var token: String?
 	var featuredShows = [TVShow]()
 	
+	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var topBanner: UIImageView!
 	@IBOutlet weak var newShowsCollectionView: UICollectionView!
 	@IBOutlet weak var poster: UIImageView!
@@ -28,6 +29,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBOutlet weak var likeLabel: UILabel!
 	@IBOutlet weak var rating: CosmosView!
 	@IBOutlet weak var genres: UILabel!
+	@IBOutlet weak var imdbScore: UILabel!
+	@IBOutlet weak var kinopoiskScore: UILabel!
+	@IBOutlet weak var newTitlesLabel: UILabel!
+	@IBOutlet weak var watchButton: UIButton!
+	@IBOutlet weak var likeButton: UIButton!
+	
+	var isImageBlurred = false
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -35,11 +43,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
 		topBanner.image = UIImage(named: "featured-background")
 		//	topBanner.kf_setImageWithURL(NSURL(string: "http://thetvdb.com/banners/fanart/original/298156-1.jpg")!)
-		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-		let blurView = UIVisualEffectView(effect: blurEffect)
-		blurView.frame = topBanner.bounds
-		topBanner.addSubview(blurView)
+		
 		loadFeaturedData()
+	}
+	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
 	}
 	
 	private func loadFeaturedData() {
@@ -53,6 +63,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 				let sortedShows = shows.sort(>)
 				self.featuredShows = sortedShows.takeElements(Config.maxNumberFeatured)
 				self.newShowsCollectionView.reloadData()
+				delay(2.0) {
+					let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+					self.newShowsCollectionView.delegate?.collectionView!(self.newShowsCollectionView, didSelectItemAtIndexPath: indexPath)
+				}
 			}
 		}
 	}
@@ -72,7 +86,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						let string = self.genres.text?.stringByAppendingFormat("\n %@", "\(gType.translate())")
 						self.genres.text = string
 					}
-					
 				}
 				
 				TVDB().getPoster(tvdb, token: token) { response, error in
@@ -82,13 +95,35 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(poster.1["fileName"])") else {
 							return
 						}
+						if !self.isImageBlurred {
+							let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+							let blurView = UIVisualEffectView(effect: blurEffect)
+							blurView.frame = self.topBanner.bounds
+							self.topBanner.addSubview(blurView)
+						}
+						self.title_en.hidden = false
+						self.title_ru.hidden = false
+						self.text.hidden = false
+						self.imdbScore.hidden = false
+						self.kinopoiskScore.hidden = false
+						self.rating.hidden = false
+						self.watchLabel.hidden = false
+						self.watchButton.hidden = false
+						self.likeLabel.hidden = false
+						self.likeButton.hidden = false
+						self.newTitlesLabel.hidden = false
+						
 						self.poster.kf_setImageWithURL(url)
 						self.title_en.text = show.title
 						self.title_ru.text = show.title_ru
 						self.text.text = show.description
+						self.imdbScore.text = "IMDB "+String(show.imdb_rating!)
+						self.kinopoiskScore.text = show.kinopoisk_rating == 0.0 ? "" : "КиноПоиск "+String(show.kinopoisk_rating!)
 						if let imdbRating = show.imdb_rating {
 							self.rating.rating = Double(imdbRating/2)
 						}
+						
+						self.isImageBlurred = true
 					}
 				}
 			}
@@ -122,6 +157,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let show = featuredShows[indexPath.row]
 		getFeaturedShowInfo(show)
+		scrollView.setContentOffset(CGPointZero, animated: true)
 	}
 	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {

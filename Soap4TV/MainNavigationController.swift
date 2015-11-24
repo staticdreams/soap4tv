@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyUserDefaults
-import Chronos
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, UISearchControllerDelegate {
 
