@@ -385,6 +385,9 @@
                                                         <animations/>
                                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                                         <state key="normal" image="like"/>
+                                                        <connections>
+                                                            <action selector="likeShow:" destination="D3v-bU-Jwl" eventType="primaryActionTriggered" id="2u7-Ko-h5z"/>
+                                                        </connections>
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Американская история ужасов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV0-gD-qqF">
                                                         <rect key="frame" x="354" y="117" width="1112" height="58"/>
@@ -406,6 +409,9 @@
                                                         <animations/>
                                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                                         <state key="normal" image="play-icon"/>
+                                                        <connections>
+                                                            <action selector="openShow:" destination="D3v-bU-Jwl" eventType="primaryActionTriggered" id="aPO-O4-ERV"/>
+                                                        </connections>
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Смотреть" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztP-nB-B4y">
                                                         <rect key="frame" x="354" y="570" width="132" height="34"/>

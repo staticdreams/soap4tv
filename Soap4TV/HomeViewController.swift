@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	var token: String?
 	var featuredShows = [TVShow]()
+	var selectedFeaturedShow: TVShow?
 	
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var topBanner: UIImageView!
@@ -47,10 +48,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		loadFeaturedData()
 	}
 	
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillAppear(animated)
+	@IBAction func openShow(sender: AnyObject) {
+		let show = self.storyboard?.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
+		if let object = self.selectedFeaturedShow {
+			show.show = object
+		}
+		self.presentViewController(show, animated: true, completion: nil)
+	}
+	
+	@IBAction func likeShow(sender: AnyObject) {
 		
 	}
+	
+	
 	
 	private func loadFeaturedData() {
 		guard let token = self.token else {
@@ -75,6 +85,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else {
 			return
 		}
+		
 		self.text.show = show
 		self.text.parentView = self
 		self.genres.text = ""
@@ -122,7 +133,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						if let imdbRating = show.imdb_rating {
 							self.rating.rating = Double(imdbRating/2)
 						}
-						
+						self.selectedFeaturedShow = show
 						self.isImageBlurred = true
 					}
 				}
