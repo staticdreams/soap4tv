@@ -14,6 +14,7 @@ private let reuseIdentifier = "scheduleCollectionCell"
 class HomeScheduleCollectionView: UICollectionViewController {
 	
 	var data = [Schedule]()
+	let dateFormatter = NSDateFormatter()
 	
 	override func viewDidLoad() {
 		self.collectionView!.registerNib(UINib(nibName: "ScheduleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -37,7 +38,10 @@ class HomeScheduleCollectionView: UICollectionViewController {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ScheduleCollectionViewCell
 		
 		let schedule = data[indexPath.row]
-		
+		dateFormatter.dateFormat = "dd.MM.yyyy"
+		if let d = schedule.date {
+			cell.showDate.text = dateFormatter.stringFromDate(d)
+		}
 		cell.showTitle.text = schedule.title
 		cell.showEpisode.text = schedule.episode
 		if let sid = schedule.sid {
@@ -48,6 +52,24 @@ class HomeScheduleCollectionView: UICollectionViewController {
 		
 		return cell
 	}
+	
+	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+		
+		if let next = context.nextFocusedView as? ScheduleCollectionViewCell {
+			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
+				next.transform = CGAffineTransformMakeScale(1.2,1.2)
+				}, completion: { done in
+			})
+		}
+		
+		if let prev = context.previouslyFocusedView as? ScheduleCollectionViewCell {
+			UIView.animateWithDuration(0.1, animations: {
+				prev.transform = CGAffineTransformIdentity
+			})
+		}
+	}
+	
+	
 
     /*
     // Only override drawRect: if you perform custom drawing.
