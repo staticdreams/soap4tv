@@ -1,0 +1,6 @@
+framework module Pods_Soap4TV {
+  umbrella header "Pods-Soap4TV-umbrella.h"
+
+  export *
+  module * { export * }
+}

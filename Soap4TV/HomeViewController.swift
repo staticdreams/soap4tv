@@ -46,8 +46,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		text.selectable = true
 		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
 		topBanner.image = UIImage(named: "featured-background")
-		//	topBanner.kf_setImageWithURL(NSURL(string: "http://thetvdb.com/banners/fanart/original/298156-1.jpg")!)
-		
 		let switchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
 		let selectedSwitchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 32.0)!]
 		scheduleSwitch.setTitleTextAttributes(switchAttributes, forState: .Normal)
@@ -68,8 +66,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBAction func likeShow(sender: AnyObject) {
 		
 	}
-	
-	
 	
 	private func loadFeaturedData() {
 		guard let token = self.token else {
@@ -201,30 +197,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		}
 	}
 	
-	
-	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 	
-	/*
-	
-	1. Get 20 latest tv shows
-	2. Get /my tv shows schedule
-	3. Get popular tv shows
-
-	
-	*/
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

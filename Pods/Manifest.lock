@@ -1,0 +1,43 @@
+PODS:
+  - Alamofire (3.1.3)
+  - AlamofireImage (2.1.1):
+    - Alamofire (~> 3.1)
+  - AlamofireObjectMapper (2.0.2):
+    - Alamofire (~> 3.1.0)
+    - ObjectMapper (~> 1.0)
+  - Cosmos (1.1.4)
+  - Kingfisher (1.8.2)
+  - ObjectMapper (1.0.1)
+  - SwiftyJSON (2.3.1)
+  - SwiftyUserDefaults (2.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - AlamofireObjectMapper
+  - Cosmos
+  - Kingfisher
+  - ObjectMapper
+  - SwiftyJSON
+  - SwiftyUserDefaults (from `https://github.com/staticdreams/SwiftyUserDefaults.git`)
+
+EXTERNAL SOURCES:
+  SwiftyUserDefaults:
+    :git: https://github.com/staticdreams/SwiftyUserDefaults.git
+
+CHECKOUT OPTIONS:
+  SwiftyUserDefaults:
+    :commit: b00683c60b915c1d9eb91f63a73861887e00e602
+    :git: https://github.com/staticdreams/SwiftyUserDefaults.git
+
+SPEC CHECKSUMS:
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  AlamofireImage: 31f7c4e9f516183e0ef2d2da18318de28a4628b8
+  AlamofireObjectMapper: 3047127bcc25ec43e8243b89d819022ccee77546
+  Cosmos: 9770e205fc1fb6b48522039295b018caf92e877c
+  Kingfisher: b39315e9dbed7e8ffe73a9ca1be2ee006d1d57e4
+  ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  SwiftyUserDefaults: 0fc5068f85e88c99bf9dc2f4499f41254426c0f7
+
+COCOAPODS: 0.39.0
