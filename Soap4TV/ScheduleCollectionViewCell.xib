@@ -64,9 +64,9 @@
             <size key="customSize" width="269" height="50"/>
             <connections>
                 <outlet property="cover" destination="fDS-VF-tJS" id="znx-BL-AkN"/>
-                <outlet property="showDate" destination="dJ5-Et-jtf" id="ZX0-6o-FaR"/>
+                <outlet property="episodeTitle" destination="YQK-OA-ylI" id="0YS-cb-6Rf"/>
                 <outlet property="showEpisode" destination="ihH-I5-FCZ" id="niQ-7k-K06"/>
-                <outlet property="showTitle" destination="YQK-OA-ylI" id="xGy-Sh-rGm"/>
+                <outlet property="showTitle" destination="dJ5-Et-jtf" id="f3r-E7-xog"/>
             </connections>
             <point key="canvasLocation" x="482" y="399"/>
         </collectionViewCell>

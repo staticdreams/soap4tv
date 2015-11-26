@@ -17,8 +17,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	var token: String?
 	var featuredShows = [TVShow]()
+	var scheduledEpisodes = [Schedule]()
 	var selectedFeaturedShow: TVShow?
 	var scheduleController: HomeScheduleCollectionView?
+	var isImageBlurred = false
+	
+	let today = NSDate()
+	let dateFormatter = NSDateFormatter()
 	
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var topBanner: UIImageView!
@@ -38,9 +43,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBOutlet weak var likeButton: UIButton!
 	@IBOutlet weak var scheduleSwitch: UISegmentedControl!
 	
-	
-	var isImageBlurred = false
-	
     override func viewDidLoad() {
 		super.viewDidLoad()
 		text.selectable = true
@@ -54,6 +56,28 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		scheduleSwitch.selectedSegmentIndex = 1 // Today index
 		loadFeaturedData()
 		loadSchedule()
+	}
+	
+	@IBAction func scheduleChanged(sender: AnyObject) {
+		switch(scheduleSwitch.selectedSegmentIndex) {
+		case 0:
+			filterSchedule(today.someDay(-1))
+			break
+		case 1:
+			filterSchedule(today)
+			break
+		case 2:
+			filterSchedule(today.someDay(+1))
+			break
+		case 3:
+			filterSchedule(today.someDay(+2))
+			break
+		case 4:
+			filterSchedule(today.someDay(+3))
+			break
+		default:
+			filterSchedule(today)
+		}
 	}
 	
 	@IBAction func openShow(sender: AnyObject) {
@@ -88,16 +112,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	func loadSchedule() {
-		// Implement the day switch
 		guard let token = self.token else {
 			print("Failed to get token")
 			return
 		}
 		API().getFullSchedule(token) { objects, error in
 			if let schedule = objects {
-				self.scheduleController?.loadSchedule(schedule)
+				self.scheduledEpisodes = schedule
+				self.filterSchedule(self.today)
 			}
 		}
+	}
+	
+	func filterSchedule(filterDate: NSDate) {
+		self.scheduleController?.loadSchedule(scheduledEpisodes.filter{($0.date?.sameDate(filterDate))!})
 	}
 	
 	func getFeaturedShowInfo(show: TVShow) {

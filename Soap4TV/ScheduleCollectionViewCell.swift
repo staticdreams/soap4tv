@@ -11,9 +11,9 @@ import UIKit
 class ScheduleCollectionViewCell: UICollectionViewCell {
 	
 	@IBOutlet weak var cover: UIImageView!
-	@IBOutlet weak var showDate: UILabel!
-	@IBOutlet weak var showEpisode: UILabel!
 	@IBOutlet weak var showTitle: UILabel!
+	@IBOutlet weak var showEpisode: UILabel!
+	@IBOutlet weak var episodeTitle: UILabel!
 	
 	
 	

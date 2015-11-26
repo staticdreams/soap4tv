@@ -171,3 +171,27 @@ extension Array {
 		return Array(self[0..<elementCount])
 	}
 }
+extension NSDate {
+	func sameDate(date: NSDate?) -> Bool {
+		if let d = date {
+			let calendar = NSCalendar.currentCalendar()
+			if NSComparisonResult.OrderedSame == calendar.compareDate(self, toDate: d, toUnitGranularity: NSCalendarUnit.Day) {
+				return true
+			}
+			
+		}
+		return false
+	}
+	
+	
+	func someDay(daysToAdd: Int) -> NSDate {
+		let dateComponents: NSDateComponents = NSDateComponents()
+		dateComponents.day = daysToAdd
+		let gregorianCalendar: NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+		let day: NSDate = gregorianCalendar.dateByAddingComponents(dateComponents, toDate: self, options:NSCalendarOptions(rawValue: 0))!
+		return day
+	}
+}
+
+
+
