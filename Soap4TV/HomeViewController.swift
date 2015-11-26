@@ -35,6 +35,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBOutlet weak var newTitlesLabel: UILabel!
 	@IBOutlet weak var watchButton: UIButton!
 	@IBOutlet weak var likeButton: UIButton!
+	@IBOutlet weak var todayButton: UIButton!
+	
+	@IBOutlet weak var scheduleSwitch: UISegmentedControl!
 	
 	var isImageBlurred = false
 	
@@ -45,6 +48,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		topBanner.image = UIImage(named: "featured-background")
 		//	topBanner.kf_setImageWithURL(NSURL(string: "http://thetvdb.com/banners/fanart/original/298156-1.jpg")!)
 		
+		let switchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
+		let selectedSwitchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 32.0)!]
+		scheduleSwitch.setTitleTextAttributes(switchAttributes, forState: .Normal)
+		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Selected)
+		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
+		scheduleSwitch.selectedSegmentIndex = 1 // Today index
 		loadFeaturedData()
 	}
 	
@@ -88,20 +97,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		
 		self.text.show = show
 		self.text.parentView = self
-		self.genres.text = ""
-		TVDB().getShow(tvdb, token: token) { response, error in
-			if let item = response {
-				for genre in item["data"]["genre"] {
-					let g = GenreType(rawValue: String(genre.1))
-					if let gType = g {
-						let string = self.genres.text?.stringByAppendingFormat("\n %@", "\(gType.translate())")
-						self.genres.text = string
-					}
-				}
+		
+		TVDB().getShow(tvdb, token: token) { showResponse, error in
+			if let showItem = showResponse {
 				
-				TVDB().getPoster(tvdb, token: token) { response, error in
-					guard let response = response else {return}
-					let object = response["data"].first
+				TVDB().getPoster(tvdb, token: token) { posterResponse, error in
+					guard let posterResponse = posterResponse else {return}
+					let object = posterResponse["data"].first
 					if let poster = object {
 						guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(poster.1["fileName"])") else {
 							return
@@ -133,6 +135,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						if let imdbRating = show.imdb_rating {
 							self.rating.rating = Double(imdbRating/2)
 						}
+						self.genres.text = ""
+						for genre in showItem["data"]["genre"] {
+							let g = GenreType(rawValue: String(genre.1))
+							if let gType = g {
+								let string = self.genres.text?.stringByAppendingFormat("\n %@", "\(gType.translate())")
+								self.genres.text = string
+							}
+						}
+						
 						self.selectedFeaturedShow = show
 						self.isImageBlurred = true
 					}
@@ -168,7 +179,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let show = featuredShows[indexPath.row]
 		getFeaturedShowInfo(show)
-		scrollView.setContentOffset(CGPointZero, animated: true)
 	}
 	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
@@ -177,7 +187,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 			next.setNeedsUpdateConstraints()
 			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
-				}, completion: nil)
+				self.scrollView.setContentOffset(CGPointZero, animated: true)
+				}, completion: { done in
+					
+			})
 		}
 		
 		if let prev = context.previouslyFocusedView as? FeaturedCollectionViewCell {
