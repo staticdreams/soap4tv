@@ -154,6 +154,26 @@ struct API {
 				}
 		}
 	}
+	
+	func getFullSchedule(token: String, completionHandler: (responseObject: [Schedule]?, error: ErrorType?) -> ()) {
+		let headers = [
+			"X-Api-Token": token,
+			"User-Agent": "xbmc for soap",
+			"Accept-Language": "ru",
+			"Connection": "keep-alive"
+		]
+		let url = Config.URL.base+"/api/shedule/full/"
+		Alamofire.request(.GET, url, headers: headers)
+			.responseArray { (response: Response<[Schedule], NSError>) in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: data, error: nil)
+				case .Failure(let error):
+					print(error)
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
 }
 
 

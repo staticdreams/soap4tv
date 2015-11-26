@@ -54,7 +54,7 @@ class ScheduleTableViewController: UITableViewController {
 		let schedule = data[indexPath.row]
 		cell.title.text = schedule.title
 		cell.seasonEpisode.text = schedule.episode
-		cell.date.text = schedule.date
+//		cell.date.text = schedule.date
         return cell
     }
 	

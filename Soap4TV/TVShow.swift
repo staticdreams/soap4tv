@@ -86,14 +86,33 @@ func <(lhs: TVShow, rhs: TVShow) -> Bool {
 struct Schedule: Mappable {
 	
 	var episode: String?
-	var date: String?
+	var date: NSDate?
 	var title: String?
+	var sid: Int?
 	
 	init?(_ map: Map){}
 	
+	let convertToInt = TransformOf<Int, String>(fromJSON: { (value: String?) -> Int? in
+		guard let myInt = value else { return nil }
+		return Int(myInt)
+		}, toJSON: { (value: Int?) -> String? in
+			return nil
+	})
+	
+	let convertToDate = TransformOf<NSDate, String>(fromJSON: { (value: String?) -> NSDate? in
+		guard let dateValue = value else { return nil }
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "dd-MM-yyyy"
+		let myDate = dateFormatter.dateFromString(dateValue)
+		return myDate
+		}, toJSON: { (value: NSDate?) -> String? in
+			return nil
+	})
+	
 	mutating func mapping(map: Map) {
+		sid <- (map["sid"], convertToInt)
 		title <- map["title"]
-		date <- map["date"]
+		date <- (map["date"], convertToDate)
 		episode <- map["episode"]
 	}
 }

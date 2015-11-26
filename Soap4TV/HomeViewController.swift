@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	var token: String?
 	var featuredShows = [TVShow]()
 	var selectedFeaturedShow: TVShow?
+	var scheduleController: HomeScheduleCollectionView?
 	
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var topBanner: UIImageView!
@@ -35,9 +36,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	@IBOutlet weak var newTitlesLabel: UILabel!
 	@IBOutlet weak var watchButton: UIButton!
 	@IBOutlet weak var likeButton: UIButton!
-	@IBOutlet weak var todayButton: UIButton!
-	
 	@IBOutlet weak var scheduleSwitch: UISegmentedControl!
+	
 	
 	var isImageBlurred = false
 	
@@ -53,6 +53,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
 		scheduleSwitch.selectedSegmentIndex = 1 // Today index
 		loadFeaturedData()
+		loadSchedule()
 	}
 	
 	@IBAction func openShow(sender: AnyObject) {
@@ -82,6 +83,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 					let indexPath = NSIndexPath(forRow: 0, inSection: 0)
 					self.newShowsCollectionView.delegate?.collectionView!(self.newShowsCollectionView, didSelectItemAtIndexPath: indexPath)
 				}
+			}
+		}
+	}
+	
+	func loadSchedule() {
+		// Implement the day switch
+		guard let token = self.token else {
+			print("Failed to get token")
+			return
+		}
+		API().getFullSchedule(token) { objects, error in
+			if let schedule = objects {
+				self.scheduleController?.loadSchedule(schedule)
 			}
 		}
 	}
@@ -173,8 +187,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//		if let cell = newShowsCollectionView.dequeueReusableCellWithReuseIdentifier(featuredCellIdentifier, forIndexPath: indexPath) as? FeaturedCollectionViewCell {
+//			UIView.animateWithDuration(0.1, animations: {
+//				cell.transform = CGAffineTransformMakeScale(2.5,2.5)
+//			})
+//		}
 		let show = featuredShows[indexPath.row]
 		getFeaturedShowInfo(show)
+
 	}
 	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
@@ -185,7 +205,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
 				self.scrollView.setContentOffset(CGPointZero, animated: true)
 				}, completion: { done in
-					
 			})
 		}
 		
@@ -194,6 +213,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
 			})
+		}
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "scheduleSegue" {
+			if let controller = segue.destinationViewController as? HomeScheduleCollectionView {
+				print("Houston we have a link")
+				self.scheduleController = controller
+			}
 		}
 	}
 	
