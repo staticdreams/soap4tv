@@ -205,11 +205,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPd-0L-SkC">
-                                                <rect key="frame" x="0.0" y="1076" width="1920" height="400"/>
+                                                <rect key="frame" x="0.0" y="1076" width="1920" height="380"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1800" id="soy-pf-c28"/>
-                                                    <constraint firstAttribute="height" constant="400" id="uGE-KS-7uC"/>
+                                                    <constraint firstAttribute="height" constant="380" id="uGE-KS-7uC"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -338,7 +338,7 @@
             <objects>
                 <collectionViewController id="HE9-EK-51V" customClass="HomeScheduleCollectionView" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="WnQ-3s-h5B">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="ctJ-Al-s4u">

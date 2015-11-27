@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
+		setupScheduleSegments()
 		text.selectable = true
 		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
 		topBanner.image = UIImage(named: "featured-background")
@@ -58,7 +59,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		loadFeaturedData({
 			self.loadSchedule()
 		})
-		
+	}
+	
+	func setupScheduleSegments() {
+		let inTwoDays = Weekdays(rawValue: today.someDay(+2).dayOfTheWeek())
+		let inThreeDays = Weekdays(rawValue: today.someDay(+3).dayOfTheWeek())
+		scheduleSwitch.setTitle(inTwoDays?.day(), forSegmentAtIndex: 3)
+		scheduleSwitch.setTitle(inThreeDays?.day(), forSegmentAtIndex: 4)
 	}
 	
 	@IBAction func scheduleChanged(sender: AnyObject) {
@@ -84,7 +91,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	@IBAction func openShow(sender: AnyObject) {
-		let show = self.storyboard?.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let show = storyboard.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
 		if let object = self.selectedFeaturedShow {
 			show.show = object
 		}
@@ -134,7 +142,38 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		self.scheduleController?.loadSchedule(scheduledEpisodes.filter{($0.date?.sameDate(filterDate))!})
 	}
 	
+	func showFeaturedUI(show: Bool) {
+		
+		if show == false {
+			self.title_en.hidden = true
+			self.title_ru.hidden = true
+			self.text.hidden = true
+			self.imdbScore.hidden = true
+			self.kinopoiskScore.hidden = true
+			self.rating.hidden = true
+			self.watchLabel.hidden = true
+			self.watchButton.hidden = true
+			self.likeLabel.hidden = true
+			self.likeButton.hidden = true
+			self.newTitlesLabel.hidden = true
+		} else {
+			self.title_en.hidden = false
+			self.title_ru.hidden = false
+			self.text.hidden = false
+			self.imdbScore.hidden = false
+			self.kinopoiskScore.hidden = false
+			self.rating.hidden = false
+			self.watchLabel.hidden = false
+			self.watchButton.hidden = false
+			self.likeLabel.hidden = false
+			self.likeButton.hidden = false
+			self.newTitlesLabel.hidden = false
+		}
+	}
+	
 	func getFeaturedShowInfo(show: TVShow) {
+		// TODO: Implement smooth fade in/out transition
+		
 		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else { return }
 		self.text.show = show
 		self.text.parentView = self
@@ -154,17 +193,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 							blurView.frame = self.topBanner.bounds
 							self.topBanner.addSubview(blurView)
 						}
-						self.title_en.hidden = false
-						self.title_ru.hidden = false
-						self.text.hidden = false
-						self.imdbScore.hidden = false
-						self.kinopoiskScore.hidden = false
-						self.rating.hidden = false
-						self.watchLabel.hidden = false
-						self.watchButton.hidden = false
-						self.likeLabel.hidden = false
-						self.likeButton.hidden = false
-						self.newTitlesLabel.hidden = false
+						
+						self.showFeaturedUI(true)
 						
 						self.poster.kf_setImageWithURL(url)
 						self.title_en.text = show.title

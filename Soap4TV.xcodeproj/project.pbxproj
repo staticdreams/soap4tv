@@ -40,7 +40,7 @@
 		D0DB031E1C0783880095BEAF /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */; };
 		D0DB031F1C0783880095BEAF /* ScheduleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */; };
 		D0DB03211C07863D0095BEAF /* HomeScheduleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */; };
-		D0DF97681C0397B10045BF9C /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF97671C0397B10045BF9C /* Genres.swift */; };
+		D0DF97681C0397B10045BF9C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF97671C0397B10045BF9C /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +81,7 @@
 		D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScheduleCollectionView.swift; sourceTree = "<group>"; };
-		D0DF97671C0397B10045BF9C /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		D0DF97671C0397B10045BF9C /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DACA1DDEDF2C73FB901964CA /* Pods_Soap4TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soap4TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,7 +122,7 @@
 				D0301F721BF364800093ADDC /* TVShow.swift */,
 				D000B7171BF5EE8B006AC142 /* Episode.swift */,
 				D0835AC41C02628200684DF7 /* SwiftyTimer.swift */,
-				D0DF97671C0397B10045BF9C /* Genres.swift */,
+				D0DF97671C0397B10045BF9C /* Enums.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				D09040061C00B39E005E7974 /* HomeViewController.swift in Sources */,
 				D0419EE51C0218C1005EC129 /* FeaturedCollectionViewCell.swift in Sources */,
 				D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */,
-				D0DF97681C0397B10045BF9C /* Genres.swift in Sources */,
+				D0DF97681C0397B10045BF9C /* Enums.swift in Sources */,
 				D07373861BF0C2C900229B92 /* Config.swift in Sources */,
 				D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */,
 				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,

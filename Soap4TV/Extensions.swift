@@ -178,11 +178,9 @@ extension NSDate {
 			if NSComparisonResult.OrderedSame == calendar.compareDate(self, toDate: d, toUnitGranularity: NSCalendarUnit.Day) {
 				return true
 			}
-			
 		}
 		return false
 	}
-	
 	
 	func someDay(daysToAdd: Int) -> NSDate {
 		let dateComponents: NSDateComponents = NSDateComponents()
@@ -190,6 +188,13 @@ extension NSDate {
 		let gregorianCalendar: NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
 		let day: NSDate = gregorianCalendar.dateByAddingComponents(dateComponents, toDate: self, options:NSCalendarOptions(rawValue: 0))!
 		return day
+	}
+	
+	func dayOfTheWeek() -> Int {
+		let gregorianCalendar: NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+		let myComponents = gregorianCalendar.components(.Weekday, fromDate: self)
+		let weekDay = myComponents.weekday
+		return weekDay
 	}
 }
 

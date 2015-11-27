@@ -8,6 +8,29 @@
 
 import Foundation
 
+enum Weekdays: Int {
+    case Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+	func day() -> String {
+		switch self {
+		case .Sunday:
+			return "Воскресенье"
+		case .Monday:
+			return "Понедельник"
+		case .Tuesday:
+			return "Вторник"
+		case .Wednesday:
+			return "Среда"
+		case .Thursday:
+			return "Четверг"
+		case .Friday:
+			return "Пятница"
+		case .Saturday:
+			return "Суббота"
+		}
+	}
+}
+
+
 enum GenreType: String {
 	
 	case Action = "Action"
