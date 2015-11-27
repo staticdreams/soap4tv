@@ -13,6 +13,7 @@ private let reuseIdentifier = "scheduleCollectionCell"
 
 class HomeScheduleCollectionView: UICollectionViewController {
 	
+	var shows = [TVShow]()
 	var data = [Schedule]()
 	let dateFormatter = NSDateFormatter()
 	
@@ -23,6 +24,10 @@ class HomeScheduleCollectionView: UICollectionViewController {
 	func loadSchedule(schedule: [Schedule]) {
 		self.data = schedule
 		collectionView?.reloadData()
+	}
+	
+	func setShows(shows: [TVShow]) {
+		self.shows = shows
 	}
 	
 	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -38,11 +43,13 @@ class HomeScheduleCollectionView: UICollectionViewController {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ScheduleCollectionViewCell
 		
 		let schedule = data[indexPath.row]
-		dateFormatter.dateFormat = "dd.MM.yyyy"
-		if let d = schedule.date {
-			cell.showDate.text = dateFormatter.stringFromDate(d)
-		}
-		cell.showTitle.text = schedule.title
+//		dateFormatter.dateFormat = "dd.MM.yyyy"
+//		if let d = schedule.date {
+//			cell.showDate.text = dateFormatter.stringFromDate(d)
+//		}
+		let show = shows.filter{$0.sid == schedule.sid}
+		cell.showTitle.text = show.first?.title // <-- top one
+		cell.episodeTitle.text = schedule.title
 		cell.showEpisode.text = schedule.episode
 		if let sid = schedule.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/\(sid).jpg")!
@@ -68,15 +75,5 @@ class HomeScheduleCollectionView: UICollectionViewController {
 			})
 		}
 	}
-	
-	
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

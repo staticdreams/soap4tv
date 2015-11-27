@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	var token: String?
 	var featuredShows = [TVShow]()
+	var allShows = [TVShow]()
 	var scheduledEpisodes = [Schedule]()
 	var selectedFeaturedShow: TVShow?
 	var scheduleController: HomeScheduleCollectionView?
@@ -54,8 +55,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Selected)
 		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
 		scheduleSwitch.selectedSegmentIndex = 1 // Today index
-		loadFeaturedData()
-		loadSchedule()
+		loadFeaturedData({
+			self.loadSchedule()
+		})
+		
 	}
 	
 	@IBAction func scheduleChanged(sender: AnyObject) {
@@ -92,7 +95,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		
 	}
 	
-	private func loadFeaturedData() {
+	private func loadFeaturedData(callback: () -> ()) {
 		guard let token = self.token else {
 			print("Failed to get token")
 			return
@@ -100,13 +103,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		print("token is: \(token)")
 		API().getTVShows(token, view: nil) { objects, error in
 			if let shows = objects {
+				self.allShows = shows
 				let sortedShows = shows.sort(>)
 				self.featuredShows = sortedShows.takeElements(Config.maxNumberFeatured)
 				self.newShowsCollectionView.reloadData()
-				delay(2.0) {
+				delay(0.5) {
 					let indexPath = NSIndexPath(forRow: 0, inSection: 0)
 					self.newShowsCollectionView.delegate?.collectionView!(self.newShowsCollectionView, didSelectItemAtIndexPath: indexPath)
 				}
+				self.scheduleController?.setShows(self.allShows)
+				callback()
 			}
 		}
 	}
@@ -129,13 +135,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	func getFeaturedShowInfo(show: TVShow) {
-		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else {
-			return
-		}
-		
+		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else { return }
 		self.text.show = show
 		self.text.parentView = self
-		
 		TVDB().getShow(tvdb, token: token) { showResponse, error in
 			if let showItem = showResponse {
 				
@@ -205,7 +207,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = newShowsCollectionView.dequeueReusableCellWithReuseIdentifier(featuredCellIdentifier, forIndexPath: indexPath) as! FeaturedCollectionViewCell
 		let show = featuredShows[indexPath.row]
-		print(show.tvdb_id)
 		if let sid = show.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
 			let placeholderImage = UIImage(named: "placeholder")!
@@ -247,7 +248,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "scheduleSegue" {
 			if let controller = segue.destinationViewController as? HomeScheduleCollectionView {
-				print("Houston we have a link")
 				self.scheduleController = controller
 			}
 		}
