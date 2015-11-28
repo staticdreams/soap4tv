@@ -16,6 +16,7 @@ class HomeScheduleCollectionView: UICollectionViewController {
 	var shows = [TVShow]()
 	var data = [Schedule]()
 	let dateFormatter = NSDateFormatter()
+	let placeholderImage = UIImage(named: "placeholder")!
 	
 	override func viewDidLoad() {
 		self.collectionView!.registerNib(UINib(nibName: "ScheduleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -48,9 +49,9 @@ class HomeScheduleCollectionView: UICollectionViewController {
 		cell.episodeTitle.text = schedule.title
 		cell.showEpisode.text = schedule.episode
 		if let sid = schedule.sid {
-			let URL = NSURL(string: "\(Config.URL.covers)/soap/\(sid).jpg")!
-			let placeholderImage = UIImage(named: "placeholder")!
-			cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
+			if let URL = NSURL(string: "\(Config.URL.covers)/soap/\(sid).jpg") {
+				cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
+			}
 		}
 		
 		return cell

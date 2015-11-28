@@ -236,12 +236,6 @@
                                                     <action selector="scheduleChanged:" destination="D3v-bU-Jwl" eventType="valueChanged" id="MZm-Qy-E1e"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQL-RU-eTn">
-                                                <rect key="frame" x="60" y="1649" width="195" height="86"/>
-                                                <animations/>
-                                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mp1-B5-ZzX">
                                                 <rect key="frame" x="0.0" y="630" width="1920" height="340"/>
                                                 <animations/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeaturedCollectionViewCell: UICollectionViewCell {
+class TVShowCell: UICollectionViewCell {
     
 	@IBOutlet weak var cover: UIImageView!
 	

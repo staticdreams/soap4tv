@@ -10,6 +10,7 @@ import UIKit
 import SwiftyUserDefaults
 import AVFoundation
 import AVKit
+import Kingfisher
 
 private let reuseIdentifier = "EpisodeCell"
 
@@ -97,7 +98,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		if let sid = show?.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
 			let placeholderImage = UIImage(named: "placeholder")!
-			cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+			cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
 		}
 		self.tableView.registerNib(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
 		loadEpisodes()

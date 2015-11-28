@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
-import AlamofireImage
+import Kingfisher
 
 enum PresentedView {
 	case AllShows
@@ -20,7 +20,7 @@ enum PresentedView {
 	}
 }
 
-private let reuseIdentifier = "MovieCell"
+private let reuseIdentifier = "showCell"
 
 class TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
 	
@@ -34,11 +34,13 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 	var currentView = PresentedView()
 	var userLikes = [Int]()
 	
+	let placeholderImage = UIImage(named: "placeholder")!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.clearsSelectionOnViewWillAppear = false
 		self.collectionView!.remembersLastFocusedIndexPath = true
-		self.collectionView!.registerNib(UINib(nibName: "MovieCollectionCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+		self.collectionView!.registerNib(UINib(nibName: "TVShowCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		if data.count == 0 {loadData()}
     }
 
@@ -95,29 +97,27 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MovieCollectionCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TVShowCell
 		let tvshow = data[indexPath.row]
-		cell.show = tvshow
-		cell.title.text = tvshow.title
-		cell.titleRu.text = tvshow.title_ru
-		if let imdb_rating = tvshow.imdb_rating {
-			cell.imdb.text = "IMDB: \(String(imdb_rating))"
-		} else {}
-		if let kp_rating = tvshow.kinopoisk_rating where kp_rating != 0.0 {
-			cell.kinopoisk.text = "Кинопоиск: \(String(kp_rating))"
-		} else {}
-		cell.year.text = "(\(String(tvshow.year!)))"
+//		cell.show = tvshow
+//		cell.title.text = tvshow.title
+//		cell.titleRu.text = tvshow.title_ru
+//		if let imdb_rating = tvshow.imdb_rating {
+//			cell.imdb.text = "IMDB: \(String(imdb_rating))"
+//		} else {}
+//		if let kp_rating = tvshow.kinopoisk_rating where kp_rating != 0.0 {
+//			cell.kinopoisk.text = "Кинопоиск: \(String(kp_rating))"
+//		} else {}
+//		cell.year.text = "(\(String(tvshow.year!)))"
 		if cell.gestureRecognizers?.count == nil {
 			let tap = UITapGestureRecognizer(target: self, action: "tapped:")
 			tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
 			cell.addGestureRecognizer(tap)
 		}
 		if let sid = tvshow.sid {
-			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
-			dispatch_async(dispatch_get_main_queue(), {
-				let placeholderImage = UIImage(named: "placeholder")!
-				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
-			})
+			if let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg") {
+				cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
+			}
 		}
 		
 		cell.alpha = 0
@@ -136,35 +136,36 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
 		
-		if let next = context.nextFocusedView as? MovieCollectionCell {
+		if let next = context.nextFocusedView as? TVShowCell {
 			next.setNeedsUpdateConstraints()
 			/**
 			*   Makes cell bigger
 			*/
-			UIView.animateWithDuration(0.1, animations: {
-				next.transform = CGAffineTransformMakeScale(1.1,1.1)
+			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
+				next.transform = CGAffineTransformMakeScale(1.2,1.2)
+				}, completion: { done in
 			})
 			
 			/**
 			*   Animates white box
 			*/
-			next.overlayHeightConstraint.constant = 300
-			UIView.animateWithDuration(0.5, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
-				self.view.layoutIfNeeded()
-				}) { completed in
-			}
+//			next.overlayHeightConstraint.constant = 300
+//			UIView.animateWithDuration(0.5, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
+//				self.view.layoutIfNeeded()
+//				}) { completed in
+//			}
 			/**
 			*	Animating text within the white box after it appears
 			*/
-			UIView.animateWithDuration(0.3, delay: 0.5, options: [.TransitionCrossDissolve], animations: { () -> Void in
-				next.titleRu.alpha = 1
-				next.year.alpha = 1
-				next.imdb.alpha = 1
-				next.kinopoisk.alpha = 1
-				}, completion: nil)
+//			UIView.animateWithDuration(0.3, delay: 0.5, options: [.TransitionCrossDissolve], animations: { () -> Void in
+//				next.titleRu.alpha = 1
+//				next.year.alpha = 1
+//				next.imdb.alpha = 1
+//				next.kinopoisk.alpha = 1
+//				}, completion: nil)
 		}
 		
-		if let prev = context.previouslyFocusedView as? MovieCollectionCell {
+		if let prev = context.previouslyFocusedView as? TVShowCell {
 			
 			/**
 			*   Makes cell smaller
@@ -172,20 +173,20 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
 			prev.setNeedsUpdateConstraints()
 			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
-				prev.titleRu.alpha = 0
-				prev.year.alpha = 0
-				prev.imdb.alpha = 0
-				prev.kinopoisk.alpha = 0
+//				prev.titleRu.alpha = 0
+//				prev.year.alpha = 0
+//				prev.imdb.alpha = 0
+//				prev.kinopoisk.alpha = 0
 			})
 			
 			/**
 			*   Animates white box
 			*/
-			prev.overlayHeightConstraint.constant = 90
-			UIView.animateWithDuration(0.5, delay: 0.1, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
-				self.view.layoutIfNeeded()
-				}) { completed in
-			}
+//			prev.overlayHeightConstraint.constant = 90
+//			UIView.animateWithDuration(0.5, delay: 0.1, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: [], animations: {
+//				self.view.layoutIfNeeded()
+//				}) { completed in
+//			}
 			
 			/**
 			*	Hiding text within the white box after it disappears
