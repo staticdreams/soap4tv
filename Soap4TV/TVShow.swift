@@ -78,8 +78,23 @@ func ==(lhs: TVShow, rhs: TVShow) -> Bool {
 	return lhs.sid == rhs.sid && lhs.sid == rhs.sid
 }
 
-func <(lhs: TVShow, rhs: TVShow) -> Bool {
+func <(lhs: TVShow, rhs: TVShow) -> Bool { // Comparing by show ID
 	return lhs.sid < rhs.sid
+}
+
+infix operator ~ { associativity left precedence 140 } // Compating by rating operator
+func ~(lhs: TVShow, rhs: TVShow) -> Bool {
+	return lhs.imdb_rating > rhs.imdb_rating
+}
+
+infix operator ± { associativity left precedence 140 } // Compating by english alphabet
+func ±(lhs: TVShow, rhs: TVShow) -> Bool {
+	return lhs.title < rhs.title
+}
+
+infix operator § { associativity left precedence 140 } // Compating by russian alphabet
+func §(lhs: TVShow, rhs: TVShow) -> Bool {
+	return lhs.title_ru < rhs.title_ru
 }
 
 

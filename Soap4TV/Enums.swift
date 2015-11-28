@@ -8,6 +8,16 @@
 
 import Foundation
 
+enum PresentedView {
+	case AllShows
+	case MyShows
+	case FavShows
+	case Search
+	init() {
+		self = .AllShows
+	}
+}
+
 enum Weekdays: Int {
     case Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 	func day() -> String {

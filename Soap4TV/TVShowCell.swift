@@ -9,6 +9,8 @@
 import UIKit
 
 class TVShowCell: UICollectionViewCell {
+	
+	var show: TVShow?
     
 	@IBOutlet weak var cover: UIImageView!
 	

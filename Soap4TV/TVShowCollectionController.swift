@@ -10,16 +10,6 @@ import UIKit
 import SwiftyUserDefaults
 import Kingfisher
 
-enum PresentedView {
-	case AllShows
-	case MyShows
-	case FavShows
-	case Search
-	init() {
-		self = .AllShows
-	}
-}
-
 private let reuseIdentifier = "showCell"
 
 class TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
@@ -99,7 +89,7 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TVShowCell
 		let tvshow = data[indexPath.row]
-//		cell.show = tvshow
+		cell.show = tvshow
 //		cell.title.text = tvshow.title
 //		cell.titleRu.text = tvshow.title_ru
 //		if let imdb_rating = tvshow.imdb_rating {
@@ -127,7 +117,7 @@ class TVShowCollectionController: UICollectionViewController, UISearchResultsUpd
     }
 	
 	func tapped(gesture: UITapGestureRecognizer) {
-		if let cell = gesture.view as? MovieCollectionCell {
+		if let cell = gesture.view as? TVShowCell {
 			let show = self.storyboard?.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
 			show.show = cell.show
 			self.presentViewController(show, animated: true, completion: nil)
