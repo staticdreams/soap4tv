@@ -12,7 +12,12 @@ class TVShowCell: UICollectionViewCell {
 	
 	var show: TVShow?
     
+	@IBOutlet weak var overlay: UIView!
 	@IBOutlet weak var cover: UIImageView!
+	@IBOutlet weak var title_en: UILabel!
+	@IBOutlet weak var title_ru: UILabel!
+	@IBOutlet weak var year: UILabel!
+	@IBOutlet weak var imdb: UILabel!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()

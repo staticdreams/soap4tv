@@ -99,7 +99,13 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 				cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
 			}
 		}
-		
+		cell.title_en.text = tvshow.title
+		cell.title_ru.text = tvshow.title_ru
+		if let year = tvshow.year, let imdb = tvshow.imdb_rating {
+			cell.year.text = "(\(year))"
+			cell.imdb.text = "IMDB \(imdb)"
+		}
+		cell.overlay.alpha = 0
 		cell.alpha = 0
 		UIView.animateWithDuration(0.5, animations: { cell.alpha = 1 })
 		return cell
@@ -119,6 +125,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			next.setNeedsUpdateConstraints()
 			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
+				next.overlay.alpha = 0.8
 				}, completion: { done in
 			})
 		}
@@ -127,6 +134,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			prev.setNeedsUpdateConstraints()
 			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
+				prev.overlay.alpha = 0
 			})
 		}
 		
