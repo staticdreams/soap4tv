@@ -29,6 +29,11 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		let switchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
+		let selectedSwitchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 32.0)!]
+		sortingControl.setTitleTextAttributes(switchAttributes, forState: .Normal)
+		sortingControl.setTitleTextAttributes(selectedSwitchAttributes, forState: .Selected)
+		sortingControl.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
 		self.collectionView.remembersLastFocusedIndexPath = true
 		self.collectionView.registerNib(UINib(nibName: "TVShowCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		if data.count == 0 {loadData()}
@@ -73,6 +78,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			break
 		}
 		self.data = shows
+		collectionView.setContentOffset(CGPointZero, animated: false) // this isn't enough. needs to select first cell
 	}
 	
 	// MARK: - Collection View Delegate and DataSource

@@ -30,7 +30,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="1920" height="620"/>
                                                         <animations/>
                                                     </imageView>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American horror story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtH-DE-5TA">
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American horror story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TtH-DE-5TA">
                                                         <rect key="frame" x="354" y="27" width="1112" height="91"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>

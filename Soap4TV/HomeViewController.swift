@@ -50,12 +50,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		text.selectable = true
 		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
 		topBanner.image = UIImage(named: "featured-background")
-		let switchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
-		let selectedSwitchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 32.0)!]
-		scheduleSwitch.setTitleTextAttributes(switchAttributes, forState: .Normal)
-		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Selected)
-		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
-		scheduleSwitch.selectedSegmentIndex = 1 // Today index
 		loadFeaturedData({
 			self.loadSchedule()
 		})
@@ -66,6 +60,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		let inThreeDays = Weekdays(rawValue: today.someDay(+3).dayOfTheWeek())
 		scheduleSwitch.setTitle(inTwoDays?.day(), forSegmentAtIndex: 3)
 		scheduleSwitch.setTitle(inThreeDays?.day(), forSegmentAtIndex: 4)
+		let switchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
+		let selectedSwitchAttributes: [NSObject: AnyObject]? = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 32.0)!]
+		scheduleSwitch.setTitleTextAttributes(switchAttributes, forState: .Normal)
+		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Selected)
+		scheduleSwitch.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
+		scheduleSwitch.selectedSegmentIndex = 1 // Today index
 	}
 	
 	@IBAction func scheduleChanged(sender: AnyObject) {
