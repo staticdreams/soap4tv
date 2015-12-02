@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import AlamofireImage
 import SwiftyUserDefaults
 import Cosmos
 
@@ -196,7 +197,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						
 						self.showFeaturedUI(true)
 						
-						self.poster.kf_setImageWithURL(url)
+						self.poster.af_setImageWithURL(url)
 						self.title_en.text = show.title
 						self.title_ru.text = show.title_ru
 						self.text.text = show.description
@@ -240,7 +241,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		if let sid = show.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
 			let placeholderImage = UIImage(named: "placeholder")!
-			cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
+			cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
 		}
 		return cell
 	}
