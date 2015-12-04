@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 import AlamofireImage
 import SwiftyUserDefaults
 import Cosmos
@@ -93,7 +92,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	@IBAction func openShow(sender: AnyObject) {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let show = storyboard.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
+		let show = storyboard.instantiateViewControllerWithIdentifier("showController") as! TVShowViewController
 		if let object = self.selectedFeaturedShow {
 			show.show = object
 		}
@@ -175,13 +174,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	func getFeaturedShowInfo(show: TVShow) {
 		// TODO: Implement smooth fade in/out transition
 		
-		guard let tvdb = show.tvdb_id, token = Defaults[.TVDBToken] else { return }
+		guard let tvdb = show.tvdb_id, tvdbtoken = Defaults[.TVDBToken] else { return }
 		self.text.show = show
 		self.text.parentView = self
-		TVDB().getShow(tvdb, token: token) { showResponse, error in
+		TVDB().getShow(tvdb, token: tvdbtoken) { showResponse, error in
 			if let showItem = showResponse {
 				
-				TVDB().getPoster(tvdb, token: token) { posterResponse, error in
+				TVDB().getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil) { posterResponse, error in
 					guard let posterResponse = posterResponse else {return}
 					let object = posterResponse["data"].first
 					if let poster = object {

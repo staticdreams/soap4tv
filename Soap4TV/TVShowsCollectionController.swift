@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
-import Kingfisher
+import AlamofireImage
 
 private let reuseIdentifier = "showCell"
 
@@ -102,7 +102,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		}
 		if let sid = tvshow.sid {
 			if let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg") {
-				cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
+				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage, imageTransition: .CrossDissolve(0.2))
 			}
 		}
 		cell.title_en.text = tvshow.title
@@ -119,7 +119,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 	
 	func tapped(gesture: UITapGestureRecognizer) {
 		if let cell = gesture.view as? TVShowCell {
-			let show = self.storyboard?.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
+			let show = self.storyboard?.instantiateViewControllerWithIdentifier("showController") as! TVShowViewController
 			show.show = cell.show
 			self.presentViewController(show, animated: true, completion: nil)
 		}

@@ -61,11 +61,13 @@ class HomeScheduleCollectionView: UICollectionViewController {
 		let schedule = data[indexPath.row]
 		let items = shows.filter{$0.sid == schedule.sid}
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let show = storyboard.instantiateViewControllerWithIdentifier("tvshowController") as! TVShowViewController
-		if let item = items.first {
-			show.show = item
-			self.presentViewController(show, animated: true, completion: nil)
+		if let show = storyboard.instantiateViewControllerWithIdentifier("showController") as? TVShowViewController {
+			if let item = items.first {
+				show.show = item
+				self.presentViewController(show, animated: true, completion: nil)
+			}
 		}
+		
 	}
 	
 	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
