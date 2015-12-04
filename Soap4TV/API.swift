@@ -227,13 +227,16 @@ struct TVDB {
 		}
 	}
 	
-	func getPoster(showId: Int, token: String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+	func getImage(showId: Int, token: String, type: String, resolution: String?, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
 		let headers = [
 			"Content-Type": "application/json",
 			"Authorization": "Bearer \(token)",
 			"Accept-Language": "en"
 		]
-		let parameters = ["keyType": "poster"]
+		var parameters = ["keyType": type]
+		if let res = resolution {
+			parameters["resolution"] = res
+		}
 		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/images/query", headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
@@ -244,5 +247,6 @@ struct TVDB {
 				}
 		}
 	}
+	
 	
 }
