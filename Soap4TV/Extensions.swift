@@ -198,5 +198,11 @@ extension NSDate {
 	}
 }
 
-
-
+extension UISegmentedControl {
+	func replaceSegments(segments: Array<String>) {
+		self.removeAllSegments()
+		for segment in segments {
+			self.insertSegmentWithTitle(segment, atIndex: self.numberOfSegments, animated: false)
+		}
+	}
+}
