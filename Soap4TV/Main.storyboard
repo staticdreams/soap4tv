@@ -320,10 +320,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kA-4h-dmY" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="383" y="205" width="240" height="81"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kA-4h-dmY" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="383" y="205" width="240" height="42"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="DFv-8z-nEt"/>
+                                    <constraint firstAttribute="width" constant="240" id="lbv-eE-cRI"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                         <real key="value" value="35"/>
@@ -339,40 +343,57 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XB-5c-NUy">
-                                <rect key="frame" x="383" y="513" width="1517" height="85"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Сезоны" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kl-qT-rgV">
-                                <rect key="frame" x="40" y="513" width="290" height="85"/>
+                                <rect key="frame" x="224" y="513" width="106" height="85"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVF-Km-Zl2" customClass="FocusableText" customModule="Soap4TV" customModuleProvider="target">
+                                <rect key="frame" x="365" y="248" width="1213" height="223"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="223" id="hXO-0z-zzp"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig1-NC-cax">
+                                <rect key="frame" x="365" y="513" width="1213" height="128"/>
+                                <animations/>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <constraints>
                             <constraint firstItem="3Vy-BU-2SJ" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="2Me-Be-6k3"/>
                             <constraint firstItem="0zw-2l-5pJ" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" id="5OX-kn-Pve"/>
+                            <constraint firstItem="hVF-Km-Zl2" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="35" id="6vs-0r-shl"/>
                             <constraint firstItem="0zw-2l-5pJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" id="72k-La-dDB"/>
+                            <constraint firstItem="5kA-4h-dmY" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="Hr7-Vc-V4B"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="top" secondItem="3Vy-BU-2SJ" secondAttribute="bottom" constant="8" id="KSh-bo-uNR"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leadingMargin" constant="20" id="M3q-SE-omq"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="40" id="TrX-0s-6E5"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="Vnl-1y-B6U"/>
+                            <constraint firstAttribute="trailing" secondItem="hVF-Km-Zl2" secondAttribute="trailing" constant="342" id="WM2-34-MSb"/>
                             <constraint firstItem="3Vy-BU-2SJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="35" id="WvN-3A-j5x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Vy-BU-2SJ" secondAttribute="trailing" constant="322" id="Y7Q-ni-r6d"/>
+                            <constraint firstItem="hVF-Km-Zl2" firstAttribute="top" secondItem="5kA-4h-dmY" secondAttribute="bottom" constant="1" id="kOa-KW-hwT"/>
                             <constraint firstAttribute="trailing" secondItem="0zw-2l-5pJ" secondAttribute="trailing" id="kX1-zo-iPB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EeZ-50-QJ7" secondAttribute="trailing" constant="322" id="mpN-Z1-ASl"/>
+                            <constraint firstItem="5kA-4h-dmY" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="v7f-iX-XGe"/>
                             <constraint firstItem="sES-z0-7tY" firstAttribute="top" secondItem="0zw-2l-5pJ" secondAttribute="bottom" id="xFB-Di-tDF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="0zw-2l-5pJ" id="y5N-PB-xEA"/>
+                        <outlet property="introduction" destination="hVF-Km-Zl2" id="prg-cP-He2"/>
                         <outlet property="poster" destination="B04-Z6-xrv" id="f59-Vd-ntD"/>
                         <outlet property="rating" destination="5kA-4h-dmY" id="LLB-AP-kPs"/>
-                        <outlet property="seasonsContainer" destination="8XB-5c-NUy" id="HaM-8Q-jZ3"/>
+                        <outlet property="seasonsScroll" destination="Ig1-NC-cax" id="PLD-tQ-ocU"/>
                         <outlet property="showtitle" destination="3Vy-BU-2SJ" id="dSX-LL-7fD"/>
                         <outlet property="showtitle_ru" destination="EeZ-50-QJ7" id="ujr-oZ-dJs"/>
                     </connections>
@@ -399,7 +420,7 @@
                         <animations/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
-                                <rect key="frame" x="0.0" y="54" width="360" height="66"/>
+                                <rect key="frame" x="0.0" y="54" width="400" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="66"/>

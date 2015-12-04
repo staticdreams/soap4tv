@@ -6,7 +6,6 @@ PODS:
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
   - Cosmos (1.1.5)
-  - Kingfisher (1.8.2)
   - ObjectMapper (1.0.1)
   - SwiftyJSON (2.3.1)
   - SwiftyUserDefaults (2.0.1)
@@ -16,7 +15,6 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireObjectMapper
   - Cosmos
-  - Kingfisher
   - ObjectMapper
   - SwiftyJSON
   - SwiftyUserDefaults (from `https://github.com/staticdreams/SwiftyUserDefaults.git`)
@@ -35,7 +33,6 @@ SPEC CHECKSUMS:
   AlamofireImage: 31f7c4e9f516183e0ef2d2da18318de28a4628b8
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
   Cosmos: d05465696561ccb50fa8b7574026326bb23d654b
-  Kingfisher: b39315e9dbed7e8ffe73a9ca1be2ee006d1d57e4
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   SwiftyUserDefaults: 0fc5068f85e88c99bf9dc2f4499f41254426c0f7

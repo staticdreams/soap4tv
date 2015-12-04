@@ -15,6 +15,7 @@ class FocusableText: UITextView {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
+		self.selectable = true
 		let tap = UITapGestureRecognizer(target: self, action: "tapped:")
 		tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
 		self.addGestureRecognizer(tap)

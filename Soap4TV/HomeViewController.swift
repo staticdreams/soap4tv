@@ -47,7 +47,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
 		super.viewDidLoad()
 		setupScheduleSegments()
-		text.selectable = true
 		self.newShowsCollectionView.registerNib(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: featuredCellIdentifier)
 		topBanner.image = UIImage(named: "featured-background")
 		loadFeaturedData({

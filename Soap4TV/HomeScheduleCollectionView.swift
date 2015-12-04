@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import AlamofireImage
 
 private let reuseIdentifier = "scheduleCollectionCell"
 
@@ -50,7 +50,7 @@ class HomeScheduleCollectionView: UICollectionViewController {
 		cell.showEpisode.text = schedule.episode
 		if let sid = schedule.sid {
 			if let URL = NSURL(string: "\(Config.URL.covers)/soap/\(sid).jpg") {
-				cell.cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
+				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
 			}
 		}
 		

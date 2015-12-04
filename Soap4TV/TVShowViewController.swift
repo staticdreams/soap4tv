@@ -10,7 +10,8 @@ import UIKit
 import SwiftyUserDefaults
 import AVFoundation
 import AVKit
-import Kingfisher
+import AlamofireImage
+import Cosmos
 
 private let reuseIdentifier = "EpisodeCell"
 
@@ -73,34 +74,31 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	var userLikes = [Int]()
 	
 	var currentShowLiked: Bool = false
+	var seasonsSegment: UISegmentedControl!
 	
-	@IBOutlet weak var translationButton: UIButton!
-	@IBOutlet weak var likeButton: UIButton!
+	@IBOutlet weak var backgroundImage: UIImageView!
+	@IBOutlet weak var poster: UIImageView!
 	
-	@IBOutlet weak var cover: UIImageView!
+//	@IBOutlet weak var translationButton: UIButton!
+//	@IBOutlet weak var likeButton: UIButton!
+
 	@IBOutlet weak var showtitle: UILabel!
 	@IBOutlet weak var showtitle_ru: UILabel!
-	@IBOutlet weak var introduction: UILabel!
-	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var rating: CosmosView!
+	@IBOutlet weak var introduction: FocusableText!
+	
+//	
+//	@IBOutlet weak var seasonsContainer: UIView!
+	@IBOutlet weak var seasonsScroll: UIScrollView!
+//	@IBOutlet weak var seasonsView: UIView!
+	
+	
+//	@IBOutlet weak var tableView: UITableView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
-		currentShowLiked = Defaults.hasKey(.like) && Defaults[.like]!.contains(show?.sid) ? true : false
-		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
-		token = Defaults[.token]!
-		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
-		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
-		
-		showtitle.text = show?.title!
-		showtitle_ru.text = show?.title_ru!
-		introduction.text = show?.description!
-		if let sid = show?.sid {
-			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
-			let placeholderImage = UIImage(named: "placeholder")!
-			cover.kf_setImageWithURL(URL, placeholderImage: placeholderImage)
-		}
-		self.tableView.registerNib(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+//		self.tableView.registerNib(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+		setup()
 		loadEpisodes()
     }
 	
@@ -110,45 +108,162 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		let likeImage = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
-		likeButton.setImage(likeImage, forState: UIControlState.Normal)
-		let translationImage = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
-		translationButton.setImage(translationImage, forState: UIControlState.Normal)
+//		let likeImage = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+//		likeButton.setImage(likeImage, forState: UIControlState.Normal)
+//		let translationImage = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+//		translationButton.setImage(translationImage, forState: UIControlState.Normal)
 	}
 
-	override var preferredFocusedView: UIView? {
-		return self.tableView
-	}
+//	override var preferredFocusedView: UIView? {
+//		return self.tableView
+//	}
 	
 	
-	@IBAction func likeTapped(sender: AnyObject) {
-		currentShowLiked = !currentShowLiked
-		if currentShowLiked {
-			userLikes.append((show?.sid)!)
-		} else {
-			userLikes = userLikes.filter() { $0 != show?.sid! }
-		}
-		Defaults[.like] = userLikes
-		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
-		likeButton.setImage(image, forState: UIControlState.Normal)
-	}
+//	@IBAction func likeTapped(sender: AnyObject) {
+//		currentShowLiked = !currentShowLiked
+//		if currentShowLiked {
+//			userLikes.append((show?.sid)!)
+//		} else {
+//			userLikes = userLikes.filter() { $0 != show?.sid! }
+//		}
+//		Defaults[.like] = userLikes
+//		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+//		likeButton.setImage(image, forState: UIControlState.Normal)
+//	}
 
-	@IBAction func translationTapped(sender: AnyObject) {
-		if let state = Defaults[.subtitles] {
-			Defaults[.subtitles] = !state
-			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
-			translationButton.setImage(image, forState: UIControlState.Normal)
-			self.tableView.reloadData()
+//	@IBAction func translationTapped(sender: AnyObject) {
+//		if let state = Defaults[.subtitles] {
+//			Defaults[.subtitles] = !state
+//			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+//			translationButton.setImage(image, forState: UIControlState.Normal)
+//			self.tableView.reloadData()
+//		}
+//	}
+	
+	func setup() {
+		
+		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
+		currentShowLiked = Defaults.hasKey(.like) && Defaults[.like]!.contains(show?.sid) ? true : false
+		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
+		token = Defaults[.token]!
+		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
+		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
+		
+		showtitle.text = show?.title!
+		showtitle_ru.text = show?.title_ru!
+		if let imdbRating = show?.imdb_rating {
+			self.rating.rating = Double(imdbRating/2)
 		}
+		self.introduction.show = show
+		self.introduction.parentView = self
+		self.introduction.text = show?.description
+		
+		poster.layer.shadowColor = UIColor.blackColor().CGColor
+		poster.layer.shadowOffset = CGSizeMake(0, 2)
+		poster.layer.shadowOpacity = 0.4
+		poster.layer.shadowRadius = 8
+		
+		showtitle.layer.shadowColor = UIColor.blackColor().CGColor
+		showtitle.layer.shadowOffset = CGSizeMake(0, 2)
+		showtitle.layer.shadowOpacity = 0.4
+		showtitle.layer.shadowRadius = 8
+		
+		showtitle_ru.layer.shadowColor = UIColor.blackColor().CGColor
+		showtitle_ru.layer.shadowOffset = CGSizeMake(0, 2)
+		showtitle_ru.layer.shadowOpacity = 0.4
+		showtitle_ru.layer.shadowRadius = 8
 	}
-
+	
 	/**
 	Load all the episodes for current TV show and construct a list of Seasons
 	*/
 	func loadEpisodes() {
+		
 		guard let showId = show?.sid else {return}
+		getEpisodes(token, show: showId) {
+			
+			//MARK:  Setup segemented control
+			
+			let segments = self.seasons.map {String($0.seasonNumber)}
+			self.seasonsSegment = UISegmentedControl(items: segments)
+			self.seasonsSegment.apportionsSegmentWidthsByContent = true
+			
+			let switchAttributes: [NSObject: AnyObject]? = [NSForegroundColorAttributeName: UIColor.lightGrayColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
+			self.seasonsSegment.setTitleTextAttributes(switchAttributes, forState: .Normal)
+			print("Width of my scroll guy: \(self.seasonsScroll.frame.width)")
+			print("Width of my segment guy: \(self.seasonsSegment.frame.width)")
+			self.seasonsScroll.addSubview(self.seasonsSegment)
+			self.seasonsScroll.contentSize = CGSizeMake(self.seasonsSegment.frame.width+40, self.seasonsSegment.frame.height+10)
+			self.seasonsSegment.frame.origin.y = 10
+			self.seasonsSegment.frame.origin.x = 20
+			//MARK: Setup background image and poster
+			guard let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id else {
+				print("TVDB Token not set or TVDB ID not present. Using default assets")
+				self.backgroundImage.image = UIImage(named: "default-background")
+				if let sid = self.show?.sid {
+					let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
+					self.poster.af_setImageWithURL(URL, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
+				}
+				return
+			}
+			self.getBackgroundImage(tvdbid, tvdbtoken: tvdbtoken) {
+				self.getPoster(tvdbid, tvdbtoken: tvdbtoken) {
+					print("Done getting data from TVDB")
+				}
+			}
+		}
+	}
+	
+	func getBackgroundImage(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
+		
+		TVDB().getImage(tvdb, token: tvdbtoken, type: "fanart", resolution: "1920x1080") { bgResponse, error in
+
+			if let _ = error {
+				print("Error getting background image")
+				self.backgroundImage.image = UIImage(named: "default-background")
+				callback()
+			}
+			
+			guard let bgResponse = bgResponse else {
+				callback(); return
+			}
+			let object = bgResponse["data"].first
+			if let bgImage = object {
+				guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(bgImage.1["fileName"])") else {
+					callback()
+					return
+				}
+				// Works, but is VERY processor expensive
+//				self.backgroundImage.af_setImageWithURL(url, placeholderImage: nil, filter: BlurFilter(blurRadius: 1))
+				self.backgroundImage.af_setImageWithURL(url)
+				let lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+				let lightBlurView = UIVisualEffectView(effect: lightBlur)
+				lightBlurView.frame = self.backgroundImage.bounds
+				self.backgroundImage.addSubview(lightBlurView)
+				callback()
+			}
+		}
+		
+	}
+	
+	func getPoster(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
+		TVDB().getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil) { bgResponse, error in
+			guard let bgResponse = bgResponse else { callback(); return }
+			let object = bgResponse["data"].first
+			if let bgImage = object {
+				guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(bgImage.1["fileName"])") else {
+					callback()
+					return
+				}
+				self.poster.af_setImageWithURL(url, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
+				callback()
+			}
+		}
+	}
+	
+	func getEpisodes(token: String, show: Int, callback: () -> ()) {
 		var seasons = [Season]()
-		API().getEpisodes(token, show: showId) { objects, error in
+		API().getEpisodes(token, show: show) { objects, error in
 			if let result = objects {
 				for episode in result {
 					let s = Season(number: episode.season!, id: episode.season_id!)
@@ -156,13 +271,16 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 				}
 				self.seasons = seasons
 				self.allEpisodes = result
-				let latestSeason = seasons.maxElement({ $0.seasonNumber < $1.seasonNumber })
-				delay(0.5) {
-					self.seasonsController.currentSeason(latestSeason!)
-				}
+				callback()
 			}
 		}
 	}
+	
+	//				let latestSeason = seasons.maxElement({ $0.seasonNumber < $1.seasonNumber })
+	//				delay(0.5) {
+	//					self.seasonsController.currentSeason(latestSeason!)
+	//				}
+	
 	
 	func filterSeason(season: Int) {
 		var episodes = [Episode]()
@@ -172,13 +290,13 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			}
 		}
 		self.episodes = episodes
-		UIView.transitionWithView(tableView,
-			duration:0.35,
-			options:UIViewAnimationOptions.TransitionCrossDissolve,
-			animations: { () -> Void in
-				self.tableView.reloadData()
-			},
-		completion: nil);
+//		UIView.transitionWithView(tableView,
+//			duration:0.35,
+//			options:UIViewAnimationOptions.TransitionCrossDissolve,
+//			animations: { () -> Void in
+//				self.tableView.reloadData()
+//			},
+//		completion: nil);
 	}
 	
 	/**

@@ -7,7 +7,6 @@ target 'Soap4TV' do
 	pod 'AlamofireObjectMapper'
 	pod 'SwiftyUserDefaults', :git => "https://github.com/staticdreams/SwiftyUserDefaults.git"
 	pod 'AlamofireImage'
-	pod 'Kingfisher'
 	pod 'Cosmos'
 end
 
