@@ -199,14 +199,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						self.title_en.text = show.title
 						self.title_ru.text = show.title_ru
 						self.text.text = show.description
-						if let imdbrating = show.imdb_rating {
-							if imdbrating > 0.0 {
-								self.imdbScore.text = "IMDB "+String(imdbrating)
-							}
-						}
 						self.kinopoiskScore.text = show.kinopoisk_rating == 0.0 ? "" : "КиноПоиск "+String(show.kinopoisk_rating!)
 						if let imdbRating = show.imdb_rating {
-							self.rating.rating = Double(imdbRating/2)
+							if imdbRating > 0.0 {
+								self.rating.rating = Double(imdbRating/2)
+								self.imdbScore.text = "IMDB "+String(imdbRating)
+							} else {
+								self.rating.rating = 0
+								self.imdbScore.text = ""
+							}
 						}
 						self.genres.text = ""
 						for genre in showItem["data"]["genre"] {
@@ -238,14 +239,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = newShowsCollectionView.dequeueReusableCellWithReuseIdentifier(featuredCellIdentifier, forIndexPath: indexPath) as! FeaturedCollectionViewCell
+		var cell:FeaturedCollectionViewCell?
+		
+		if cell == nil {
+			cell = newShowsCollectionView.dequeueReusableCellWithReuseIdentifier(featuredCellIdentifier, forIndexPath: indexPath) as? FeaturedCollectionViewCell
+		}
+
 		let show = featuredShows[indexPath.row]
 		if let sid = show.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
 			let placeholderImage = UIImage(named: "placeholder")!
-			cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+			cell?.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage)
 		}
-		return cell
+		return cell!
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

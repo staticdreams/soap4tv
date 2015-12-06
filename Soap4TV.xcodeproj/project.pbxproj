@@ -38,6 +38,7 @@
 		D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */; };
 		D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */; };
 		D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */; };
+		D0C7595F1C14B40D000EF3DA /* ShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7595E1C14B40D000EF3DA /* ShadowLabel.swift */; };
 		D0CE6D711C134DD800F4B378 /* EpisodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */; };
 		D0CE6D721C134DD800F4B378 /* EpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */; };
 		D0DB031E1C0783880095BEAF /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */; };
@@ -82,6 +83,7 @@
 		D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		D0C7595E1C14B40D000EF3DA /* ShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLabel.swift; sourceTree = "<group>"; };
 		D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */,
 				D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */,
 				D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */,
+				D0C7595E1C14B40D000EF3DA /* ShadowLabel.swift */,
 			);
 			name = "Custom Elements";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				D0CE6D711C134DD800F4B378 /* EpisodeCollectionViewCell.swift in Sources */,
 				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,
 				D07373881BF0C67000229B92 /* API.swift in Sources */,
+				D0C7595F1C14B40D000EF3DA /* ShadowLabel.swift in Sources */,
 				D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */,
 				D0DB03211C07863D0095BEAF /* HomeScheduleCollectionView.swift in Sources */,
 				D0835AC51C02628200684DF7 /* SwiftyTimer.swift in Sources */,

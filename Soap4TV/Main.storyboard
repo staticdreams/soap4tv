@@ -279,14 +279,14 @@
                                     <constraint firstAttribute="height" constant="426" id="PVl-Fg-cM0"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vy-BU-2SJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vy-BU-2SJ" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
                                 <rect key="frame" x="383" y="35" width="1195" height="91"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-50-QJ7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-50-QJ7" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
                                 <rect key="frame" x="383" y="134" width="1195" height="58"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
@@ -316,7 +316,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Сезоны" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kl-qT-rgV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Сезоны" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kl-qT-rgV" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
                                 <rect key="frame" x="224" y="513" width="106" height="85"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -340,13 +340,13 @@
                                 <animations/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-Vh-ICo">
-                                <rect key="frame" x="365" y="641" width="1555" height="230"/>
+                                <rect key="frame" x="365" y="641" width="1555" height="250"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="230" id="pyh-nY-sGH"/>
+                                    <constraint firstAttribute="height" constant="250" id="pyh-nY-sGH"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="60" minimumInteritemSpacing="10" id="PTh-kc-b0T">
-                                    <size key="itemSize" width="250" height="170"/>
+                                    <size key="itemSize" width="250" height="208"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
@@ -357,7 +357,7 @@
                                     <outlet property="delegate" destination="A0M-FJ-7zs" id="gek-6X-URf"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGB-DN-L2f">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGB-DN-L2f" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
                                 <rect key="frame" x="641" y="205" width="145" height="42"/>
                                 <animations/>
                                 <constraints>
@@ -368,12 +368,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQK-hh-BhI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQK-hh-BhI" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
                                 <rect key="frame" x="806" y="205" width="225" height="42"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="6aR-xX-ym9"/>
                                     <constraint firstAttribute="height" constant="42" id="hDw-aQ-vtd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVp-eK-fSk" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
+                                <rect key="frame" x="1071" y="205" width="150" height="42"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="K4Z-nC-V8v"/>
+                                    <constraint firstAttribute="width" constant="150" id="dkF-R2-uPN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -386,6 +397,7 @@
                             <constraint firstItem="0zw-2l-5pJ" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" id="5OX-kn-Pve"/>
                             <constraint firstItem="hVF-Km-Zl2" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="35" id="6vs-0r-shl"/>
                             <constraint firstItem="0zw-2l-5pJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" id="72k-La-dDB"/>
+                            <constraint firstItem="xVp-eK-fSk" firstAttribute="leading" secondItem="bQK-hh-BhI" secondAttribute="trailing" constant="40" id="B7H-SZ-aFz"/>
                             <constraint firstItem="bQK-hh-BhI" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="Fs1-6U-VjM"/>
                             <constraint firstItem="5kA-4h-dmY" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="Hr7-Vc-V4B"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="top" secondItem="3Vy-BU-2SJ" secondAttribute="bottom" constant="8" id="KSh-bo-uNR"/>
@@ -396,12 +408,14 @@
                             <constraint firstAttribute="trailing" secondItem="hVF-Km-Zl2" secondAttribute="trailing" constant="342" id="WM2-34-MSb"/>
                             <constraint firstItem="3Vy-BU-2SJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="35" id="WvN-3A-j5x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Vy-BU-2SJ" secondAttribute="trailing" constant="322" id="Y7Q-ni-r6d"/>
+                            <constraint firstItem="hVF-Km-Zl2" firstAttribute="top" secondItem="xVp-eK-fSk" secondAttribute="bottom" constant="1" id="Zgg-ug-qFf"/>
                             <constraint firstItem="lUb-Vh-ICo" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" constant="365" id="Zim-cA-8S6"/>
                             <constraint firstItem="lUb-Vh-ICo" firstAttribute="top" secondItem="hVF-Km-Zl2" secondAttribute="bottom" constant="170" id="gmB-C8-gVI"/>
                             <constraint firstItem="pGB-DN-L2f" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="gpk-rx-8Mf"/>
                             <constraint firstItem="hVF-Km-Zl2" firstAttribute="top" secondItem="5kA-4h-dmY" secondAttribute="bottom" constant="1" id="kOa-KW-hwT"/>
                             <constraint firstAttribute="trailing" secondItem="0zw-2l-5pJ" secondAttribute="trailing" id="kX1-zo-iPB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EeZ-50-QJ7" secondAttribute="trailing" constant="322" id="mpN-Z1-ASl"/>
+                            <constraint firstItem="xVp-eK-fSk" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="n5i-zQ-gAq"/>
                             <constraint firstItem="pGB-DN-L2f" firstAttribute="leading" secondItem="5kA-4h-dmY" secondAttribute="trailing" constant="18" id="nXV-bP-YCH"/>
                             <constraint firstItem="bQK-hh-BhI" firstAttribute="leading" secondItem="pGB-DN-L2f" secondAttribute="trailing" constant="20" id="q2p-4X-WTX"/>
                             <constraint firstItem="5kA-4h-dmY" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="v7f-iX-XGe"/>
@@ -419,6 +433,7 @@
                         <outlet property="seasonsScroll" destination="Ig1-NC-cax" id="PLD-tQ-ocU"/>
                         <outlet property="showtitle" destination="3Vy-BU-2SJ" id="dSX-LL-7fD"/>
                         <outlet property="showtitle_ru" destination="EeZ-50-QJ7" id="ujr-oZ-dJs"/>
+                        <outlet property="year" destination="xVp-eK-fSk" id="Tgs-SV-TwH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oz7-Iw-zbp" userLabel="First Responder" sceneMemberID="firstResponder"/>

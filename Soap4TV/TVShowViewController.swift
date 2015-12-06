@@ -83,10 +83,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 //	@IBOutlet weak var translationButton: UIButton!
 //	@IBOutlet weak var likeButton: UIButton!
 
-	@IBOutlet weak var showtitle: UILabel!
-	@IBOutlet weak var showtitle_ru: UILabel!
-	@IBOutlet weak var imdbRating: UILabel!
-	@IBOutlet weak var kinopoiskRating: UILabel!
+	@IBOutlet weak var showtitle: ShadowLabel!
+	@IBOutlet weak var showtitle_ru: ShadowLabel!
+	@IBOutlet weak var year: ShadowLabel!
+	@IBOutlet weak var imdbRating: ShadowLabel!
+	@IBOutlet weak var kinopoiskRating: ShadowLabel!
 	@IBOutlet weak var rating: CosmosView!
 	@IBOutlet weak var introduction: FocusableText!
 	@IBOutlet weak var episodesCollection: UICollectionView!
@@ -140,6 +141,10 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 //		}
 //	}
 	
+	override var preferredFocusedView: UIView? {
+		return self.seasonsSegment
+	}
+	
 	func setup() {
 		
 		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
@@ -151,6 +156,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		
 		showtitle.text = show?.title!.decodeEntity()
 		showtitle_ru.text = show?.title_ru!.decodeEntity()
+		
+		if let release = show?.year {
+			self.year.text = String(release)+" год"
+		}
+		
 		if let imdbRating = show?.imdb_rating {
 			self.rating.rating = Double(imdbRating/2)
 			if imdbRating > 0.0 {
@@ -172,16 +182,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		poster.layer.shadowOffset = CGSizeMake(0, 2)
 		poster.layer.shadowOpacity = 0.4
 		poster.layer.shadowRadius = 8
-		
-		showtitle.layer.shadowColor = UIColor.blackColor().CGColor
-		showtitle.layer.shadowOffset = CGSizeMake(0, 2)
-		showtitle.layer.shadowOpacity = 0.4
-		showtitle.layer.shadowRadius = 8
-		
-		showtitle_ru.layer.shadowColor = UIColor.blackColor().CGColor
-		showtitle_ru.layer.shadowOffset = CGSizeMake(0, 2)
-		showtitle_ru.layer.shadowOpacity = 0.4
-		showtitle_ru.layer.shadowRadius = 8
+
 	}
 	
 	// MARK: - Loading and filtering data
@@ -219,10 +220,10 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			print("Setting background and poster")
 			self.getBackgroundImage(tvdbid, tvdbtoken: tvdbtoken) {
 //				self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: self.seasons[self.seasonsSegment.selectedSegmentIndex].seasonNumber) {
-					self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken) {
+//					self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken) {
 						print("Done getting data from TVDB")
-						self.getLatestSeason()
-					}
+//						self.getLatestSeason()
+//					}
 //				}
 			}
 		}
@@ -246,6 +247,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	func seasonSegmentChanged(sender : UISegmentedControl) {
 		let seasonIndex = self.seasons[sender.selectedSegmentIndex].seasonNumber
+		print("Season changed to \(seasonIndex)")
 		filterSeason(seasonIndex)
 	}
 	
@@ -261,12 +263,14 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			duration:0.35,
 			options:UIViewAnimationOptions.TransitionCrossDissolve,
 			animations: { () -> Void in
-				self.episodesCollection.reloadData()
+				
 			},
 			completion: { done in
 				if let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id {
 					self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: season) {
-						print("Season poster set!")
+						self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken, season: season) {
+							self.episodesCollection.reloadData()
+						}
 					}
 				}
 		})
@@ -329,8 +333,9 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		}
 	}
 	
-	func getTVDBEpisodes(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
-		TVDB().getEpisodes(tvdb, token: tvdbtoken) { response, error in
+	func getTVDBEpisodes(tvdb: Int, tvdbtoken: String, season: Int?, callback: () -> ()) {
+		
+		TVDB().getEpisodes(tvdb, token: tvdbtoken, season: season) { response, error in
 			guard let objects = response else { callback(); return }
 			self.TVDBEpisodes = objects
 			callback()
@@ -382,20 +387,24 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		
-		let cell = episodesCollection.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EpisodeCollectionViewCell
+		var cell: EpisodeCollectionViewCell?
+		if cell == nil {
+			cell = episodesCollection.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? EpisodeCollectionViewCell
+		}
 		let episode = episodes[indexPath.row]
 //		var version = [Version]()
 		let screenshot = UIImage(named: "default-screenshot")
 		let TVDBEpisode = TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
+
 		if let tvdbid = show?.tvdb_id, eid = TVDBEpisode?.id {
 			if let url = NSURL(string: "\(Config.tvdb.baseURL)episodes/\(tvdbid)/\(eid).jpg") {
-				cell.screenshot.af_setImageWithURL(url, placeholderImage: screenshot, imageTransition: .CrossDissolve(0.2))
+				cell?.screenshot.af_setImageWithURL(url, placeholderImage: screenshot, imageTransition: .CrossDissolve(0.2))
 			}
 		} else {
-			cell.screenshot.image = screenshot
+			cell?.screenshot.image = screenshot
 		}
-		cell.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
+		cell?.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
+		
 //		if Defaults[.subtitles] == false { // Translated version
 //			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
 //		} else { // Subtitled original version
@@ -410,7 +419,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 //			cell.episodeTitle.textColor = UIColor.grayColor()
 //			cell.episodeNumber.textColor = UIColor.grayColor()
 //		}
-		return cell
+		return cell!
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -451,24 +460,17 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		
 		if let next = context.nextFocusedView as? EpisodeCollectionViewCell {
 			next.setNeedsUpdateConstraints()
-//			let scale: CGFloat = 2
 			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
 				}, completion: { done in
-//					next.episodeTitle.font = UIFont(name: "System", size: 40 * scale)
 			})
 		}
 		
 		if let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell {
 			prev.setNeedsUpdateConstraints()
-//			let scale: CGFloat = 1
-			UIView.animateWithDuration(0.1, delay: 0, options: [], animations: {
+			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
-			}, completion: { done in
-//				prev.episodeTitle.font = UIFont(name: "System", size: 30 * scale)
 			})
-			
-			
 		}
 	}
 	

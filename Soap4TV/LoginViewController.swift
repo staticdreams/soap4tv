@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 		loginField.text = Defaults.hasKey(.login) ? Defaults[.login]! : ""
 		passwordField.text = Defaults.hasKey(.password) ? Defaults[.password]! : ""
+		
 		TVDB().login(Config.tvdb.username, password: Config.tvdb.password, apikey: Config.tvdb.apikey) { result, error in
 			if let error = error {
 				print("Error logging into TVDB: \(error)")
@@ -38,6 +39,14 @@ class LoginViewController: UIViewController {
 			}
 		}
     }
+	
+	override var preferredFocusedView: UIView? {
+		if Defaults.hasKey(.login) && Defaults.hasKey(.password) {
+			return loginButton
+		} else {
+			return loginField
+		}
+	}
 
 	func doLogin() {
 	

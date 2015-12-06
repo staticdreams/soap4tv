@@ -251,13 +251,17 @@ struct TVDB {
 		}
 	}
 	
-	func getEpisodes(showId: Int, token: String, completionHandler: (responseObject: [TVDBEpisode]?, error: ErrorType?) -> ()) {
+	func getEpisodes(showId: Int, token: String, season: Int?, completionHandler: (responseObject: [TVDBEpisode]?, error: ErrorType?) -> ()) {
 		let headers = [
 			"Content-Type": "application/json",
 			"Authorization": "Bearer \(token)",
 			"Accept-Language": "en"
 		]
-		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/episodes", headers: headers)
+		var parameters = ["page":"1"]
+		if let s = season {
+			parameters["airedSeason"] = String(s)
+		}
+		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/episodes/query", headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
