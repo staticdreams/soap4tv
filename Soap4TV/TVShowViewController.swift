@@ -68,13 +68,14 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var TVDBEpisodes = [TVDBEpisode]()
 	
 	var currentTranslation: String?
-	var seasonsController = SeasonsTableViewController()
 	var qualityView: UIView!
 	var playerController: AVPlayerViewController?
 	var userLikes = [Int]()
 	
 	var currentShowLiked: Bool = false
 	var seasonsSegment: UISegmentedControl!
+	
+	var posterURL: NSURL?
 	
 	@IBOutlet weak var backgroundImage: UIImageView!
 	@IBOutlet weak var poster: UIImageView!
@@ -217,12 +218,12 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 			print("Setting background and poster")
 			self.getBackgroundImage(tvdbid, tvdbtoken: tvdbtoken) {
-				self.getPoster(tvdbid, tvdbtoken: tvdbtoken) {
+//				self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: self.seasons[self.seasonsSegment.selectedSegmentIndex].seasonNumber) {
 					self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken) {
 						print("Done getting data from TVDB")
 						self.getLatestSeason()
 					}
-				}
+//				}
 			}
 		}
 	}
@@ -262,14 +263,20 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			animations: { () -> Void in
 				self.episodesCollection.reloadData()
 			},
-			completion: nil);
+			completion: { done in
+				if let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id {
+					self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: season) {
+						print("Season poster set!")
+					}
+				}
+		})
 	}
 	
 	// MARK: - TVDB Stuff
 	
 	func getBackgroundImage(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
 		
-		TVDB().getImage(tvdb, token: tvdbtoken, type: "fanart", resolution: "1920x1080") { bgResponse, error in
+		TVDB().getImage(tvdb, token: tvdbtoken, type: "fanart", resolution: "1920x1080", subKey: nil) { bgResponse, error in
 			if let _ = error {
 				print("Error getting background image")
 				self.setDefaultBackground()
@@ -302,8 +309,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		
 	}
 	
-	func getPoster(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
-		TVDB().getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil) { bgResponse, error in
+	func getPoster(tvdb: Int, tvdbtoken: String, subKey: Int?, callback: () -> ()) {
+		TVDB().getImage(tvdb, token: tvdbtoken, type: "season", resolution: nil, subKey: subKey) { bgResponse, error in
 			guard let bgResponse = bgResponse else { callback(); return }
 			let object = bgResponse["data"].first
 			if let bgImage = object {
@@ -312,6 +319,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 					callback()
 					return
 				}
+//				self.posterURL = NSURL()
 				self.poster.af_setImageWithURL(url, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
 				callback()
 			} else {

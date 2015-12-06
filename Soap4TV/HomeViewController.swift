@@ -179,7 +179,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		TVDB().getShow(tvdb, token: tvdbtoken) { showResponse, error in
 			if let showItem = showResponse {
 				
-				TVDB().getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil) { posterResponse, error in
+				TVDB().getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil, subKey: nil) { posterResponse, error in
 					guard let posterResponse = posterResponse else {return}
 					let object = posterResponse["data"].first
 					if let poster = object {

@@ -340,7 +340,7 @@
                                 <animations/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-Vh-ICo">
-                                <rect key="frame" x="365" y="651" width="1555" height="230"/>
+                                <rect key="frame" x="365" y="641" width="1555" height="230"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="pyh-nY-sGH"/>
@@ -397,7 +397,7 @@
                             <constraint firstItem="3Vy-BU-2SJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="35" id="WvN-3A-j5x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Vy-BU-2SJ" secondAttribute="trailing" constant="322" id="Y7Q-ni-r6d"/>
                             <constraint firstItem="lUb-Vh-ICo" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" constant="365" id="Zim-cA-8S6"/>
-                            <constraint firstItem="lUb-Vh-ICo" firstAttribute="top" secondItem="hVF-Km-Zl2" secondAttribute="bottom" constant="180" id="gmB-C8-gVI"/>
+                            <constraint firstItem="lUb-Vh-ICo" firstAttribute="top" secondItem="hVF-Km-Zl2" secondAttribute="bottom" constant="170" id="gmB-C8-gVI"/>
                             <constraint firstItem="pGB-DN-L2f" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="gpk-rx-8Mf"/>
                             <constraint firstItem="hVF-Km-Zl2" firstAttribute="top" secondItem="5kA-4h-dmY" secondAttribute="bottom" constant="1" id="kOa-KW-hwT"/>
                             <constraint firstAttribute="trailing" secondItem="0zw-2l-5pJ" secondAttribute="trailing" id="kX1-zo-iPB"/>
@@ -443,7 +443,7 @@
                         <animations/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
-                                <rect key="frame" x="0.0" y="54" width="360" height="66"/>
+                                <rect key="frame" x="0.0" y="54" width="400" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="66"/>
