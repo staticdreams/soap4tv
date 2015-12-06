@@ -9,6 +9,18 @@
 import Foundation
 import SwiftyUserDefaults
 
+extension String{
+	func decodeEntity() -> String{
+		let encodedData = self.dataUsingEncoding(NSUTF8StringEncoding)!
+		let attributedOptions : [String: AnyObject] = [
+			NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+			NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
+		]
+		let attributedString = try! NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+		return attributedString.string
+	}
+}
+
 extension String {
 	var count: Int { return self.characters.count }
 }

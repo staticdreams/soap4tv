@@ -57,16 +57,16 @@ func ==(lhs: Season, rhs: Season) -> Bool {
 }
 
 
-class TVShowViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TVShowViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 	
 	var show: TVShow?
 	var episodes = [Episode]()
 	var allEpisodes = [Episode]()
 	var token = ""
 	var numberOfSeasons = 0
-	var seasons = [Season]() {
-		didSet { loadSeasons() }
-	}
+	var seasons = [Season]()
+	var TVDBEpisodes = [TVDBEpisode]()
+	
 	var currentTranslation: String?
 	var seasonsController = SeasonsTableViewController()
 	var qualityView: UIView!
@@ -86,18 +86,16 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 	@IBOutlet weak var showtitle_ru: UILabel!
 	@IBOutlet weak var rating: CosmosView!
 	@IBOutlet weak var introduction: FocusableText!
+	@IBOutlet weak var episodesCollection: UICollectionView!
 	
-//	
-//	@IBOutlet weak var seasonsContainer: UIView!
 	@IBOutlet weak var seasonsScroll: UIScrollView!
-//	@IBOutlet weak var seasonsView: UIView!
 	
 	
-//	@IBOutlet weak var tableView: UITableView!
+	// MARK: - Preparation
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-//		self.tableView.registerNib(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+		self.episodesCollection.registerNib(UINib(nibName: "EpisodeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 		setup()
 		loadEpisodes()
     }
@@ -174,6 +172,8 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		showtitle_ru.layer.shadowRadius = 8
 	}
 	
+	// MARK: - Loading and filtering data
+	
 	/**
 	Load all the episodes for current TV show and construct a list of Seasons
 	*/
@@ -190,41 +190,84 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			
 			let switchAttributes: [NSObject: AnyObject]? = [NSForegroundColorAttributeName: UIColor.lightGrayColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
 			self.seasonsSegment.setTitleTextAttributes(switchAttributes, forState: .Normal)
-			print("Width of my scroll guy: \(self.seasonsScroll.frame.width)")
-			print("Width of my segment guy: \(self.seasonsSegment.frame.width)")
+			self.seasonsSegment.addTarget(self, action: "seasonSegmentChanged:", forControlEvents: UIControlEvents.ValueChanged)
 			self.seasonsScroll.addSubview(self.seasonsSegment)
 			self.seasonsScroll.contentSize = CGSizeMake(self.seasonsSegment.frame.width+40, self.seasonsSegment.frame.height+10)
 			self.seasonsSegment.frame.origin.y = 10
-			self.seasonsSegment.frame.origin.x = 20
+			self.seasonsSegment.frame.origin.x = 30
+			
 			//MARK: Setup background image and poster
 			guard let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id else {
 				print("TVDB Token not set or TVDB ID not present. Using default assets")
-				self.backgroundImage.image = UIImage(named: "default-background")
-				if let sid = self.show?.sid {
-					let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
-					self.poster.af_setImageWithURL(URL, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
-				}
+				self.setDefaultBackground()
+				self.setDefaultPoster()
+				self.getLatestSeason()
 				return
 			}
+			print("Setting background and poster")
 			self.getBackgroundImage(tvdbid, tvdbtoken: tvdbtoken) {
 				self.getPoster(tvdbid, tvdbtoken: tvdbtoken) {
-					print("Done getting data from TVDB")
+					self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken) {
+						print("Done getting data from TVDB")
+						self.getLatestSeason()
+					}
 				}
 			}
 		}
 	}
 	
+	func setDefaultBackground() {
+		self.backgroundImage.image = UIImage(named: "default-background")
+	}
+	
+	func setDefaultPoster() {
+		if let sid = self.show?.sid {
+			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
+			self.poster.af_setImageWithURL(URL, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
+		}
+	}
+	
+	func getLatestSeason() {
+		let latestSeason = seasons.maxElement({ $0.seasonNumber < $1.seasonNumber })
+		filterSeason((latestSeason?.seasonNumber)!)
+	}
+	
+	func seasonSegmentChanged(sender : UISegmentedControl) {
+		print("SEGMENTED TRIGGERED!")
+		let seasonIndex = self.seasons[sender.selectedSegmentIndex].seasonNumber
+		filterSeason(seasonIndex)
+	}
+	
+	func filterSeason(season: Int) {
+		var episodes = [Episode]()
+		for episode in self.allEpisodes {
+			if episode.season == season {
+				episodes.append(episode)
+			}
+		}
+		self.episodes = episodes
+		UIView.transitionWithView(episodesCollection,
+			duration:0.35,
+			options:UIViewAnimationOptions.TransitionCrossDissolve,
+			animations: { () -> Void in
+				self.episodesCollection.reloadData()
+			},
+			completion: nil);
+	}
+	
+	// MARK: - TVDB Stuff
+	
 	func getBackgroundImage(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
 		
 		TVDB().getImage(tvdb, token: tvdbtoken, type: "fanart", resolution: "1920x1080") { bgResponse, error in
-
 			if let _ = error {
 				print("Error getting background image")
-				self.backgroundImage.image = UIImage(named: "default-background")
+				self.setDefaultBackground()
 				callback()
 			}
 			
 			guard let bgResponse = bgResponse else {
+				self.setDefaultBackground()
 				callback(); return
 			}
 			let object = bgResponse["data"].first
@@ -241,6 +284,9 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 				lightBlurView.frame = self.backgroundImage.bounds
 				self.backgroundImage.addSubview(lightBlurView)
 				callback()
+			} else {
+				self.setDefaultBackground()
+				callback()
 			}
 		}
 		
@@ -252,14 +298,29 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			let object = bgResponse["data"].first
 			if let bgImage = object {
 				guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(bgImage.1["fileName"])") else {
+					self.setDefaultPoster()
 					callback()
 					return
 				}
 				self.poster.af_setImageWithURL(url, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
 				callback()
+			} else {
+				self.setDefaultPoster()
+				callback()
 			}
 		}
 	}
+	
+	func getTVDBEpisodes(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
+		TVDB().getEpisodes(tvdb, token: tvdbtoken) { response, error in
+			guard let objects = response else { callback(); return }
+			self.TVDBEpisodes = objects
+			callback()
+		}
+	}
+	
+	// MARK: - Soap4me Stuff
+	
 	
 	func getEpisodes(token: String, show: Int, callback: () -> ()) {
 		var seasons = [Season]()
@@ -275,38 +336,9 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 			}
 		}
 	}
+
 	
-	//				let latestSeason = seasons.maxElement({ $0.seasonNumber < $1.seasonNumber })
-	//				delay(0.5) {
-	//					self.seasonsController.currentSeason(latestSeason!)
-	//				}
-	
-	
-	func filterSeason(season: Int) {
-		var episodes = [Episode]()
-		for episode in self.allEpisodes {
-			if episode.season == season {
-				episodes.append(episode)
-			}
-		}
-		self.episodes = episodes
-//		UIView.transitionWithView(tableView,
-//			duration:0.35,
-//			options:UIViewAnimationOptions.TransitionCrossDissolve,
-//			animations: { () -> Void in
-//				self.tableView.reloadData()
-//			},
-//		completion: nil);
-	}
-	
-	/**
-	Loading Seasons list into Season TableView Controller
-	*/
-	func loadSeasons() {
-		seasonsController.seasons = seasons
-	}
-	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	/*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "seasonsSegue" {
 			if let destination = segue.destinationViewController as? SeasonsTableViewController {
 				seasonsController = destination
@@ -319,48 +351,51 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 				destination.token = self.token
 			}
 		}
-	}
+	}*/
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	// MARK: - Episodes Collection View Data Source and Delegate
 	
-	// MARK: TableView datasource
-	
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
 	
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return episodes.count
 	}
 	
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EpisodeTableViewCell
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		
+		let cell = episodesCollection.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EpisodeCollectionViewCell
 		let episode = episodes[indexPath.row]
 		var version = [Version]()
-		cell.title.text = episode.title_en
-		cell.episode.text = String(episode.episode!)
+		let screenshot = UIImage(named: "default-screenshot")
+		let TVDBEpisode = TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
+		if let tvdbid = show?.tvdb_id, eid = TVDBEpisode?.id {
+			if let url = NSURL(string: "\(Config.tvdb.baseURL)episodes/\(tvdbid)/\(eid).jpg") {
+				cell.screenshot.af_setImageWithURL(url, placeholderImage: screenshot, imageTransition: .CrossDissolve(0.2))
+			}
+		} else {
+			cell.screenshot.image = screenshot
+		}
+		cell.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
 		if Defaults[.subtitles] == false { // Translated version
 			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
 		} else { // Subtitled original version
 			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
 		}
-		if version.count > 0 {
-			cell.translate.text = version[0].translate
-			cell.title.textColor = UIColor.blackColor()
-			cell.episode.textColor = UIColor.blackColor()
-			cell.userInteractionEnabled = true
-		} else {
-			cell.translate.text = "-"
-			cell.title.textColor = UIColor.grayColor()
-			cell.episode.textColor = UIColor.grayColor()
-			cell.userInteractionEnabled = false
-		}
+//		if version.count > 0 {
+//			cell.translate.text = version[0].translate
+//			cell.episodeTitle.textColor = UIColor.blackColor()
+//			cell.episodeNumber.textColor = UIColor.blackColor()
+//		} else {
+//			cell.translate.text = "-"
+//			cell.episodeTitle.textColor = UIColor.grayColor()
+//			cell.episodeNumber.textColor = UIColor.grayColor()
+//		}
 		return cell
 	}
 	
-	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let episode = episodes[indexPath.row]
 		var version = [Version]()
 		if Defaults[.subtitles] == false { // Translated version
@@ -370,7 +405,7 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		}
 		
 		let alert = UIAlertController(title: "Качество просмотра", message: "В каком качестве будем смотреть?", preferredStyle: UIAlertControllerStyle.Alert)
-
+		
 		for button in version {
 			let button = UIAlertAction(title: button.quality, style: UIAlertActionStyle.Default) { action in
 				if let videohash = button.hash, eid = button.eid, sid = episode.sid {
@@ -378,14 +413,13 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 					let hashString =  md5(string: "\(self.token)\(eid)\(sid)\(videohash)")
 					let url = "\(Config.URL.cdn)/\(self.token)/\(eid)/\(hashString)/"
 					API().callback(hashString, token: self.token, eid: eid) { result in
-//						print(result)
 						let player = AVPlayer(URL: NSURL(string: url)!)
 						let playerController = self.storyboard?.instantiateViewControllerWithIdentifier("player") as! AVPlayerViewController
 						playerController.player = player
 						self.presentViewController(playerController, animated: true, completion: nil)
 						playerController.player?.play()
 					}
-
+					
 				}
 			}
 			alert.addAction(button)
@@ -394,6 +428,10 @@ class TVShowViewController: UIViewController, UITableViewDataSource, UITableView
 		alert.addAction(cancelButton)
 		
 		self.presentViewController(alert, animated: true, completion: nil)
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
 	}
 
 }

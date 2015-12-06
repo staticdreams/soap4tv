@@ -248,5 +248,31 @@ struct TVDB {
 		}
 	}
 	
+	func getEpisodes(showId: Int, token: String, completionHandler: (responseObject: [TVDBEpisode]?, error: ErrorType?) -> ()) {
+		let headers = [
+			"Content-Type": "application/json",
+			"Authorization": "Bearer \(token)",
+			"Accept-Language": "en"
+		]
+		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/episodes", headers: headers)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					let objects = JSON(data)
+					var episodes = [TVDBEpisode]()
+					for (_,episode):(String, JSON) in objects["data"] {
+						let item = Mapper<TVDBEpisode>().map(episode.dictionaryObject)
+						if let entry = item {
+							episodes.append(entry)
+						}
+					}
+					completionHandler(responseObject: episodes, error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+			}
+		}
+		
+	}
+	
 	
 }

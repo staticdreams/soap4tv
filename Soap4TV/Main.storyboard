@@ -363,9 +363,94 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig1-NC-cax">
-                                <rect key="frame" x="365" y="513" width="1213" height="128"/>
+                                <rect key="frame" x="365" y="513" width="1213" height="130"/>
                                 <animations/>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-Vh-ICo">
+                                <rect key="frame" x="365" y="658" width="1555" height="177"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="177" id="pyh-nY-sGH"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="60" minimumInteritemSpacing="10" id="PTh-kc-b0T">
+                                    <size key="itemSize" width="250" height="170"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wok-8V-yB9">
+                                        <rect key="frame" x="30" y="4" width="250" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4hj-IF-Und">
+                                        <rect key="frame" x="340" y="4" width="250" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tjA-eK-v2l">
+                                        <rect key="frame" x="650" y="4" width="250" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZPe-jL-JLU">
+                                        <rect key="frame" x="960" y="4" width="250" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sQZ-dF-fDC">
+                                        <rect key="frame" x="1270" y="4" width="250" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="48V-cV-dO3">
+                                        <rect key="frame" x="1580" y="4" width="250" height="170"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="A0M-FJ-7zs" id="oBi-lR-lK2"/>
+                                    <outlet property="delegate" destination="A0M-FJ-7zs" id="gek-6X-URf"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -376,11 +461,14 @@
                             <constraint firstItem="5kA-4h-dmY" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="Hr7-Vc-V4B"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="top" secondItem="3Vy-BU-2SJ" secondAttribute="bottom" constant="8" id="KSh-bo-uNR"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leadingMargin" constant="20" id="M3q-SE-omq"/>
+                            <constraint firstAttribute="trailing" secondItem="lUb-Vh-ICo" secondAttribute="trailing" id="T5T-Em-C5l"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="40" id="TrX-0s-6E5"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="Vnl-1y-B6U"/>
                             <constraint firstAttribute="trailing" secondItem="hVF-Km-Zl2" secondAttribute="trailing" constant="342" id="WM2-34-MSb"/>
                             <constraint firstItem="3Vy-BU-2SJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="35" id="WvN-3A-j5x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Vy-BU-2SJ" secondAttribute="trailing" constant="322" id="Y7Q-ni-r6d"/>
+                            <constraint firstItem="lUb-Vh-ICo" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" constant="365" id="Zim-cA-8S6"/>
+                            <constraint firstItem="lUb-Vh-ICo" firstAttribute="top" secondItem="hVF-Km-Zl2" secondAttribute="bottom" constant="187" id="gmB-C8-gVI"/>
                             <constraint firstItem="hVF-Km-Zl2" firstAttribute="top" secondItem="5kA-4h-dmY" secondAttribute="bottom" constant="1" id="kOa-KW-hwT"/>
                             <constraint firstAttribute="trailing" secondItem="0zw-2l-5pJ" secondAttribute="trailing" id="kX1-zo-iPB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EeZ-50-QJ7" secondAttribute="trailing" constant="322" id="mpN-Z1-ASl"/>
@@ -390,6 +478,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="0zw-2l-5pJ" id="y5N-PB-xEA"/>
+                        <outlet property="episodesCollection" destination="lUb-Vh-ICo" id="n6Y-rQ-R8W"/>
                         <outlet property="introduction" destination="hVF-Km-Zl2" id="prg-cP-He2"/>
                         <outlet property="poster" destination="B04-Z6-xrv" id="f59-Vd-ntD"/>
                         <outlet property="rating" destination="5kA-4h-dmY" id="LLB-AP-kPs"/>

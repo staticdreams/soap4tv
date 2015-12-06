@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="episodeCell" id="Rz2-K0-ksD" customClass="EpisodeCollectionViewCell" customModule="Soap4TV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="175"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="59S-BW-E4W">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="140"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="140" id="y4g-oi-2sr"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNA-W3-Uai">
+                        <rect key="frame" x="0.0" y="141" width="250" height="34"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <constraints>
+                <constraint firstItem="VNA-W3-Uai" firstAttribute="top" secondItem="59S-BW-E4W" secondAttribute="bottom" constant="1" id="3PV-xJ-jI4"/>
+                <constraint firstAttribute="trailing" secondItem="VNA-W3-Uai" secondAttribute="trailing" id="9mP-Uq-Sh4"/>
+                <constraint firstItem="59S-BW-E4W" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="C61-NP-Pdz"/>
+                <constraint firstItem="59S-BW-E4W" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="QKE-Qm-2Gx"/>
+                <constraint firstAttribute="bottom" secondItem="VNA-W3-Uai" secondAttribute="bottom" id="RCR-hv-0gj"/>
+                <constraint firstAttribute="trailing" secondItem="59S-BW-E4W" secondAttribute="trailing" id="nW9-d4-KRI"/>
+                <constraint firstItem="VNA-W3-Uai" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="oFK-m2-Flh"/>
+            </constraints>
+            <size key="customSize" width="250" height="175"/>
+            <connections>
+                <outlet property="episodeTitle" destination="VNA-W3-Uai" id="J12-hw-z7v"/>
+                <outlet property="screenshot" destination="59S-BW-E4W" id="zZh-3V-pZ4"/>
+            </connections>
+            <point key="canvasLocation" x="644" y="527.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

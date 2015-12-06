@@ -40,6 +40,8 @@
 		D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */; };
 		D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */; };
 		D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */; };
+		D0CE6D711C134DD800F4B378 /* EpisodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */; };
+		D0CE6D721C134DD800F4B378 /* EpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */; };
 		D0DB031E1C0783880095BEAF /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */; };
 		D0DB031F1C0783880095BEAF /* ScheduleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */; };
 		D0DB03211C07863D0095BEAF /* HomeScheduleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */; };
@@ -84,6 +86,8 @@
 		D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCollectionViewCell.xib; sourceTree = "<group>"; };
 		D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScheduleCollectionView.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				D04FCA5D1C03432400E3A218 /* FocusableText.swift */,
 				D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */,
 				D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */,
+				D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */,
+				D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */,
 			);
 			name = "Custom Elements";
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 				D0419EE61C0218C1005EC129 /* FeaturedCollectionViewCell.xib in Resources */,
 				D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */,
 				D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */,
+				D0CE6D721C134DD800F4B378 /* EpisodeCollectionViewCell.xib in Resources */,
 				D03057521C098CBC000DD2F1 /* TVShowCell.xib in Resources */,
 				D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */,
 				D0DB031F1C0783880095BEAF /* ScheduleCollectionViewCell.xib in Resources */,
@@ -362,6 +369,7 @@
 				D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */,
 				D0301F711BF362EA0093ADDC /* TVShowCollectionController.swift in Sources */,
 				D000B71A1BF6184C006AC142 /* SeasonsTableViewController.swift in Sources */,
+				D0CE6D711C134DD800F4B378 /* EpisodeCollectionViewCell.swift in Sources */,
 				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,
 				D07373881BF0C67000229B92 /* API.swift in Sources */,
 				D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */,

@@ -64,6 +64,35 @@ struct Version {
 	var eid: String?
 }
 
+struct EpisodeResponse: Mappable {
+	var data: [TVDBEpisode]?
+	init?(_ map: Map){}
+	mutating func mapping(map: Map) {
+		data <- map["data"]
+	}
+}
+
+struct TVDBEpisode: Mappable {
+
+	var airedEpisodeNumber: Int?
+	var airedSeason: Int?
+	var episodeName: String?
+	var firstAired: String?
+	var id: Int?
+	var overview: String?
+	
+	init?(_ map: Map){}
+	
+	mutating func mapping(map: Map) {
+		airedEpisodeNumber <- map["airedEpisodeNumber"]
+		airedSeason <- map["airedSeason"]
+		episodeName <- map["episodeName"]
+		firstAired <- map["firstAired"]
+		id <- map["id"]
+		overview <- map["overview"]
+	}
+}
+
 
 
 
