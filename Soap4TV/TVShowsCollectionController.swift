@@ -143,7 +143,6 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 				prev.overlay.alpha = 0
 			})
 		}
-		
 	}
 
     override func didReceiveMemoryWarning() {

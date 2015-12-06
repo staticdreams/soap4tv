@@ -199,7 +199,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 						self.title_en.text = show.title
 						self.title_ru.text = show.title_ru
 						self.text.text = show.description
-						self.imdbScore.text = "IMDB "+String(show.imdb_rating!)
+						if let imdbrating = show.imdb_rating {
+							if imdbrating > 0.0 {
+								self.imdbScore.text = "IMDB "+String(imdbrating)
+							}
+						}
 						self.kinopoiskScore.text = show.kinopoisk_rating == 0.0 ? "" : "КиноПоиск "+String(show.kinopoisk_rating!)
 						if let imdbRating = show.imdb_rating {
 							self.rating.rating = Double(imdbRating/2)

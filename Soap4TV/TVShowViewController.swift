@@ -84,10 +84,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 
 	@IBOutlet weak var showtitle: UILabel!
 	@IBOutlet weak var showtitle_ru: UILabel!
+	@IBOutlet weak var imdbRating: UILabel!
+	@IBOutlet weak var kinopoiskRating: UILabel!
 	@IBOutlet weak var rating: CosmosView!
 	@IBOutlet weak var introduction: FocusableText!
 	@IBOutlet weak var episodesCollection: UICollectionView!
-	
 	@IBOutlet weak var seasonsScroll: UIScrollView!
 	
 	
@@ -147,14 +148,24 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
 		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
 		
-		showtitle.text = show?.title!
-		showtitle_ru.text = show?.title_ru!
+		showtitle.text = show?.title!.decodeEntity()
+		showtitle_ru.text = show?.title_ru!.decodeEntity()
 		if let imdbRating = show?.imdb_rating {
 			self.rating.rating = Double(imdbRating/2)
+			if imdbRating > 0.0 {
+				self.imdbRating.text = "IMDB "+String(imdbRating)
+			}
 		}
+		
+		if let kinopoisk = show?.kinopoisk_rating {
+			if kinopoisk > 0.0 {
+				self.kinopoiskRating.text = "КиноПоиск "+String(kinopoisk)
+			}
+		}
+		
 		self.introduction.show = show
 		self.introduction.parentView = self
-		self.introduction.text = show?.description
+		self.introduction.text = show?.description!.decodeEntity()
 		
 		poster.layer.shadowColor = UIColor.blackColor().CGColor
 		poster.layer.shadowOffset = CGSizeMake(0, 2)
@@ -233,7 +244,6 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func seasonSegmentChanged(sender : UISegmentedControl) {
-		print("SEGMENTED TRIGGERED!")
 		let seasonIndex = self.seasons[sender.selectedSegmentIndex].seasonNumber
 		filterSeason(seasonIndex)
 	}
@@ -367,7 +377,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		
 		let cell = episodesCollection.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EpisodeCollectionViewCell
 		let episode = episodes[indexPath.row]
-		var version = [Version]()
+//		var version = [Version]()
 		let screenshot = UIImage(named: "default-screenshot")
 		let TVDBEpisode = TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
 		if let tvdbid = show?.tvdb_id, eid = TVDBEpisode?.id {
@@ -378,11 +388,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			cell.screenshot.image = screenshot
 		}
 		cell.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
-		if Defaults[.subtitles] == false { // Translated version
-			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
-		} else { // Subtitled original version
-			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
-		}
+//		if Defaults[.subtitles] == false { // Translated version
+//			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
+//		} else { // Subtitled original version
+//			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
+//		}
 //		if version.count > 0 {
 //			cell.translate.text = version[0].translate
 //			cell.episodeTitle.textColor = UIColor.blackColor()
@@ -426,8 +436,32 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		}
 		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Destructive) { (btn) -> Void in }
 		alert.addAction(cancelButton)
-		
 		self.presentViewController(alert, animated: true, completion: nil)
+	}
+	
+	func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+		
+		if let next = context.nextFocusedView as? EpisodeCollectionViewCell {
+			next.setNeedsUpdateConstraints()
+//			let scale: CGFloat = 2
+			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
+				next.transform = CGAffineTransformMakeScale(1.2,1.2)
+				}, completion: { done in
+//					next.episodeTitle.font = UIFont(name: "System", size: 40 * scale)
+			})
+		}
+		
+		if let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell {
+			prev.setNeedsUpdateConstraints()
+//			let scale: CGFloat = 1
+			UIView.animateWithDuration(0.1, delay: 0, options: [], animations: {
+				prev.transform = CGAffineTransformIdentity
+			}, completion: { done in
+//				prev.episodeTitle.font = UIFont(name: "System", size: 30 * scale)
+			})
+			
+			
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {

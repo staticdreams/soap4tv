@@ -11,7 +11,7 @@ import SwiftyUserDefaults
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, UISearchControllerDelegate {
 
-	var showsController = TVShowCollectionController()
+	var showsController = TVShowsCollectionController()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +24,18 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 		let controllers = self.viewControllers
 		
 		for (index, controller) in controllers!.enumerate() {
-			if let tvshowController = controller as? TVShowCollectionController {
+			if let tvshowController = controller as? TVShowsCollectionController {
 				if index == 1 {
 					tvshowController.currentView = .AllShows
 					showsController = tvshowController
 				}
 				else if index == 2 {
 					tvshowController.currentView = .MyShows
+					showsController = tvshowController
 				}
-				else if index == 3 {
-					tvshowController.currentView = .FavShows
-				}
+//				else if index == 3 {
+//					tvshowController.currentView = .FavShows
+//				}
 				else {return}
 			}
 //			if let search = controller as? SearchViewController {

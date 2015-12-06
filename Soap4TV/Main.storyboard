@@ -108,33 +108,6 @@
             </objects>
             <point key="canvasLocation" x="2466" y="-754"/>
         </scene>
-        <!--Все сериалы-->
-        <scene sceneID="G2O-ma-0gc">
-            <objects>
-                <collectionViewController storyboardIdentifier="tvshowsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Phr-kn-yGI" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dbv-Tc-z3v">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="60" minimumInteritemSpacing="40" id="xOZ-90-sSZ">
-                            <size key="itemSize" width="250" height="250"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="50" minY="90" maxX="30" maxY="90"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="Phr-kn-yGI" id="9rI-5E-9JQ"/>
-                            <outlet property="delegate" destination="Phr-kn-yGI" id="acw-Wv-GHu"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Все сериалы" image="movie-icon" id="sLp-SQ-P9C" userLabel="All TV Series"/>
-                    <navigationItem key="navigationItem" id="pNS-eP-V7U"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lgd-X5-Slx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4630" y="537"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="qeM-CZ-g4n">
             <objects>
@@ -367,10 +340,10 @@
                                 <animations/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-Vh-ICo">
-                                <rect key="frame" x="365" y="658" width="1555" height="177"/>
+                                <rect key="frame" x="365" y="651" width="1555" height="230"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="177" id="pyh-nY-sGH"/>
+                                    <constraint firstAttribute="height" constant="230" id="pyh-nY-sGH"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="60" minimumInteritemSpacing="10" id="PTh-kc-b0T">
                                     <size key="itemSize" width="250" height="170"/>
@@ -378,79 +351,34 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wok-8V-yB9">
-                                        <rect key="frame" x="30" y="4" width="250" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <animations/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4hj-IF-Und">
-                                        <rect key="frame" x="340" y="4" width="250" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <animations/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tjA-eK-v2l">
-                                        <rect key="frame" x="650" y="4" width="250" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <animations/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZPe-jL-JLU">
-                                        <rect key="frame" x="960" y="4" width="250" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <animations/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sQZ-dF-fDC">
-                                        <rect key="frame" x="1270" y="4" width="250" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <animations/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="48V-cV-dO3">
-                                        <rect key="frame" x="1580" y="4" width="250" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="170"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <animations/>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="A0M-FJ-7zs" id="oBi-lR-lK2"/>
                                     <outlet property="delegate" destination="A0M-FJ-7zs" id="gek-6X-URf"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGB-DN-L2f">
+                                <rect key="frame" x="641" y="205" width="145" height="42"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="6nC-Gj-Y0f"/>
+                                    <constraint firstAttribute="width" constant="145" id="J4w-Lx-Rtb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQK-hh-BhI">
+                                <rect key="frame" x="806" y="205" width="225" height="42"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="6aR-xX-ym9"/>
+                                    <constraint firstAttribute="height" constant="42" id="hDw-aQ-vtd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -458,6 +386,7 @@
                             <constraint firstItem="0zw-2l-5pJ" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" id="5OX-kn-Pve"/>
                             <constraint firstItem="hVF-Km-Zl2" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="35" id="6vs-0r-shl"/>
                             <constraint firstItem="0zw-2l-5pJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" id="72k-La-dDB"/>
+                            <constraint firstItem="bQK-hh-BhI" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="Fs1-6U-VjM"/>
                             <constraint firstItem="5kA-4h-dmY" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="Hr7-Vc-V4B"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="top" secondItem="3Vy-BU-2SJ" secondAttribute="bottom" constant="8" id="KSh-bo-uNR"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leadingMargin" constant="20" id="M3q-SE-omq"/>
@@ -468,10 +397,13 @@
                             <constraint firstItem="3Vy-BU-2SJ" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="35" id="WvN-3A-j5x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Vy-BU-2SJ" secondAttribute="trailing" constant="322" id="Y7Q-ni-r6d"/>
                             <constraint firstItem="lUb-Vh-ICo" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leading" constant="365" id="Zim-cA-8S6"/>
-                            <constraint firstItem="lUb-Vh-ICo" firstAttribute="top" secondItem="hVF-Km-Zl2" secondAttribute="bottom" constant="187" id="gmB-C8-gVI"/>
+                            <constraint firstItem="lUb-Vh-ICo" firstAttribute="top" secondItem="hVF-Km-Zl2" secondAttribute="bottom" constant="180" id="gmB-C8-gVI"/>
+                            <constraint firstItem="pGB-DN-L2f" firstAttribute="top" secondItem="EeZ-50-QJ7" secondAttribute="bottom" constant="13" id="gpk-rx-8Mf"/>
                             <constraint firstItem="hVF-Km-Zl2" firstAttribute="top" secondItem="5kA-4h-dmY" secondAttribute="bottom" constant="1" id="kOa-KW-hwT"/>
                             <constraint firstAttribute="trailing" secondItem="0zw-2l-5pJ" secondAttribute="trailing" id="kX1-zo-iPB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EeZ-50-QJ7" secondAttribute="trailing" constant="322" id="mpN-Z1-ASl"/>
+                            <constraint firstItem="pGB-DN-L2f" firstAttribute="leading" secondItem="5kA-4h-dmY" secondAttribute="trailing" constant="18" id="nXV-bP-YCH"/>
+                            <constraint firstItem="bQK-hh-BhI" firstAttribute="leading" secondItem="pGB-DN-L2f" secondAttribute="trailing" constant="20" id="q2p-4X-WTX"/>
                             <constraint firstItem="5kA-4h-dmY" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="v7f-iX-XGe"/>
                             <constraint firstItem="sES-z0-7tY" firstAttribute="top" secondItem="0zw-2l-5pJ" secondAttribute="bottom" id="xFB-Di-tDF"/>
                         </constraints>
@@ -479,7 +411,9 @@
                     <connections>
                         <outlet property="backgroundImage" destination="0zw-2l-5pJ" id="y5N-PB-xEA"/>
                         <outlet property="episodesCollection" destination="lUb-Vh-ICo" id="n6Y-rQ-R8W"/>
+                        <outlet property="imdbRating" destination="pGB-DN-L2f" id="g7g-YQ-iLm"/>
                         <outlet property="introduction" destination="hVF-Km-Zl2" id="prg-cP-He2"/>
+                        <outlet property="kinopoiskRating" destination="bQK-hh-BhI" id="3qq-2N-284"/>
                         <outlet property="poster" destination="B04-Z6-xrv" id="f59-Vd-ntD"/>
                         <outlet property="rating" destination="5kA-4h-dmY" id="LLB-AP-kPs"/>
                         <outlet property="seasonsScroll" destination="Ig1-NC-cax" id="PLD-tQ-ocU"/>
@@ -489,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oz7-Iw-zbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4718" y="1913"/>
+            <point key="canvasLocation" x="4630" y="1913"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="Pxs-pm-e5e">
@@ -509,7 +443,7 @@
                         <animations/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
-                                <rect key="frame" x="0.0" y="54" width="400" height="66"/>
+                                <rect key="frame" x="0.0" y="54" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="66"/>
@@ -607,67 +541,12 @@
                     <connections>
                         <segue destination="3pa-FI-5rM" kind="relationship" relationship="viewControllers" id="b2x-hv-Z7f"/>
                         <segue destination="XIq-pv-mUY" kind="relationship" relationship="viewControllers" id="hQ9-co-nTB"/>
-                        <segue destination="TEe-FJ-XWQ" kind="relationship" relationship="viewControllers" id="zE1-4C-Znj"/>
-                        <segue destination="hj4-Il-zCQ" kind="relationship" relationship="viewControllers" id="JWZ-nR-omt"/>
+                        <segue destination="Vj1-Z2-HZe" kind="relationship" relationship="viewControllers" id="NOP-a7-Y32"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-Ts-tey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2466" y="438"/>
-        </scene>
-        <!--Мои сериалы-->
-        <scene sceneID="SNi-mK-Yx1">
-            <objects>
-                <collectionViewController storyboardIdentifier="mytvshowsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TEe-FJ-XWQ" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="x50-Y6-IhF">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="80" minimumInteritemSpacing="50" id="Tqh-1T-1wt">
-                            <size key="itemSize" width="400" height="400"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="40" minY="90" maxX="20" maxY="90"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="TEe-FJ-XWQ" id="tHW-cz-9OT"/>
-                            <outlet property="delegate" destination="TEe-FJ-XWQ" id="NLc-6H-Zuk"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Мои сериалы" image="star-icon" id="JEm-uo-xfh" userLabel="All TV Series"/>
-                    <navigationItem key="navigationItem" id="2G9-IX-aFV"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RGF-q8-Qyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2466" y="1913"/>
-        </scene>
-        <!--Избранное-->
-        <scene sceneID="nxK-KM-KRa">
-            <objects>
-                <collectionViewController storyboardIdentifier="favtvshowsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hj4-Il-zCQ" customClass="TVShowCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vu1-lr-6PX">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="80" minimumInteritemSpacing="50" id="ba8-QW-FTI">
-                            <size key="itemSize" width="400" height="400"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="40" minY="90" maxX="20" maxY="90"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="hj4-Il-zCQ" id="J9R-bB-3pX"/>
-                            <outlet property="delegate" destination="hj4-Il-zCQ" id="a1i-oe-vG8"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Избранное" image="fav-icon" id="B2p-yv-da8" userLabel="All TV Series"/>
-                    <navigationItem key="navigationItem" id="Bxd-Zb-c6q"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T4Y-ao-MIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4630" y="-754"/>
         </scene>
         <!--Сериалы-->
         <scene sceneID="mTL-Mz-9m6">
@@ -731,7 +610,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cp5-60-PYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="651"/>
+            <point key="canvasLocation" x="4630" y="499"/>
         </scene>
         <!--Home-->
         <scene sceneID="u3l-zS-mjQ">
@@ -743,6 +622,70 @@
             </objects>
             <point key="canvasLocation" x="1061" y="1412"/>
         </scene>
+        <!--Мои Сериалы-->
+        <scene sceneID="LLN-wc-xad">
+            <objects>
+                <viewController id="Vj1-Z2-HZe" userLabel="Мои Сериалы" customClass="TVShowsCollectionController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TTD-z9-lU2"/>
+                        <viewControllerLayoutGuide type="bottom" id="vmX-ob-jvR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qs2-aH-h7F">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ENI-Le-zcW">
+                                <rect key="frame" x="0.0" y="170" width="1920" height="796"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="40" minimumInteritemSpacing="40" id="qMG-Cp-C1n">
+                                    <size key="itemSize" width="250" height="250"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="30" minY="40" maxX="30" maxY="40"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Vj1-Z2-HZe" id="WPG-DI-v30"/>
+                                    <outlet property="delegate" destination="Vj1-Z2-HZe" id="xrg-Kp-iZJ"/>
+                                </connections>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uoo-Jj-KUp">
+                                <rect key="frame" x="20" y="976" width="1880" height="70"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="По дате"/>
+                                    <segment title="По рейтингу"/>
+                                    <segment title="По алфавиту (англ)"/>
+                                    <segment title="По алфавиту (рус)"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="sortingChanged:" destination="Vj1-Z2-HZe" eventType="valueChanged" id="UEc-Bb-Gyb"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="uoo-Jj-KUp" firstAttribute="top" secondItem="ENI-Le-zcW" secondAttribute="bottom" constant="10" id="Iee-6J-u0Y"/>
+                            <constraint firstItem="uoo-Jj-KUp" firstAttribute="leading" secondItem="qs2-aH-h7F" secondAttribute="leadingMargin" id="NL5-Lp-qcj"/>
+                            <constraint firstItem="vmX-ob-jvR" firstAttribute="top" secondItem="uoo-Jj-KUp" secondAttribute="bottom" constant="35" id="TGa-IF-Jpp"/>
+                            <constraint firstItem="uoo-Jj-KUp" firstAttribute="trailing" secondItem="qs2-aH-h7F" secondAttribute="trailingMargin" id="dKE-3c-34I"/>
+                            <constraint firstAttribute="trailing" secondItem="ENI-Le-zcW" secondAttribute="trailing" id="etK-k7-Yu9"/>
+                            <constraint firstItem="ENI-Le-zcW" firstAttribute="leading" secondItem="qs2-aH-h7F" secondAttribute="leading" id="uxR-81-1y9"/>
+                            <constraint firstItem="ENI-Le-zcW" firstAttribute="top" secondItem="TTD-z9-lU2" secondAttribute="bottom" constant="30" id="x2j-bD-F2N"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Мои сериалы" image="fav-icon" id="hHQ-Qh-dGG"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ENI-Le-zcW" id="DAW-cE-nkh"/>
+                        <outlet property="sortingControl" destination="uoo-Jj-KUp" id="lQX-1X-lUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UvZ-1I-1j3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="1913"/>
+        </scene>
     </scenes>
     <resources>
         <image name="478" width="400" height="400"/>
@@ -751,7 +694,6 @@
         <image name="like" width="52" height="49"/>
         <image name="logo" width="578" height="598"/>
         <image name="movie-icon" width="59" height="60"/>
-        <image name="star-icon" width="50" height="49"/>
         <image name="talk" width="35" height="61"/>
     </resources>
 </document>

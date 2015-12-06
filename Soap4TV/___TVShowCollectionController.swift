@@ -12,7 +12,7 @@ import Kingfisher
 
 private let reuseIdentifier = "showCell"
 
-class TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
+class ___TVShowCollectionController: UICollectionViewController, UISearchResultsUpdating {
 	
 	var allShows = [TVShow]()
 	
