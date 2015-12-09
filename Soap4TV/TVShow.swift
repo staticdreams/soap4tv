@@ -45,8 +45,7 @@ struct TVShow: Mappable {
 	})
 	
 	let convertToBool = TransformOf<Bool, String>(fromJSON: { (value: String?) -> Bool? in
-		guard let myBool = value else { return nil }
-		return myBool == "1" ? true : false
+		return value == "1" ? true : false
 		}, toJSON: { (value: Bool?) -> String? in
 			return nil
 	})
@@ -68,7 +67,7 @@ struct TVShow: Mappable {
 		country <- map["country"]
 		tvmaze_id <- (map["tvmaze_id"], convertToInt)
 		watching <- (map["watching"], convertToBool)
-		unwatched <- (map["unwatched"], convertToBool)
+		unwatched <- map["unwatched"]
 	}
 }
 

@@ -116,16 +116,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0zw-2l-5pJ">
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnl-dM-yoc">
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnl-dM-yoc">
                                 <rect key="frame" x="1382" y="411" width="130" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="5XI-nc-3Pn"/>
-                                    <constraint firstAttribute="width" constant="130" id="fb4-ca-Wjw"/>
-                                </constraints>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" image="like"/>
                                 <connections>
-                                    <action selector="likeTapped:" destination="A0M-FJ-7zs" eventType="primaryActionTriggered" id="WaQ-Bt-hOs"/>
+                                    <action selector="likeTapped:" destination="A0M-FJ-7zs" eventType="primaryActionTriggered" id="g0Z-nE-RXk"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B04-Z6-xrv">
@@ -147,13 +143,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kA-4h-dmY" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5kA-4h-dmY" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="40" y="515" width="315" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="DFv-8z-nEt"/>
-                                    <constraint firstAttribute="width" constant="240" id="lbv-eE-cRI"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                         <real key="value" value="59"/>
@@ -189,8 +181,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ig1-NC-cax">
                                 <rect key="frame" x="365" y="621" width="1213" height="130"/>
                             </scrollView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-Vh-ICo">
-                                <rect key="frame" x="365" y="743" width="1555" height="250"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-Vh-ICo">
+                                <rect key="frame" x="365" y="745" width="1555" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="pyh-nY-sGH"/>
                                 </constraints>
@@ -206,37 +198,32 @@
                                     <outlet property="delegate" destination="A0M-FJ-7zs" id="gek-6X-URf"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVp-eK-fSk" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
-                                <rect key="frame" x="40" y="579" width="150" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="K4Z-nC-V8v"/>
-                                    <constraint firstAttribute="width" constant="150" id="dkF-R2-uPN"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGB-DN-L2f" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
+                                <rect key="frame" x="408" y="468" width="145" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohM-if-0F9">
-                                <rect key="frame" x="1150" y="411" width="130" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="4tK-z9-eBk"/>
-                                    <constraint firstAttribute="width" constant="130" id="rdh-oL-hUd"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQK-hh-BhI" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
+                                <rect key="frame" x="408" y="518" width="225" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVp-eK-fSk" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
+                                <rect key="frame" x="40" y="579" width="150" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohM-if-0F9">
+                                <rect key="frame" x="1101" y="411" width="130" height="86"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" image="talk"/>
                                 <connections>
                                     <action selector="translationTapped:" destination="A0M-FJ-7zs" eventType="primaryActionTriggered" id="b8b-gB-g9B"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Добавить в мои сериалы" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-GI-zqM">
-                                <rect key="frame" x="1316" y="514" width="262" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1Ch-nM-CQ0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Эпизоды" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fop-CU-pTM" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
                                 <rect key="frame" x="206" y="801" width="124" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -244,8 +231,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Перевод" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEh-JK-oRo">
-                                <rect key="frame" x="1127" y="514" width="177" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="1078" y="514" width="177" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -255,23 +242,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGB-DN-L2f" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
-                                <rect key="frame" x="408" y="468" width="145" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="6nC-Gj-Y0f"/>
-                                    <constraint firstAttribute="width" constant="145" id="J4w-Lx-Rtb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQK-hh-BhI" customClass="ShadowLabel" customModule="Soap4TV" customModuleProvider="target">
-                                <rect key="frame" x="408" y="518" width="225" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="6aR-xX-ym9"/>
-                                    <constraint firstAttribute="height" constant="42" id="hDw-aQ-vtd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Добавить в мои сериалы" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-GI-zqM">
+                                <rect key="frame" x="1279" y="514" width="337" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -283,6 +256,7 @@
                             <constraint firstAttribute="trailing" secondItem="hVF-Km-Zl2" secondAttribute="trailing" constant="342" id="Gba-Mj-bex"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="top" secondItem="3Vy-BU-2SJ" secondAttribute="bottom" id="KSh-bo-uNR"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="leading" secondItem="T02-JD-C6S" secondAttribute="leadingMargin" constant="20" id="M3q-SE-omq"/>
+                            <constraint firstItem="sES-z0-7tY" firstAttribute="top" secondItem="lUb-Vh-ICo" secondAttribute="bottom" constant="85" id="MEg-qv-bLz"/>
                             <constraint firstAttribute="trailing" secondItem="lUb-Vh-ICo" secondAttribute="trailing" id="T5T-Em-C5l"/>
                             <constraint firstItem="B04-Z6-xrv" firstAttribute="top" secondItem="AGs-35-vLG" secondAttribute="bottom" constant="40" id="TrX-0s-6E5"/>
                             <constraint firstItem="EeZ-50-QJ7" firstAttribute="leading" secondItem="B04-Z6-xrv" secondAttribute="trailing" constant="53" id="Vnl-1y-B6U"/>
@@ -303,13 +277,15 @@
                         <outlet property="imdbRating" destination="pGB-DN-L2f" id="g7g-YQ-iLm"/>
                         <outlet property="introduction" destination="hVF-Km-Zl2" id="prg-cP-He2"/>
                         <outlet property="kinopoiskRating" destination="bQK-hh-BhI" id="3qq-2N-284"/>
-                        <outlet property="likeButton" destination="nnl-dM-yoc" id="4YY-22-a8Z"/>
+                        <outlet property="likeButton" destination="nnl-dM-yoc" id="0Mq-bf-zNK"/>
+                        <outlet property="likeLabel" destination="K2l-GI-zqM" id="BwL-76-MO8"/>
                         <outlet property="poster" destination="B04-Z6-xrv" id="f59-Vd-ntD"/>
                         <outlet property="rating" destination="5kA-4h-dmY" id="LLB-AP-kPs"/>
                         <outlet property="seasonsScroll" destination="Ig1-NC-cax" id="PLD-tQ-ocU"/>
                         <outlet property="showtitle" destination="3Vy-BU-2SJ" id="dSX-LL-7fD"/>
                         <outlet property="showtitle_ru" destination="EeZ-50-QJ7" id="ujr-oZ-dJs"/>
                         <outlet property="translationButton" destination="ohM-if-0F9" id="F1p-bg-b0c"/>
+                        <outlet property="translationLabel" destination="yEh-JK-oRo" id="IWU-2N-Ldr"/>
                         <outlet property="year" destination="xVp-eK-fSk" id="Tgs-SV-TwH"/>
                     </connections>
                 </viewController>
@@ -324,59 +300,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nea-hk-Jmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4630" y="3233"/>
-        </scene>
-        <!--Seasons Table View Controller-->
-        <scene sceneID="7hc-SK-5uy">
-            <objects>
-                <tableViewController id="pKz-d3-dOn" customClass="SeasonsTableViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" id="ANu-Bs-rAH">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seasonCell" textLabel="Sir-i9-FU9" style="IBUITableViewCellStyleDefault" id="fU4-aO-oIr">
-                                <rect key="frame" x="0.0" y="54" width="1920" height="66"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fU4-aO-oIr" id="rkL-Ql-eK4">
-                                    <rect key="frame" x="0.0" y="0.0" width="1904" height="66"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Season 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sir-i9-FU9">
-                                            <rect key="frame" x="20" y="0.0" width="1864" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="pKz-d3-dOn" id="6uU-n9-dVS"/>
-                            <outlet property="delegate" destination="pKz-d3-dOn" id="r6h-E9-7R5"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gT0-hG-0vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8409" y="2099.5"/>
-        </scene>
-        <!--Schedule Table View Controller-->
-        <scene sceneID="eRy-iy-Ijx">
-            <objects>
-                <tableViewController id="Ka5-MP-Oqv" customClass="ScheduleTableViewController" customModule="Soap4TV" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="40" sectionFooterHeight="40" id="g8w-ng-0W0">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <connections>
-                            <outlet property="dataSource" destination="Ka5-MP-Oqv" id="uia-GT-uuc"/>
-                            <outlet property="delegate" destination="Ka5-MP-Oqv" id="hwg-it-GEe"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mtb-0V-fKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7049" y="3071"/>
         </scene>
         <!--Description View-->
         <scene sceneID="wEy-al-ouO">
@@ -444,8 +367,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jPJ-sy-GMK">
-                                <rect key="frame" x="0.0" y="170" width="1920" height="796"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jPJ-sy-GMK">
+                                <rect key="frame" x="0.0" y="30" width="1920" height="936"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="40" minimumInteritemSpacing="40" id="Ff1-TY-iq2">
                                     <size key="itemSize" width="250" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -515,8 +438,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ENI-Le-zcW">
-                                <rect key="frame" x="0.0" y="170" width="1920" height="796"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ENI-Le-zcW">
+                                <rect key="frame" x="0.0" y="30" width="1920" height="936"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="40" minimumInteritemSpacing="40" id="qMG-Cp-C1n">
                                     <size key="itemSize" width="250" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>

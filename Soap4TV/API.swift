@@ -174,6 +174,73 @@ struct API {
 				}
 		}
 	}
+	
+	func markWatched(token: String, episode: String, isWatched: Bool, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = [
+			"X-Api-Token": token,
+			"User-Agent": "xbmc for soap",
+			"Accept-Language": "ru"
+		]
+		let parameters = [
+			"what": isWatched ? "mark_watched" : "mark_unwatched",
+			"eid": episode,
+			"token": token
+		]
+		let url = Config.URL.base+"/callback"
+		Alamofire.request(.POST, url, headers: headers, parameters: parameters)
+			.responseJSON { response in
+				switch response.result {
+					case .Success(let data):
+						completionHandler(responseObject: JSON(data), error: nil)
+					case .Failure(let error):
+						completionHandler(responseObject: nil, error: error)
+				}
+			}
+	}
+	
+	func markAllWatched(token: String, show: String, season: Int, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = [
+			"X-Api-Token": token,
+			"User-Agent": "xbmc for soap",
+			"Accept-Language": "ru"
+		]
+		let parameters = [
+			"what": "mark_full",
+			"sid": show,
+			"season": String(season),
+			"token": token
+		]
+		let url = Config.URL.base+"/callback"
+		Alamofire.request(.POST, url, headers: headers, parameters: parameters)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: JSON(data), error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
+	
+	func toggleWatch(token: String, show: String, status: Bool, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+		let headers = [
+			"X-Api-Token": token,
+			"User-Agent": "xbmc for soap",
+			"Accept-Language": "ru"
+		]
+		let parameters = ["token": token]
+		let action = status ? "watch" : "unwatch"
+		let url = Config.URL.base+"/api/soap/\(action)/\(show)"
+		Alamofire.request(.POST, url, headers: headers, parameters: parameters)
+			.responseJSON { response in
+				switch response.result {
+				case .Success(let data):
+					completionHandler(responseObject: JSON(data), error: nil)
+				case .Failure(let error):
+					completionHandler(responseObject: nil, error: error)
+				}
+		}
+	}
 }
 
 

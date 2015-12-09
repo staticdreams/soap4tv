@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D3v-bU-Jwl">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D3v-bU-Jwl">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRb-js-Qoj">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRb-js-Qoj">
                                 <rect key="frame" x="0.0" y="140" width="1920" height="1860"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRs-td-pHm">
@@ -28,18 +28,15 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ST-ra-mJU">
                                                         <rect key="frame" x="0.0" y="0.0" width="1920" height="620"/>
-                                                        <animations/>
                                                     </imageView>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American horror story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TtH-DE-5TA">
                                                         <rect key="frame" x="354" y="27" width="1112" height="91"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flz-K5-SLg">
                                                         <rect key="frame" x="546" y="467" width="132" height="90"/>
-                                                        <animations/>
                                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                                         <state key="normal" image="like"/>
                                                         <connections>
@@ -48,14 +45,12 @@
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Американская история ужасов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV0-gD-qqF">
                                                         <rect key="frame" x="354" y="117" width="1112" height="58"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.9323236965240641" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="byR-CA-Nbh">
                                                         <rect key="frame" x="1506" y="30" width="377" height="555"/>
-                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="377" id="HST-ug-1nc"/>
                                                             <constraint firstAttribute="height" constant="555" id="lje-Cv-EOM"/>
@@ -63,7 +58,6 @@
                                                     </imageView>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZE-yR-ZC9">
                                                         <rect key="frame" x="354" y="467" width="132" height="90"/>
-                                                        <animations/>
                                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                                         <state key="normal" image="play-icon"/>
                                                         <connections>
@@ -72,21 +66,18 @@
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Смотреть" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztP-nB-B4y">
                                                         <rect key="frame" x="354" y="570" width="132" height="34"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Добавить в мои" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRY-9u-lzP">
                                                         <rect key="frame" x="510" y="570" width="205" height="34"/>
-                                                        <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6b-4z-d9t" customClass="CosmosView" customModule="Cosmos">
                                                         <rect key="frame" x="354" y="185" width="215" height="40"/>
-                                                        <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="215" id="BI1-GC-E3S"/>
@@ -115,7 +106,6 @@
                                                     </view>
                                                     <textView hidden="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Hht-IT-wLe" customClass="FocusableText" customModule="Soap4TV" customModuleProvider="target">
                                                         <rect key="frame" x="331" y="225" width="1135" height="223"/>
-                                                        <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="223" id="Rte-AZ-WTY"/>
@@ -127,7 +117,6 @@
                                                     </textView>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="КиноПоиск 7.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSx-Af-uLJ">
                                                         <rect key="frame" x="808" y="185" width="230" height="32"/>
-                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="230" id="hN8-xY-sdX"/>
                                                         </constraints>
@@ -137,7 +126,6 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mT-tB-WMo">
                                                         <rect key="frame" x="56" y="203" width="245" height="194"/>
-                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="245" id="RMs-IN-AcN"/>
                                                             <constraint firstAttribute="height" constant="194" id="xtT-Sq-RJx"/>
@@ -148,7 +136,6 @@
                                                     </label>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Новинки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqe-f6-xzI">
                                                         <rect key="frame" x="56" y="50" width="245" height="43"/>
-                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="43" id="oRK-kO-kZ3"/>
                                                             <constraint firstAttribute="width" constant="245" id="uDA-MV-lkr"/>
@@ -159,7 +146,6 @@
                                                     </label>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMDB 7.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEO-3t-8BX">
                                                         <rect key="frame" x="630" y="185" width="150" height="32"/>
-                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="eWL-S7-zml"/>
                                                         </constraints>
@@ -168,7 +154,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="6ST-ra-mJU" firstAttribute="top" secondItem="7sO-nF-l75" secondAttribute="top" id="2Xp-ch-yXY"/>
@@ -198,7 +183,6 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Расписание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blk-EL-u2U">
                                                 <rect key="frame" x="60" y="978" width="336" height="58"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="336" id="6P9-MC-8jm"/>
                                                     <constraint firstAttribute="height" constant="58" id="LtL-eE-U9w"/>
@@ -209,7 +193,6 @@
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPd-0L-SkC">
                                                 <rect key="frame" x="0.0" y="1076" width="1920" height="380"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1800" id="soy-pf-c28"/>
                                                     <constraint firstAttribute="height" constant="380" id="uGE-KS-7uC"/>
@@ -225,7 +208,6 @@
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r64-Sr-Vf2">
                                                 <rect key="frame" x="416" y="972" width="1454" height="70"/>
-                                                <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                                 <segments>
                                                     <segment title="Вчера"/>
@@ -241,7 +223,6 @@
                                             </segmentedControl>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mp1-B5-ZzX">
                                                 <rect key="frame" x="0.0" y="630" width="1920" height="340"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="340" id="N5g-w1-tad"/>
                                                 </constraints>
@@ -258,7 +239,6 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Mp1-B5-ZzX" secondAttribute="trailing" id="9Xf-Bg-Rvd"/>
@@ -277,7 +257,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="rRs-td-pHm" firstAttribute="width" secondItem="cRb-js-Qoj" secondAttribute="width" id="3RN-C4-gMt"/>
                                     <constraint firstItem="rRs-td-pHm" firstAttribute="top" secondItem="cRb-js-Qoj" secondAttribute="top" id="9Id-m6-QXf"/>
@@ -287,7 +266,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cRb-js-Qoj" secondAttribute="trailing" id="0Hg-M4-6cd"/>
                             <constraint firstItem="rRs-td-pHm" firstAttribute="width" secondItem="grG-C3-p62" secondAttribute="width" id="2a9-y1-mE1"/>
@@ -328,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU7-2X-Gfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155" y="1931"/>
+            <point key="canvasLocation" x="-445" y="1923"/>
         </scene>
         <!--Home Schedule Collection View-->
         <scene sceneID="Sv8-WS-6xd">
@@ -337,7 +315,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="WnQ-3s-h5B">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="ctJ-Al-s4u">
                             <size key="itemSize" width="350" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>

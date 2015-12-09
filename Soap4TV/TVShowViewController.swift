@@ -63,7 +63,6 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var episodes = [Episode]()
 	var allEpisodes = [Episode]()
 	var token = ""
-	var numberOfSeasons = 0
 	var seasons = [Season]()
 	var TVDBEpisodes = [TVDBEpisode]()
 	
@@ -71,10 +70,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var qualityView: UIView!
 	var playerController: AVPlayerViewController?
 	var userLikes = [Int]()
-	
-	var currentShowLiked: Bool = false
 	var seasonsSegment: UISegmentedControl!
-	
 	var posterURL: NSURL?
 	
 	@IBOutlet weak var backgroundImage: UIImageView!
@@ -82,6 +78,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	@IBOutlet weak var translationButton: UIButton!
 	@IBOutlet weak var likeButton: UIButton!
+	@IBOutlet weak var translationLabel: UILabel!
+	@IBOutlet weak var likeLabel: UILabel!
 
 	@IBOutlet weak var showtitle: ShadowLabel!
 	@IBOutlet weak var showtitle_ru: ShadowLabel!
@@ -106,32 +104,36 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		let likeImage = show?.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeLabel.text = show?.watching == true ? "Удалить из моих сериалов": "Добавить в мои сериалы"
+		likeButton.setImage(likeImage, forState: UIControlState.Normal)
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		let likeImage = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
-		likeButton.setImage(likeImage, forState: UIControlState.Normal)
 		let translationImage = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+		translationLabel.text = Defaults[.subtitles]! ? "Субтитры": "Перевод"
 		translationButton.setImage(translationImage, forState: UIControlState.Normal)
 	}
 
-
 	@IBAction func likeTapped(sender: AnyObject) {
-		currentShowLiked = !currentShowLiked
-		if currentShowLiked {
-			userLikes.append((show?.sid)!)
-		} else {
-			userLikes = userLikes.filter() { $0 != show?.sid! }
+		
+		guard let showWatching = show?.watching, showId = show?.sid else {
+			return
 		}
-		Defaults[.like] = userLikes
-		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		show?.watching = !showWatching
+		API().toggleWatch(token, show: String(showId), status: showWatching) { response, error in
+			print(response)
+		}
+		likeLabel.text = show?.watching == true ? "Удалить из моих сериалов": "Добавить в мои сериалы"
+		let image = show?.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
 		likeButton.setImage(image, forState: UIControlState.Normal)
 	}
 
 	@IBAction func translationTapped(sender: AnyObject) {
 		if let state = Defaults[.subtitles] {
 			Defaults[.subtitles] = !state
+			translationLabel.text = Defaults[.subtitles]! ? "Субтитры": "Перевод"
 			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
 			translationButton.setImage(image, forState: UIControlState.Normal)
 			self.episodesCollection.reloadData()
@@ -143,10 +145,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func setup() {
-		
 		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
-		currentShowLiked = Defaults.hasKey(.like) && Defaults[.like]!.contains(show?.sid) ? true : false
-		userLikes = Defaults.hasKey(.like) ? Defaults[.like]! : []
 		token = Defaults[.token]!
 		Defaults[.quality] = Defaults.hasKey(.quality) ? Defaults[.quality] : Quality.HD.rawValue
 		Defaults[.subtitles] = Defaults.hasKey(.subtitles) ? Defaults[.subtitles] : false
@@ -228,9 +227,9 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 					}
 					print("Done getting data from TVDB")
 				}
+				// This is now unused. We're getting episodes and posters based on season switch
 //				self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: self.seasons[self.seasonsSegment.selectedSegmentIndex].seasonNumber) {
 //					self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken) {
-				
 //						self.getLatestSeason()
 //					}
 //				}
@@ -351,6 +350,21 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		}
 	}
 	
+	func updateEpisodeWatchedStatus(index: NSIndexPath, status: Bool) {
+		let cell = episodesCollection.cellForItemAtIndexPath(index) as! EpisodeCollectionViewCell
+		cell.overlay.hidden = status == true ? false : true
+		episodes[index.row].watched = status
+	}
+	
+	func updateAllEpisodesAsWatched() {
+		for cell in episodesCollection.visibleCells() as! [EpisodeCollectionViewCell] {
+			cell.overlay.hidden = false
+		}
+		for (index, _) in episodes.enumerate() {
+			episodes[index].watched = true
+		}
+	}
+	
 	// MARK: - Soap4me Stuff
 	
 	
@@ -407,7 +421,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			cell?.screenshot.image = screenshot
 		}
 		cell?.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
-		cell?.episodeTitle.textColor = episode.watched == true ? UIColor.grayColor() : UIColor.whiteColor()
+//		cell?.episodeTitle.textColor = episode.watched == true ? UIColor.grayColor() : UIColor.whiteColor()
 		cell?.overlay.hidden = episode.watched == true ? false : true
 		
 		if Defaults[.subtitles] == false { // Translated version
@@ -437,10 +451,10 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
 		}
 		
-		let alert = UIAlertController(title: "Качество просмотра", message: "В каком качестве будем смотреть?", preferredStyle: UIAlertControllerStyle.Alert)
+		let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
 		
 		for button in version {
-			let button = UIAlertAction(title: button.quality, style: UIAlertActionStyle.Default) { action in
+			let button = UIAlertAction(title: "Смотреть эпизод в "+button.quality!, style: UIAlertActionStyle.Default) { action in
 				if let videohash = button.hash, eid = button.eid, sid = episode.sid {
 					
 					let hashString =  md5(string: "\(self.token)\(eid)\(sid)\(videohash)")
@@ -457,7 +471,32 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 			alert.addAction(button)
 		}
-		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Destructive) { (btn) -> Void in }
+		let watchedTitle = episode.watched == true ? "Отметить эпизод непросмотренным" : "Отметить эпизод как просмотренный"
+		var newWatchedStatus = false
+		if let currentWatchedStatus = episode.watched {
+			newWatchedStatus = !currentWatchedStatus
+		}
+		let watchedButton = UIAlertAction(title: watchedTitle, style: UIAlertActionStyle.Default) { (btn) -> Void in
+			API().markWatched(self.token, episode: (version.first?.eid)!, isWatched: newWatchedStatus) {response, error in
+				if let _ = response {
+					self.updateEpisodeWatchedStatus(indexPath, status: newWatchedStatus)
+				}
+			}
+		}
+		alert.addAction(watchedButton)
+
+		let watchedAllButton = UIAlertAction(title: "Отметить весь сезон как просмотренный", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+			API().markAllWatched(self.token, show: episode.sid!, season: episode.season!) { response, error in
+				if let _ = response {
+					self.updateAllEpisodesAsWatched()
+				}
+			}
+		}
+		alert.addAction(watchedAllButton)
+		
+		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Destructive) { (btn) -> Void in
+			
+		}
 		alert.addAction(cancelButton)
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
