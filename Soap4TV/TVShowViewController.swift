@@ -80,8 +80,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	@IBOutlet weak var backgroundImage: UIImageView!
 	@IBOutlet weak var poster: UIImageView!
 	
-//	@IBOutlet weak var translationButton: UIButton!
-//	@IBOutlet weak var likeButton: UIButton!
+	@IBOutlet weak var translationButton: UIButton!
+	@IBOutlet weak var likeButton: UIButton!
 
 	@IBOutlet weak var showtitle: ShadowLabel!
 	@IBOutlet weak var showtitle_ru: ShadowLabel!
@@ -93,6 +93,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	@IBOutlet weak var episodesCollection: UICollectionView!
 	@IBOutlet weak var seasonsScroll: UIScrollView!
 	
+	@IBOutlet weak var genre: ShadowLabel!
 	
 	// MARK: - Preparation
 	
@@ -109,37 +110,33 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-//		let likeImage = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
-//		likeButton.setImage(likeImage, forState: UIControlState.Normal)
-//		let translationImage = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
-//		translationButton.setImage(translationImage, forState: UIControlState.Normal)
+		let likeImage = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeButton.setImage(likeImage, forState: UIControlState.Normal)
+		let translationImage = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+		translationButton.setImage(translationImage, forState: UIControlState.Normal)
 	}
 
-//	override var preferredFocusedView: UIView? {
-//		return self.tableView
-//	}
-	
-	
-//	@IBAction func likeTapped(sender: AnyObject) {
-//		currentShowLiked = !currentShowLiked
-//		if currentShowLiked {
-//			userLikes.append((show?.sid)!)
-//		} else {
-//			userLikes = userLikes.filter() { $0 != show?.sid! }
-//		}
-//		Defaults[.like] = userLikes
-//		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
-//		likeButton.setImage(image, forState: UIControlState.Normal)
-//	}
 
-//	@IBAction func translationTapped(sender: AnyObject) {
-//		if let state = Defaults[.subtitles] {
-//			Defaults[.subtitles] = !state
-//			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
-//			translationButton.setImage(image, forState: UIControlState.Normal)
-//			self.tableView.reloadData()
-//		}
-//	}
+	@IBAction func likeTapped(sender: AnyObject) {
+		currentShowLiked = !currentShowLiked
+		if currentShowLiked {
+			userLikes.append((show?.sid)!)
+		} else {
+			userLikes = userLikes.filter() { $0 != show?.sid! }
+		}
+		Defaults[.like] = userLikes
+		let image = currentShowLiked ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeButton.setImage(image, forState: UIControlState.Normal)
+	}
+
+	@IBAction func translationTapped(sender: AnyObject) {
+		if let state = Defaults[.subtitles] {
+			Defaults[.subtitles] = !state
+			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+			translationButton.setImage(image, forState: UIControlState.Normal)
+			self.episodesCollection.reloadData()
+		}
+	}
 	
 	override var preferredFocusedView: UIView? {
 		return self.seasonsSegment
@@ -219,9 +216,21 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 			print("Setting background and poster")
 			self.getBackgroundImage(tvdbid, tvdbtoken: tvdbtoken) {
+				TVDB().getShow(tvdbid, token: tvdbtoken) { showResponse, error in
+					if let show = showResponse {
+						for genre in show["data"]["genre"] {
+							let g = GenreType(rawValue: String(genre.1))
+							if let gType = g {
+								let string = self.genre.text?.stringByAppendingFormat("%@ ", "\(gType.translate())")
+								self.genre.text = string
+							}
+						}
+					}
+					print("Done getting data from TVDB")
+				}
 //				self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: self.seasons[self.seasonsSegment.selectedSegmentIndex].seasonNumber) {
 //					self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken) {
-						print("Done getting data from TVDB")
+				
 //						self.getLatestSeason()
 //					}
 //				}
@@ -362,12 +371,6 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 
 	
 	/*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "seasonsSegue" {
-			if let destination = segue.destinationViewController as? SeasonsTableViewController {
-				seasonsController = destination
-				seasonsController.tvshowController = self
-			}
-		}
 		if segue.identifier == "scheduleSegue" {
 			if let destination = segue.destinationViewController as? ScheduleTableViewController {
 				destination.sid = show?.sid
@@ -392,7 +395,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			cell = episodesCollection.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? EpisodeCollectionViewCell
 		}
 		let episode = episodes[indexPath.row]
-//		var version = [Version]()
+		var version = [Version]()
 		let screenshot = UIImage(named: "default-screenshot")
 		let TVDBEpisode = TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
 
@@ -404,22 +407,25 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			cell?.screenshot.image = screenshot
 		}
 		cell?.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
+		cell?.episodeTitle.textColor = episode.watched == true ? UIColor.grayColor() : UIColor.whiteColor()
+		cell?.overlay.hidden = episode.watched == true ? false : true
 		
-//		if Defaults[.subtitles] == false { // Translated version
-//			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
-//		} else { // Subtitled original version
-//			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
-//		}
-//		if version.count > 0 {
-//			cell.translate.text = version[0].translate
-//			cell.episodeTitle.textColor = UIColor.blackColor()
-//			cell.episodeNumber.textColor = UIColor.blackColor()
-//		} else {
-//			cell.translate.text = "-"
-//			cell.episodeTitle.textColor = UIColor.grayColor()
-//			cell.episodeNumber.textColor = UIColor.grayColor()
-//		}
+		if Defaults[.subtitles] == false { // Translated version
+			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
+		} else { // Subtitled original version
+			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
+		}
+		if version.count > 0 {
+//			cell?.translate.text = version[0].translate
+			cell?.episodeTitle.textColor = UIColor.whiteColor()
+//			cell?.episodeNumber.textColor = UIColor.blackColor()
+		} else {
+//			cell?.translate.text = "-"
+			cell?.episodeTitle.textColor = UIColor.grayColor()
+//			cell?.episodeNumber.textColor = UIColor.grayColor()
+		}
 		return cell!
+	
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

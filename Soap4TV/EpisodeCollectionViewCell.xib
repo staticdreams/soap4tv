@@ -23,10 +23,15 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VNA-W3-Uai">
                         <rect key="frame" x="0.0" y="141" width="250" height="67"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KY5-7W-WCp">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="141"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.61106701203208558" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -36,14 +41,19 @@
                 <constraint firstItem="VNA-W3-Uai" firstAttribute="top" secondItem="59S-BW-E4W" secondAttribute="bottom" constant="1" id="3PV-xJ-jI4"/>
                 <constraint firstAttribute="trailing" secondItem="VNA-W3-Uai" secondAttribute="trailing" id="9mP-Uq-Sh4"/>
                 <constraint firstItem="59S-BW-E4W" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="C61-NP-Pdz"/>
+                <constraint firstItem="KY5-7W-WCp" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="Lk0-66-z5s"/>
+                <constraint firstAttribute="trailing" secondItem="KY5-7W-WCp" secondAttribute="trailing" id="O8y-83-C4c"/>
                 <constraint firstItem="59S-BW-E4W" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="QKE-Qm-2Gx"/>
                 <constraint firstAttribute="bottom" secondItem="VNA-W3-Uai" secondAttribute="bottom" id="RCR-hv-0gj"/>
+                <constraint firstItem="KY5-7W-WCp" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="RhS-Ta-wv8"/>
+                <constraint firstItem="VNA-W3-Uai" firstAttribute="top" secondItem="KY5-7W-WCp" secondAttribute="bottom" id="U9p-37-Jon"/>
                 <constraint firstAttribute="trailing" secondItem="59S-BW-E4W" secondAttribute="trailing" id="nW9-d4-KRI"/>
                 <constraint firstItem="VNA-W3-Uai" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="oFK-m2-Flh"/>
             </constraints>
             <size key="customSize" width="250" height="208"/>
             <connections>
                 <outlet property="episodeTitle" destination="VNA-W3-Uai" id="J12-hw-z7v"/>
+                <outlet property="overlay" destination="KY5-7W-WCp" id="Bs1-Z1-f8H"/>
                 <outlet property="screenshot" destination="59S-BW-E4W" id="zZh-3V-pZ4"/>
             </connections>
             <point key="canvasLocation" x="644" y="544"/>

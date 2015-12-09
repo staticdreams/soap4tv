@@ -12,6 +12,7 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
     
 	@IBOutlet weak var screenshot: UIImageView!
 	@IBOutlet weak var episodeTitle: UILabel!
+	@IBOutlet weak var overlay: UIView!
 	
 	override func awakeFromNib() {
 		

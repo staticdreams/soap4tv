@@ -34,10 +34,9 @@ struct Episode: Mappable {
 			return nil
 	})
 	
-	let convertToBool = TransformOf<Bool, String>(fromJSON: { (value: String?) -> Bool? in
-		guard let myBool = value else { return false }
-		return myBool == "1" ? true : false
-		}, toJSON: { (value: Bool?) -> String? in
+	let convertToBool = TransformOf<Bool, Int>(fromJSON: { (value: Int?) -> Bool? in
+		return value == 1 ? true : false
+		}, toJSON: { (value: Bool?) -> Int? in
 			return nil
 	})
 	
@@ -62,14 +61,6 @@ struct Version {
 	var quality: String?
 	var translate: String?
 	var eid: String?
-}
-
-struct EpisodeResponse: Mappable {
-	var data: [TVDBEpisode]?
-	init?(_ map: Map){}
-	mutating func mapping(map: Map) {
-		data <- map["data"]
-	}
 }
 
 struct TVDBEpisode: Mappable {
