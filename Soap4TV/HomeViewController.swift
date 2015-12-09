@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	var allShows = [TVShow]()
 	var scheduledEpisodes = [Schedule]()
 	var selectedFeaturedShow: TVShow?
+	var selectedFeaturedIndex: NSIndexPath?
 	var scheduleController: HomeScheduleCollectionView?
 	var isImageBlurred = false
 	
@@ -99,7 +100,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	@IBAction func likeShow(sender: AnyObject) {
-		
+		guard let showWatching = selectedFeaturedShow?.watching, showId = selectedFeaturedShow?.sid else {
+			return
+		}
+		// TODO: Get cell index of a clicked tv show and set new status in the global filtered list
+		self.featuredShows[selectedFeaturedIndex!.row].watching = !showWatching
+		selectedFeaturedShow?.watching = !showWatching
+		API().toggleWatch(token!, show: String(showId), status: !showWatching) { response, error in
+//			print(response)
+		}
+		likeLabel.text = selectedFeaturedShow?.watching == true ? "Не буду смотреть": "Буду смотреть"
+		let image = selectedFeaturedShow?.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeButton.setImage(image, forState: UIControlState.Normal)
 	}
 	
 	private func loadFeaturedData(callback: () -> ()) {
@@ -176,6 +188,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		guard let tvdb = show.tvdb_id, tvdbtoken = Defaults[.TVDBToken] else { return }
 		self.text.show = show
 		self.text.parentView = self
+		
+		let likeImage = show.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeLabel.text = show.watching == true ? "Не буду смотреть": "Буду смотреть"
+		likeButton.setImage(likeImage, forState: UIControlState.Normal)
+		
 		TVDB().getShow(tvdb, token: tvdbtoken) { showResponse, error in
 			if let showItem = showResponse {
 				
@@ -255,12 +272,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//		if let cell = newShowsCollectionView.dequeueReusableCellWithReuseIdentifier(featuredCellIdentifier, forIndexPath: indexPath) as? FeaturedCollectionViewCell {
-//			UIView.animateWithDuration(0.1, animations: {
-//				cell.transform = CGAffineTransformMakeScale(2.5,2.5)
-//			})
-//		}
 		let show = featuredShows[indexPath.row]
+		self.selectedFeaturedIndex = indexPath
 		getFeaturedShowInfo(show)
 
 	}

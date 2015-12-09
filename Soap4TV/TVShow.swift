@@ -26,7 +26,7 @@ struct TVShow: Mappable {
 	var country: String?
 	var tvmaze_id: Int?
 	var watching: Bool?
-	var unwatched: Bool?
+	var unwatched: Int?
 	
 	init?(_ map: Map){}
 	

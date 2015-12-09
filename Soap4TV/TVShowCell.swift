@@ -19,12 +19,17 @@ class TVShowCell: UICollectionViewCell {
 	@IBOutlet weak var year: UILabel!
 	@IBOutlet weak var imdb: UILabel!
 	
+	@IBOutlet weak var badge: UIView!
+	@IBOutlet weak var unwatchedLabel: UILabel!
+	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		layer.shadowColor = UIColor.blackColor().CGColor
 		layer.shadowOffset = CGSizeMake(0, 2)
 		layer.shadowOpacity = 0.4
 		layer.shadowRadius = 8
+//		self.badge.sizeToFit()
+		self.badge.layer.cornerRadius = self.badge.frame.size.width / 2
 	}
 	
 }

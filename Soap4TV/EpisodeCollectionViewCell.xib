@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,28 +15,23 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="59S-BW-E4W">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="140"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="y4g-oi-2sr"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VNA-W3-Uai">
                         <rect key="frame" x="0.0" y="141" width="250" height="67"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KY5-7W-WCp">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="141"/>
-                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.61106701203208558" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
-                <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <animations/>
             <constraints>
                 <constraint firstItem="VNA-W3-Uai" firstAttribute="top" secondItem="59S-BW-E4W" secondAttribute="bottom" constant="1" id="3PV-xJ-jI4"/>
                 <constraint firstAttribute="trailing" secondItem="VNA-W3-Uai" secondAttribute="trailing" id="9mP-Uq-Sh4"/>

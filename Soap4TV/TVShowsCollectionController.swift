@@ -114,6 +114,15 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		cell.overlay.alpha = 0
 		cell.alpha = 0
 		UIView.animateWithDuration(0.5, animations: { cell.alpha = 1 })
+		
+		if let unwatched = tvshow.unwatched {
+//			if currentView == .MyShows {
+				cell.unwatchedLabel.text = String(unwatched)
+//			}
+		} else {
+			cell.badge.hidden = true
+		}
+	
 		return cell
 	}
 	
@@ -132,6 +141,9 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
 				next.overlay.alpha = 0.8
+//				if self.currentView == .MyShows {
+					next.badge.hidden = true
+//				}
 				}, completion: { done in
 			})
 		}
@@ -141,6 +153,9 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			UIView.animateWithDuration(0.1, animations: {
 				prev.transform = CGAffineTransformIdentity
 				prev.overlay.alpha = 0
+				if prev.unwatchedLabel.text != "" {
+					prev.badge.hidden = false
+				}
 			})
 		}
 	}
