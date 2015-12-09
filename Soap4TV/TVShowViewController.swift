@@ -122,7 +122,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			return
 		}
 		show?.watching = !showWatching
-		API().toggleWatch(token, show: String(showId), status: showWatching) { response, error in
+		API().toggleWatch(token, show: String(showId), status: !showWatching) { response, error in
 			print(response)
 		}
 		likeLabel.text = show?.watching == true ? "Удалить из моих сериалов": "Добавить в мои сериалы"
