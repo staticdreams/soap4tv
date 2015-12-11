@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FCE2516D690D42D156078D05'
+               BlueprintIdentifier = '0748516095FF14D4FE00AC97'
                BlueprintName = 'Pods-Soap4TV'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Soap4TV.framework'>

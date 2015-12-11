@@ -7,7 +7,7 @@ PODS:
     - ObjectMapper (~> 1.0)
   - Cosmos (1.1.5)
   - ObjectMapper (1.0.1)
-  - SwiftyJSON (2.3.1)
+  - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.0.1)
 
 DEPENDENCIES:
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
   Cosmos: d05465696561ccb50fa8b7574026326bb23d654b
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: 0fc5068f85e88c99bf9dc2f4499f41254426c0f7
 
 COCOAPODS: 0.39.0

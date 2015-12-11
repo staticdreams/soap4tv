@@ -11,13 +11,13 @@ import Foundation
 struct Config {
 
 	struct URL {
-		static let base = "http://soap4.me"
-		static let covers = "http://covers.s4me.ru"
-		static let cdn = "http://storage.soap4.me"
+		static let base = "https://soap4.me"
+		static let covers = "http://covers.soap4.me"
+		static let cdn = "https://storage.soap4.me"
 	}
 	
 	struct tvdb {
-		static let baseURL = "http://thetvdb.com/banners/"
+		static let baseURL = "https://thetvdb.com/banners/"
 		static let apiURL = "https://api-beta.thetvdb.com"
 		static let username = "kernelpanic"
 		static let password = "marinka"
