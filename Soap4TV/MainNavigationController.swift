@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyUserDefaults
 
-class MainNavigationController: UITabBarController, UITabBarControllerDelegate, UISearchControllerDelegate {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate {
 
 	var showsController = TVShowsCollectionController()
 	
@@ -38,28 +38,8 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 //				}
 				else {return}
 			}
-//			if let search = controller as? SearchViewController {
-//				let searchController = UISearchController(searchResultsController: showsController)
-//				searchController.searchResultsUpdater = showsController
-//			}
 		}
 		
-//		let searchController = UISearchController(searchResultsController: showsController)
-//		searchController.searchResultsUpdater = showsController
-//		searchController.hidesNavigationBarDuringPresentation = false
-//		
-//		let searchPlaceholderText = NSLocalizedString("Enter keyword (e.g. iceland)", comment: "")
-//		searchController.searchBar.placeholder = searchPlaceholderText
-//		
-//		let searchItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
-//		searchController.tabBarItem = searchItem
-//		
-//		let searchContainer = UISearchContainerViewController(searchController: searchController)
-//		let navController = UINavigationController(rootViewController: searchContainer)
-//		controllers?.append(searchContainer)
-		
-//		controllers?.append(searchController)
-//		self.viewControllers = controllers
     }
 	
 	func registerTokenRefresh() {

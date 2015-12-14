@@ -8,7 +8,6 @@
 
 import ObjectMapper
 
-
 struct Episode: Mappable {
 	
 //	var eid: Int?

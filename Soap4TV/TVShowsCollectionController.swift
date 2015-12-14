@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyUserDefaults
-import AlamofireImage
 
 private let reuseIdentifier = "showCell"
 

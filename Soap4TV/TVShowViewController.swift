@@ -10,7 +10,6 @@ import UIKit
 import SwiftyUserDefaults
 import AVFoundation
 import AVKit
-import AlamofireImage
 import Cosmos
 
 private let reuseIdentifier = "EpisodeCell"

@@ -32,10 +32,8 @@ class LoginViewController: UIViewController {
 				print("Error logging into TVDB: \(error)")
 				Defaults[.TVDBToken] = nil
 			}
-			if let result = result {
-				if result["token"] != nil {
-					Defaults[.TVDBToken] = result["token"].stringValue
-				}
+			if let result = result where result["token"] != nil {
+				Defaults[.TVDBToken] = result["token"].stringValue
 			}
 		}
     }
@@ -71,28 +69,26 @@ class LoginViewController: UIViewController {
 				activityIndicator.stopAnimating()
 				self.loginButton.userInteractionEnabled = true
 			}
-			if let result = result {
-				if result["ok"] == 1 {
-//					print("Current token is: \(result["token"].stringValue)")
-					Defaults[.login] = login
-					Defaults[.password] = password
-					Defaults[.token] = result["token"].stringValue
-					Defaults[.till] = result["till"].intValue
-					Defaults[.sid] = result["sid"].stringValue
-					self.token = result["token"].stringValue
-					delay(0.5) {
-						self.loginButton.userInteractionEnabled = true
-						activityIndicator.stopAnimating()
-						self.performSegueWithIdentifier("openAppSegue", sender: nil)
-					}
-				} else {
-					activityIndicator.stopAnimating()
-					self.errorTitle.hidden = false
-					self.errorMessage.hidden = false
+			if let result = result where result["ok"] == 1 {
+				Defaults[.login] = login
+				Defaults[.password] = password
+				Defaults[.token] = result["token"].stringValue
+				Defaults[.till] = result["till"].intValue
+				Defaults[.sid] = result["sid"].stringValue
+				self.token = result["token"].stringValue
+				delay(0.5) {
 					self.loginButton.userInteractionEnabled = true
-					return
+					activityIndicator.stopAnimating()
+					self.performSegueWithIdentifier("openAppSegue", sender: nil)
 				}
+			} else {
+				activityIndicator.stopAnimating()
+				self.errorTitle.hidden = false
+				self.errorMessage.hidden = false
+				self.loginButton.userInteractionEnabled = true
+				return
 			}
+			
 		}
 	}
 	
