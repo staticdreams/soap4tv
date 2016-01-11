@@ -9,4 +9,3 @@ target 'Soap4TV' do
 	pod 'AlamofireImage'
 	pod 'Cosmos'
 end
-

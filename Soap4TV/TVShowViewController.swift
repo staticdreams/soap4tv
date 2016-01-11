@@ -351,13 +351,13 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	func updateEpisodeWatchedStatus(index: NSIndexPath, status: Bool) {
 		let cell = episodesCollection.cellForItemAtIndexPath(index) as! EpisodeCollectionViewCell
-		cell.overlay.hidden = status == true ? false : true
+		cell.screenshot.layer.borderWidth = status == true ? 0 : 3
 		episodes[index.row].watched = status
 	}
 	
 	func updateAllEpisodesAsWatched() {
 		for cell in episodesCollection.visibleCells() as! [EpisodeCollectionViewCell] {
-			cell.overlay.hidden = false
+			cell.screenshot.layer.borderWidth = 0
 		}
 		for (index, _) in episodes.enumerate() {
 			episodes[index].watched = true
@@ -420,8 +420,9 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			cell?.screenshot.image = screenshot
 		}
 		cell?.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
-//		cell?.episodeTitle.textColor = episode.watched == true ? UIColor.grayColor() : UIColor.whiteColor()
-		cell?.overlay.hidden = episode.watched == true ? false : true
+		
+		cell?.screenshot.layer.borderColor = UIColor.whiteColor().CGColor
+		cell?.screenshot.layer.borderWidth = episode.watched == true ? 0 : 3
 		
 		if Defaults[.subtitles] == false { // Translated version
 			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}

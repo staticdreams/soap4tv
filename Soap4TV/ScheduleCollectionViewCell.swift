@@ -15,6 +15,4 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var showEpisode: UILabel!
 	@IBOutlet weak var episodeTitle: UILabel!
 	
-	
-	
 }
