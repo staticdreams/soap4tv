@@ -245,7 +245,12 @@ public class ImageDownloader {
         completion: CompletionHandler?)
         -> RequestReceipt?
     {
-        return downloadImage(URLRequest: URLRequest, filter: nil, completion: completion)
+        return downloadImage(
+            URLRequest: URLRequest,
+            receiptID: NSUUID().UUIDString,
+            filter: nil,
+            completion: completion
+        )
     }
 
     /**
@@ -275,8 +280,22 @@ public class ImageDownloader {
         completion: CompletionHandler?)
         -> RequestReceipt?
     {
+        return downloadImage(
+            URLRequest: URLRequest,
+            receiptID: NSUUID().UUIDString,
+            filter: filter,
+            completion: completion
+        )
+    }
+
+    func downloadImage(
+        URLRequest URLRequest: URLRequestConvertible,
+        receiptID: String,
+        filter: ImageFilter?,
+        completion: CompletionHandler?)
+        -> RequestReceipt?
+    {
         var request: Request!
-        let receiptID = NSUUID().UUIDString
 
         dispatch_sync(synchronizationQueue) {
             // 1) Append the filter and completion handler to a pre-existing request if it already exists
@@ -397,6 +416,37 @@ public class ImageDownloader {
         }
 
         return nil
+    }
+
+    /**
+        Creates a download request using the internal Alamofire `Manager` instance for each specified URL request.
+
+        For each request, if the same download request is already in the queue or currently being downloaded, the
+        filter and completion handler are appended to the already existing request. Once the request completes, all
+        filters and completion handlers attached to the request are executed in the order they were added.
+        Additionally, any filters attached to the request with the same identifiers are only executed once. The
+        resulting image is then passed into each completion handler paired with the filter.
+
+        You should not attempt to directly cancel any of the `request`s inside the request receipts array since other
+        callers may be relying on the completion of that request. Instead, you should call
+        `cancelRequestForRequestReceipt` with the returned request receipt to allow the `ImageDownloader` to optimize
+        the cancellation on behalf of all active callers.
+
+        - parameter URLRequests: The URL requests.
+        - parameter filter       The image filter to apply to the image after each download is complete.
+        - parameter completion:  The closure called when each download request is complete.
+
+        - returns: The request receipts for the download requests if available. If an image is stored in the image
+                   cache and the URL request cache policy allows the cache to be used, a receipt will not be returned
+                   for that request.
+    */
+    public func downloadImages(
+        URLRequests URLRequests: [URLRequestConvertible],
+        filter: ImageFilter? = nil,
+        completion: CompletionHandler? = nil)
+        -> [RequestReceipt]
+    {
+        return URLRequests.flatMap { downloadImage(URLRequest: $0, filter: filter, completion: completion) }
     }
 
     /**
