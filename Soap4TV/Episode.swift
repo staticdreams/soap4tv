@@ -10,13 +10,9 @@ import ObjectMapper
 
 struct Episode: Mappable {
 	
-//	var eid: Int?
 	var sid: String?
 	var episode: Int?
 	var season: Int?
-//	var quality: String?
-//	var translate: String?
-//	var hash: String?
 	var title_en: String?
 	var title_ru: String?
 	var spoiler: String?
@@ -40,13 +36,9 @@ struct Episode: Mappable {
 	})
 	
 	mutating func mapping(map: Map) {
-//		eid <- (map["eid"], convertToInt)
 		sid <- map["sid"]
 		episode <- (map["episode"], convertToInt)
 		season <- (map["season"], convertToInt)
-//		quality <- map["quality"] //
-//		translate <- map["translate"] // 1. First check if translation/subtitles versions available
-//		hash <- map["hash"] //
 		title_en <- map["title_en"]
 		title_ru <- map["title_ru"]
 		spoiler <- map["spoiler"]
