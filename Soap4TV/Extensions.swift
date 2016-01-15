@@ -19,6 +19,13 @@ extension String{
 		let attributedString = try! NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
 		return attributedString.string
 	}
+	
+	func stripHTML() -> String {
+		let htmlStringData = self.dataUsingEncoding(NSUTF8StringEncoding)!
+		let options: [String: AnyObject] = [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding]
+		let attributedHTMLString = try! NSAttributedString(data: htmlStringData, options: options, documentAttributes: nil)
+		return attributedHTMLString.string
+	}
 }
 
 extension String {
