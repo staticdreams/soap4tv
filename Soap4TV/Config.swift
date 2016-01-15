@@ -18,9 +18,9 @@ struct Config {
 	
 	struct tvdb {
 		static let baseURL = "https://thetvdb.com/banners/"
-		static let apiURL = "https://api-beta.thetvdb.com"
+		static let apiURL = "https://api-dev.thetvdb.com"
 		static let username = "kernelpanic"
-		static let password = "marinka"
+		static let password = "Swiftyh0e"
 		static let apikey = "229B5C0EC556FF90"
 	}
 	
