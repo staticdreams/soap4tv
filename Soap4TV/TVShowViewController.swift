@@ -72,6 +72,9 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var seasonsSegment: UISegmentedControl!
 	var posterURL: NSURL?
 	
+	var api = API()
+	var tv = TVDB()
+	
 	@IBOutlet weak var backgroundImage: UIImageView!
 	@IBOutlet weak var poster: UIImageView!
 	
@@ -121,7 +124,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			return
 		}
 		show?.watching = !showWatching
-		API().toggleWatch(token, show: String(showId), status: !showWatching) { response, error in
+		api.toggleWatch(token, show: String(showId), status: !showWatching) { response, error in
 			print(response)
 		}
 		likeLabel.text = show?.watching == true ? "Удалить из моих сериалов": "Добавить в мои сериалы"
@@ -214,7 +217,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 			print("Setting background and poster")
 			self.getBackgroundImage(tvdbid, tvdbtoken: tvdbtoken) {
-				TVDB().getShow(tvdbid, token: tvdbtoken) { showResponse, error in
+				self.tv.getShow(tvdbid, token: tvdbtoken) { showResponse, error in
 					if let show = showResponse {
 						for genre in show["data"]["genre"] {
 							let g = GenreType(rawValue: String(genre.1))
@@ -241,6 +244,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func setDefaultPoster() {
+		print("Looks like TVDB poster is unavailable. Setting default one")
 		if let sid = self.show?.sid {
 			let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg")!
 			self.poster.af_setImageWithURL(URL, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
@@ -273,13 +277,16 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 				
 			},
 			completion: { done in
+				print("Season poster")
 				if let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id {
+					print("TVDB Token found! Setting poster for the season")
 					self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: season) {
+						print("Setting episodes screenshots")
 						self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken, season: season) {
 							self.episodesCollection.reloadData()
 						}
 					}
-				}
+				} else {}
 		})
 	}
 	
@@ -287,7 +294,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	func getBackgroundImage(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
 		
-		TVDB().getImage(tvdb, token: tvdbtoken, type: "fanart", resolution: "1920x1080", subKey: nil) { bgResponse, error in
+		tv.getImage(tvdb, token: tvdbtoken, type: "fanart", resolution: "1920x1080", subKey: nil) { bgResponse, error in
 			if let _ = error {
 				print("Error getting background image")
 				self.setDefaultBackground()
@@ -321,9 +328,12 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func getPoster(tvdb: Int, tvdbtoken: String, subKey: Int?, callback: () -> ()) {
-		TVDB().getImage(tvdb, token: tvdbtoken, type: "season", resolution: nil, subKey: subKey) { bgResponse, error in
-			guard let bgResponse = bgResponse else { callback(); return }
+		print("Getting poster image")
+		tv.getImage(tvdb, token: tvdbtoken, type: "season", resolution: nil, subKey: subKey) { bgResponse, error in
+			print("Image response from TVDB: \(bgResponse)")
+			guard let bgResponse = bgResponse else { self.setDefaultPoster(); callback(); return }
 			let object = bgResponse["data"].first
+			print("Poster from TVDB: \(object)")
 			if let bgImage = object {
 				guard let url = NSURL(string: "\(Config.tvdb.baseURL)\(bgImage.1["fileName"])") else {
 					self.setDefaultPoster()
@@ -342,7 +352,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	func getTVDBEpisodes(tvdb: Int, tvdbtoken: String, season: Int?, callback: () -> ()) {
 		
-		TVDB().getEpisodes(tvdb, token: tvdbtoken, season: season) { response, error in
+		tv.getEpisodes(tvdb, token: tvdbtoken, season: season) { response, error in
+			print("Episodes screenshots response: \(response)")
 			guard let objects = response else { callback(); return }
 			self.TVDBEpisodes = objects
 			callback()
@@ -371,7 +382,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	
 	func getEpisodes(token: String, show: Int, callback: () -> ()) {
 		var seasons = [Season]()
-		API().getEpisodes(token, show: show) { objects, error in
+		api.getEpisodes(token, show: show) { objects, error in
 			if let result = objects {
 				for episode in result {
 					let s = Season(number: episode.season!, id: episode.season_id!)
@@ -461,7 +472,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 					
 					let hashString =  md5(string: "\(self.token)\(eid)\(sid)\(videohash)")
 					let url = "\(Config.URL.cdn)/\(self.token)/\(eid)/\(hashString)/"
-					API().callback(hashString, token: self.token, eid: eid) { result in
+					self.api.callback(hashString, token: self.token, eid: eid) { result in
 						let player = AVPlayer(URL: NSURL(string: url)!)
 						let playerController = self.storyboard?.instantiateViewControllerWithIdentifier("player") as! AVPlayerViewController
 						playerController.player = player
@@ -479,7 +490,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			newWatchedStatus = !currentWatchedStatus
 		}
 		let watchedButton = UIAlertAction(title: watchedTitle, style: UIAlertActionStyle.Default) { (btn) -> Void in
-			API().markWatched(self.token, episode: (version.first?.eid)!, isWatched: newWatchedStatus) {response, error in
+			self.api.markWatched(self.token, episode: (version.first?.eid)!, isWatched: newWatchedStatus) {response, error in
 				if let _ = response {
 					self.updateEpisodeWatchedStatus(indexPath, status: newWatchedStatus)
 				}
@@ -488,7 +499,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		alert.addAction(watchedButton)
 
 		let watchedAllButton = UIAlertAction(title: "Отметить весь сезон как просмотренный", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
-			API().markAllWatched(self.token, show: episode.sid!, season: episode.season!) { response, error in
+			self.api.markAllWatched(self.token, show: episode.sid!, season: episode.season!) { response, error in
 				if let _ = response {
 					self.updateAllEpisodesAsWatched()
 				}

@@ -26,6 +26,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	let today = NSDate()
 	let dateFormatter = NSDateFormatter()
 	
+	var api = API()
+	var tv = TVDB()
+	
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var topBanner: UIImageView!
 	@IBOutlet weak var newShowsCollectionView: UICollectionView!
@@ -105,7 +108,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		// TODO: Get cell index of a clicked tv show and set new status in the global filtered list
 		self.featuredShows[selectedFeaturedIndex!.row].watching = !showWatching
 		selectedFeaturedShow?.watching = !showWatching
-		API().toggleWatch(token!, show: String(showId), status: !showWatching) { response, error in
+		api.toggleWatch(token!, show: String(showId), status: !showWatching) { response, error in
 //			print(response)
 		}
 		likeLabel.text = selectedFeaturedShow?.watching == true ? "Не буду смотреть": "Буду смотреть"
@@ -118,8 +121,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 			print("Failed to get token")
 			return
 		}
-		print("token is: \(token)")
-		API().getTVShows(token, view: nil) { objects, error in
+		print("Soap4me token: \(token)")
+		api.getTVShows(token, view: nil) { objects, error in
 			if let shows = objects {
 				self.allShows = shows
 				let sortedShows = shows.sort(>)
@@ -140,7 +143,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 			print("Failed to get token")
 			return
 		}
-		API().getFullSchedule(token) { objects, error in
+		api.getFullSchedule(token) { objects, error in
 			if let schedule = objects {
 				self.scheduledEpisodes = schedule
 				self.filterSchedule(self.today)
@@ -183,7 +186,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 	
 	func getFeaturedShowInfo(show: TVShow) {
 		// TODO: Implement smooth fade in/out transition
-		
+		print("Getting TVDB featured show...")
 		guard let tvdb = show.tvdb_id, tvdbtoken = Defaults[.TVDBToken] else { return }
 		self.text.show = show
 		self.text.parentView = self
@@ -191,11 +194,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		let likeImage = show.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
 		likeLabel.text = show.watching == true ? "Не буду смотреть": "Буду смотреть"
 		likeButton.setImage(likeImage, forState: UIControlState.Normal)
-		
-		TVDB().getShow(tvdb, token: tvdbtoken) { showResponse, error in
+		print("TVDB token: \(tvdbtoken)")
+		tv.getShow(tvdb, token: tvdbtoken) { showResponse, error in
 			if let showItem = showResponse {
-				
-				TVDB().getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil, subKey: nil) { posterResponse, error in
+//				print("Got featured show from TVDB: \(showItem)")
+				self.tv.getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil, subKey: nil) { posterResponse, error in
 					guard let posterResponse = posterResponse else {return}
 					let object = posterResponse["data"].first
 					if let poster = object {
@@ -230,6 +233,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 							let g = GenreType(rawValue: String(genre.1))
 							if let gType = g {
 								let string = self.genres.text?.stringByAppendingFormat("\n %@", "\(gType.translate())")
+//								print(string)
 								self.genres.text = string
 							}
 						}

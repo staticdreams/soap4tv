@@ -21,6 +21,8 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		}
 	}
 	
+	var api = API()
+	
 	let placeholderImage = UIImage(named: "placeholder")!
 	
 	@IBOutlet weak var sortingControl: UISegmentedControl!
@@ -49,7 +51,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			return
 		}
 		print("token is: \(token)")
-		API().getTVShows(token, view: currentView) { objects, error in
+		api.getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				self.allShows = tvshows
 				self.refresh(0)
@@ -101,7 +103,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		}
 		if let sid = tvshow.sid {
 			if let URL = NSURL(string: "\(Config.URL.covers)/soap/big/\(sid).jpg") {
-				cell.cover.af_setImageWithURL(URL, placeholderImage: placeholderImage, imageTransition: .CrossDissolve(0.2))
+				cell.cover.af_setImageWithURL(URL, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
 			}
 		}
 		cell.title_en.text = tvshow.title
@@ -110,18 +112,17 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			cell.year.text = "(\(year))"
 			cell.imdb.text = "IMDB \(imdb)"
 		}
-		cell.overlay.alpha = 0
-		cell.alpha = 0
-		UIView.animateWithDuration(0.5, animations: { cell.alpha = 1 })
 		
 		if let unwatched = tvshow.unwatched {
-//			if currentView == .MyShows {
-				cell.unwatchedLabel.text = String(unwatched)
-//			}
+			cell.unwatchedLabel.text = String(unwatched)
 		} else {
 			cell.badge.hidden = true
 		}
-	
+		
+		cell.overlay.alpha = 0
+		cell.alpha = 0
+		
+		UIView.animateWithDuration(0.5, animations: { cell.alpha = 1 })
 		return cell
 	}
 	

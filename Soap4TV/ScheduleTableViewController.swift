@@ -16,6 +16,8 @@ class ScheduleTableViewController: UITableViewController {
 	var data = [Schedule]()
 	var sid: Int?
 	var token: String?
+	var api = API()
+	var tv = TVDB()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class ScheduleTableViewController: UITableViewController {
 	
 	func loadData() {
 		if let token = self.token, sid = self.sid {
-			API().getSchedule(token, sid: sid) { objects, error in
+			api.getSchedule(token, sid: sid) { objects, error in
 				if let result = objects {
 					self.data = result
 					self.tableView.reloadData()

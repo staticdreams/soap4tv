@@ -12,6 +12,7 @@ import SwiftyUserDefaults
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate {
 
 	var showsController = TVShowsCollectionController()
+	var tv = TVDB()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate {
 					print("No token has been saved...?")
 					return
 				}
-				TVDB().refresh(token) { result, error in
+				tv.refresh(token) { result, error in
 					if let error = error {
 						print("Failed to refresh token for TVDB: \(error)")
 					}

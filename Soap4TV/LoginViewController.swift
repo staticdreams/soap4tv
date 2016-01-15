@@ -20,6 +20,9 @@ class LoginViewController: UIViewController {
 	
 	var token = ""
 	
+	var api = API()
+	var tvdb = TVDB()
+	
 	@IBAction func loginAction(sender: AnyObject) { doLogin()}
 	
     override func viewDidLoad() {
@@ -27,7 +30,7 @@ class LoginViewController: UIViewController {
 		loginField.text = Defaults.hasKey(.login) ? Defaults[.login]! : ""
 		passwordField.text = Defaults.hasKey(.password) ? Defaults[.password]! : ""
 		
-		TVDB().login(Config.tvdb.username, password: Config.tvdb.password, apikey: Config.tvdb.apikey) { result, error in
+		tvdb.login(Config.tvdb.username, password: Config.tvdb.password, apikey: Config.tvdb.apikey) { result, error in
 			if let error = error {
 				print("Error logging into TVDB: \(error)")
 				Defaults[.TVDBToken] = nil
@@ -60,7 +63,7 @@ class LoginViewController: UIViewController {
 		activityIndicator.startAnimating()
 		loginButton.userInteractionEnabled = false
 		
-		API().login(login, password: password) { result, error in
+		api.login(login, password: password) { result, error in
 			self.errorTitle.hidden = true
 			self.errorMessage.hidden = true
 			if let error = error {
