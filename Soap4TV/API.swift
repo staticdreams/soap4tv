@@ -12,7 +12,27 @@ import SwiftyJSON
 import AlamofireObjectMapper
 import ObjectMapper
 
+
+//
+//var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+//configuration.timeoutIntervalForRequest = 4 // seconds
+//configuration.timeoutIntervalForResource = 4
+//
+//struct APIManager {
+//	
+//}
+
+
 struct API {
+	
+	var manager : Alamofire.Manager?
+
+	init() {
+		let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+		configuration.timeoutIntervalForRequest = 9 // seconds
+		configuration.timeoutIntervalForResource = 9
+		manager = Alamofire.Manager(configuration: configuration)
+	}
 	
 	func login(login: String, password:String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
 		let headers = [
@@ -23,7 +43,7 @@ struct API {
 		]
 		let parameters = ["login": login, "password": password, "allow_nonpro": 1]
 		
-		Alamofire.request(.POST, Config.URL.base+"/login", headers: headers, parameters:parameters as? [String : AnyObject])
+		manager?.request(.POST, Config.URL.base+"/login", headers: headers, parameters:parameters as? [String : AnyObject])
 			.responseJSON { response in
 			switch response.result {
 			case .Success(let data):
@@ -36,7 +56,7 @@ struct API {
 	
 	func callback(hash: String, token: String, eid: String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
 		let parameters = ["do": "load", "what": "player", "hash": hash, "token": token, "eid": eid]
-		Alamofire.request(.POST, Config.URL.base+"/callback", parameters:parameters)
+		manager?.request(.POST, Config.URL.base+"/callback", parameters:parameters)
 			.responseJSON { response in
 				switch response.result {
 					case .Success(let data):
@@ -55,7 +75,7 @@ struct API {
 			"Connection": "keep-alive"
 		]
 		let suffix = view == .MyShows ? "/my/" : ""
-		Alamofire.request(.GET, Config.URL.base+"/api/soap"+suffix, headers: headers)
+		manager?.request(.GET, Config.URL.base+"/api/soap"+suffix, headers: headers)
 //			.responseArray { (response: Response<[TVShow], NSError>) in
 			.responseJSON { response in
 				switch response.result {
@@ -86,7 +106,7 @@ struct API {
 			"Connection": "keep-alive"
 		]
 		
-		Alamofire.request(.GET, Config.URL.base+"/api/episodes/"+String(show), headers: headers)
+		manager?.request(.GET, Config.URL.base+"/api/episodes/"+String(show), headers: headers)
 			.responseJSON { response in
 				var array = [Episode]()
 				switch response.result {
@@ -143,7 +163,7 @@ struct API {
 			"Connection": "keep-alive"
 		]
 		let url = Config.URL.base+"/api/soap/shedule/"+String(sid)
-		Alamofire.request(.GET, url, headers: headers)
+		manager?.request(.GET, url, headers: headers)
 			.responseArray { (response: Response<[Schedule], NSError>) in
 				switch response.result {
 				case .Success(let data):
@@ -163,7 +183,7 @@ struct API {
 			"Connection": "keep-alive"
 		]
 		let url = Config.URL.base+"/api/shedule/full/"
-		Alamofire.request(.GET, url, headers: headers)
+		manager?.request(.GET, url, headers: headers)
 			.responseArray { (response: Response<[Schedule], NSError>) in
 				switch response.result {
 				case .Success(let data):
@@ -187,7 +207,7 @@ struct API {
 			"token": token
 		]
 		let url = Config.URL.base+"/callback"
-		Alamofire.request(.POST, url, headers: headers, parameters: parameters)
+		manager?.request(.POST, url, headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
 					case .Success(let data):
@@ -211,7 +231,7 @@ struct API {
 			"token": token
 		]
 		let url = Config.URL.base+"/callback"
-		Alamofire.request(.POST, url, headers: headers, parameters: parameters)
+		manager?.request(.POST, url, headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -231,7 +251,7 @@ struct API {
 		let parameters = ["token": token]
 		let action = status ? "watch" : "unwatch"
 		let url = Config.URL.base+"/api/soap/\(action)/\(show)"
-		Alamofire.request(.POST, url, headers: headers, parameters: parameters)
+		manager?.request(.POST, url, headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -246,11 +266,20 @@ struct API {
 
 struct TVDB {
 	
+	var manager : Alamofire.Manager?
+	
+	init() {
+		let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+		configuration.timeoutIntervalForRequest = 8 // seconds
+		configuration.timeoutIntervalForResource = 8
+		manager = Alamofire.Manager(configuration: configuration)
+	}
+	
 	func login(login: String, password:String, apikey:String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
 		let headers = ["Content-Type": "application/json"]
 		let parameters = ["username": login, "userpass": password, "apikey": apikey]
 		
-		Alamofire.request(.POST, Config.tvdb.apiURL+"/login", headers: headers, parameters:parameters, encoding: .JSON)
+		manager?.request(.POST, Config.tvdb.apiURL+"/login", headers: headers, parameters:parameters, encoding: .JSON)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -266,7 +295,7 @@ struct TVDB {
 			"Content-Type": "application/json",
 			"Authorization": "Bearer \(token)"
 		]
-		Alamofire.request(.GET, Config.tvdb.apiURL+"/refresh_token", headers: headers)
+		manager?.request(.GET, Config.tvdb.apiURL+"/refresh_token", headers: headers)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -283,7 +312,7 @@ struct TVDB {
 			"Authorization": "Bearer \(token)",
 			"Accept-Language": "en"
 		]
-		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId), headers: headers)
+		manager?.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId), headers: headers)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -307,7 +336,8 @@ struct TVDB {
 		if let key = subKey {
 			parameters["subKey"] = String(key)
 		}
-		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/images/query", headers: headers, parameters: parameters)
+		let URL = Config.tvdb.apiURL+"/series/"+String(showId)+"/images/query"
+		manager?.request(.GET, URL, headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -328,7 +358,7 @@ struct TVDB {
 		if let s = season {
 			parameters["airedSeason"] = String(s)
 		}
-		Alamofire.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/episodes/query", headers: headers, parameters: parameters)
+		manager?.request(.GET, Config.tvdb.apiURL+"/series/"+String(showId)+"/episodes/query", headers: headers, parameters: parameters)
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
