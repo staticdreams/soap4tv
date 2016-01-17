@@ -11,7 +11,7 @@ import SwiftyUserDefaults
 import KeychainAccess
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var loginField: UITextField!
 	@IBOutlet weak var passwordField: UITextField!
@@ -27,6 +27,8 @@ class LoginViewController: UIViewController {
 	
 	var api = API()
 	var tvdb = TVDB()
+	
+	// MARK: - Methods
 	
 	@IBAction func loginAction(sender: AnyObject) { doLogin()}
 	
@@ -53,6 +55,18 @@ class LoginViewController: UIViewController {
 		if (loginField.text?.count > 0 && passwordField.text?.count > 0) {
 			doLogin()
 		}
+	}
+	
+	override var preferredFocusedView: UIView? {
+		if (loginField.text?.count > 0 && passwordField.text?.count > 0) {
+			return self.loginButton
+		}
+		
+		if (loginField.text?.count > 0) {
+			return passwordField
+		}
+		
+		return loginField
 	}
 
 	func doLogin() {
@@ -103,6 +117,15 @@ class LoginViewController: UIViewController {
 				return
 			}
 			
+		}
+	}
+	
+	// MARK: - UITextFieldDelegate
+	
+	func textFieldDidEndEditing(textField: UITextField) {
+		if (textField == passwordField) {
+			self.view.setNeedsFocusUpdate()
+			self.view.updateFocusIfNeeded()
 		}
 	}
 	
