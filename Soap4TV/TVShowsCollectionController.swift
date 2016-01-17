@@ -115,6 +115,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		
 		if let unwatched = tvshow.unwatched {
 			cell.unwatchedLabel.text = String(unwatched)
+			cell.badge.hidden = false
 		} else {
 			cell.badge.hidden = true
 		}

@@ -30,6 +30,22 @@ class TVShowCell: UICollectionViewCell {
 		layer.shadowRadius = 8
 //		self.badge.sizeToFit()
 		self.badge.layer.cornerRadius = self.badge.frame.size.width / 2
+		self.resetCell()
 	}
 	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		
+		self.resetCell()
+	}
+	
+	func resetCell() {
+		self.cover.image = nil
+		self.year.text = ""
+		self.title_en.text = ""
+		self.title_ru.text = ""
+		self.imdb.text = ""
+		self.unwatchedLabel.text = ""
+		self.badge.hidden = true
+	}
 }
