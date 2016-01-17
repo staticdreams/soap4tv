@@ -8,4 +8,5 @@ target 'Soap4TV' do
 	pod 'SwiftyUserDefaults', :git => "https://github.com/staticdreams/SwiftyUserDefaults.git"
 	pod 'AlamofireImage'
 	pod 'Cosmos'
+	pod 'KeychainAccess'
 end
