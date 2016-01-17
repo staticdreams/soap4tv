@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyUserDefaults
+import KeychainAccess
+
 
 class LoginViewController: UIViewController {
 
@@ -20,6 +22,9 @@ class LoginViewController: UIViewController {
 	
 	var token = ""
 	
+	let keychain = Keychain(service: "me.soap4.password")
+		.synchronizable(true)
+	
 	var api = API()
 	var tvdb = TVDB()
 	
@@ -27,8 +32,13 @@ class LoginViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
 		loginField.text = Defaults.hasKey(.login) ? Defaults[.login]! : ""
-		passwordField.text = Defaults.hasKey(.password) ? Defaults[.password]! : ""
+		passwordField.text = (loginField.text!.count > 0) ? keychain[ loginField.text! ] : ""
 		
 		tvdb.login(Config.tvdb.username, password: Config.tvdb.password, apikey: Config.tvdb.apikey) { result, error in
 			if let error = error {
@@ -39,13 +49,9 @@ class LoginViewController: UIViewController {
 				Defaults[.TVDBToken] = result["token"].stringValue
 			}
 		}
-    }
-	
-	override var preferredFocusedView: UIView? {
-		if Defaults.hasKey(.login) && Defaults.hasKey(.password) {
-			return loginButton
-		} else {
-			return loginField
+		
+		if (loginField.text?.count > 0 && passwordField.text?.count > 0) {
+			doLogin()
 		}
 	}
 
@@ -74,7 +80,6 @@ class LoginViewController: UIViewController {
 			}
 			if let result = result where result["ok"] == 1 {
 				Defaults[.login] = login
-				Defaults[.password] = password
 				Defaults[.token] = result["token"].stringValue
 				Defaults[.till] = result["till"].intValue
 				Defaults[.sid] = result["sid"].stringValue
@@ -84,11 +89,17 @@ class LoginViewController: UIViewController {
 					activityIndicator.stopAnimating()
 					self.performSegueWithIdentifier("openAppSegue", sender: nil)
 				}
+				
+				// saving password to keychain
+				self.keychain[login] = password
+				
 			} else {
 				activityIndicator.stopAnimating()
 				self.errorTitle.hidden = false
 				self.errorMessage.hidden = false
 				self.loginButton.userInteractionEnabled = true
+				
+				self.keychain[login] = nil
 				return
 			}
 			
