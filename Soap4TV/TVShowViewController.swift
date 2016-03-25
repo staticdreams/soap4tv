@@ -72,6 +72,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var seasonsSegment: UISegmentedControl!
 	var posterURL: NSURL?
 	
+	var path:NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+	
 	var api = API()
 	var tv = TVDB()
 	
@@ -407,6 +409,10 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 
 	// MARK: - Episodes Collection View Data Source and Delegate
 	
+	func indexPathForPreferredFocusedViewInCollectionView(collectionView: UICollectionView) -> NSIndexPath? {
+		return self.path
+	}
+	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
@@ -515,6 +521,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+		self.path = NSIndexPath.init(forRow: 0, inSection: 0)
 		
 		if let next = context.nextFocusedView as? EpisodeCollectionViewCell {
 			next.setNeedsUpdateConstraints()
@@ -522,6 +529,25 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
 				}, completion: { done in
 			})
+			
+			// если фокус не с ячейки, то выбираем первый непросмотренный эпизод
+			let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell
+			if (prev == nil) {
+				
+				// ищем индекс первого непросмотренного эпизода
+				var index = -1
+				for episode in episodes {
+					if episode.watched == false {
+						index += 1
+					} else {
+						break
+					}
+				}
+				
+				self.path = NSIndexPath.init(forRow: index, inSection: 0)
+				collectionView.selectItemAtIndexPath(path, animated: true, scrollPosition:UICollectionViewScrollPosition.Top)
+				collectionView.setNeedsFocusUpdate()
+			}
 		}
 		
 		if let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell {
