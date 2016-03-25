@@ -20,6 +20,8 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 			self.collectionView?.reloadData()
 		}
 	}
+	var isLoading = false
+	var sorting = 0
 	
 	var api = API()
 	
@@ -40,28 +42,37 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		if data.count == 0 {loadData()}
     }
 	
+	override func viewWillAppear(animated: Bool) {
+		if isLoading == false { self.loadData() }
+		super.viewWillAppear(animated)
+	}
+	
 	@IBAction func sortingChanged(sender: AnyObject) {
 		refresh(self.sortingControl.selectedSegmentIndex)
 	}
 	
 	private func loadData() {
+		isLoading = true;
 		print("Priliminary data load")
 		guard let token = Defaults[.token] else {
 			print("Failed to get token")
+			isLoading = false
 			return
 		}
 		print("token is: \(token)")
 		api.getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				self.allShows = tvshows
-				self.refresh(0)
+				self.refresh(self.sorting)
 			}
+			self.isLoading = false
 		}
 	}
 	
 	func refresh(sortOption: Int) {
 		var shows = [TVShow]()
 		print("Sort index changed to \(sortOption)")
+		self.sorting = sortOption
 		switch(sortOption) {
 		case 0:
 			shows = allShows.sort(>)
