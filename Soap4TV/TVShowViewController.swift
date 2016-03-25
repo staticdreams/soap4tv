@@ -72,6 +72,9 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var seasonsSegment: UISegmentedControl!
 	var posterURL: NSURL?
 	
+	var firstUnwatchedEpisodepath: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+	var firstUnwatchedSeasonIndex: Int = 0
+	
 	var api = API()
 	var tv = TVDB()
 	
@@ -195,6 +198,12 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			
 			//MARK:  Setup segemented control
 			
+			for episode in self.allEpisodes {
+				if episode.watched == true {
+					self.firstUnwatchedSeasonIndex = episode.season!
+				}
+			}
+			
 			let segments = self.seasons.map {String($0.seasonNumber)}
 			self.seasonsSegment = UISegmentedControl(items: segments)
 			self.seasonsSegment.apportionsSegmentWidthsByContent = true
@@ -206,6 +215,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			self.seasonsScroll.contentSize = CGSizeMake(self.seasonsSegment.frame.width+40, self.seasonsSegment.frame.height+10)
 			self.seasonsSegment.frame.origin.y = 10
 			self.seasonsSegment.frame.origin.x = 30
+			self.seasonsSegment.selectedSegmentIndex = self.firstUnwatchedSeasonIndex
+			
+			if (self.firstUnwatchedSeasonIndex < self.seasons.first?.seasonNumber) {
+				self.seasonSegmentChanged(self.seasonsSegment)
+			}
 			
 			//MARK: Setup background image and poster
 			guard let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id else {
@@ -407,6 +421,10 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 
 	// MARK: - Episodes Collection View Data Source and Delegate
 	
+	func indexPathForPreferredFocusedViewInCollectionView(collectionView: UICollectionView) -> NSIndexPath? {
+		return self.firstUnwatchedEpisodepath
+	}
+	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
@@ -515,6 +533,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+		self.firstUnwatchedEpisodepath = NSIndexPath.init(forRow: 0, inSection: 0)
 		
 		if let next = context.nextFocusedView as? EpisodeCollectionViewCell {
 			next.setNeedsUpdateConstraints()
@@ -522,6 +541,26 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 				next.transform = CGAffineTransformMakeScale(1.2,1.2)
 				}, completion: { done in
 			})
+			
+			// если фокус не с ячейки, то выбираем первый непросмотренный эпизод
+			let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell
+			if (prev == nil) {
+				
+				// ищем индекс первого непросмотренного эпизода
+				var index = -1
+				for episode in episodes {
+					if episode.watched == false {
+						index += 1
+					} else {
+						break
+					}
+				}
+				
+				index = (index < 0) ? 0 : index
+				
+				self.firstUnwatchedEpisodepath = NSIndexPath.init(forRow: index, inSection: 0)
+				collectionView.setNeedsFocusUpdate()
+			}
 		}
 		
 		if let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell {
