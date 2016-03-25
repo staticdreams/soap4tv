@@ -183,7 +183,8 @@ extension CollectionType {
 }
 
 extension Array {
-	func takeElements(var elementCount: Int) -> Array {
+	func takeElements(element: Int) -> Array {
+		var elementCount = element
 		if (elementCount > count) {
 			elementCount = count
 		}

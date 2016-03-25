@@ -97,7 +97,7 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		let tvshow = data[indexPath.row]
 		cell.show = tvshow
 		if cell.gestureRecognizers?.count == nil {
-			let tap = UITapGestureRecognizer(target: self, action: "tapped:")
+			let tap = UITapGestureRecognizer(target: self, action: #selector(TVShowsCollectionController.tapped(_:)))
 			tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
 			cell.addGestureRecognizer(tap)
 		}

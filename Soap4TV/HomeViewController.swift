@@ -196,6 +196,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 		likeButton.setImage(likeImage, forState: UIControlState.Normal)
 		print("TVDB token: \(tvdbtoken)")
 		tv.getShow(tvdb, token: tvdbtoken) { showResponse, error in
+			//print(showResponse)
 			if let showItem = showResponse {
 //				print("Got featured show from TVDB: \(showItem)")
 				self.tv.getImage(tvdb, token: tvdbtoken, type: "poster", resolution: nil, subKey: nil) { posterResponse, error in

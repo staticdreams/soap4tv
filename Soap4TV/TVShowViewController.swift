@@ -201,7 +201,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			
 			let switchAttributes: [NSObject: AnyObject]? = [NSForegroundColorAttributeName: UIColor.lightGrayColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 30.0)!]
 			self.seasonsSegment.setTitleTextAttributes(switchAttributes, forState: .Normal)
-			self.seasonsSegment.addTarget(self, action: "seasonSegmentChanged:", forControlEvents: UIControlEvents.ValueChanged)
+			self.seasonsSegment.addTarget(self, action: #selector(TVShowViewController.seasonSegmentChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 			self.seasonsScroll.addSubview(self.seasonsSegment)
 			self.seasonsScroll.contentSize = CGSizeMake(self.seasonsSegment.frame.width+40, self.seasonsSegment.frame.height+10)
 			self.seasonsSegment.frame.origin.y = 10
