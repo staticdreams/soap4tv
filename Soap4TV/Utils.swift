@@ -16,9 +16,7 @@ import Foundation
 - parameter line:         номер строки в файле
 - parameter functionName: название метода/функции вызова
 */
-func DLog(message: String, fullPath: String = #file, line: Int = #line, functionName: String = #function) {
+func DLog(message: AnyObject, fullPath: String = #file, line: Int = #line, functionName: String = #function) {
 	let file = NSURL.fileURLWithPath(fullPath)
-	print(file.pathComponents!.last);
 	print("\(file.pathComponents!.last) -> \(functionName) -> line \(line) : \(message)")
 }
-
