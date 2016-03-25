@@ -60,7 +60,7 @@ struct TVShow: Mappable {
 		imdb_votes <- (map["imdb_votes"], convertToInt)
 		imdb_id <- map["imdb_id"]
 		tvdb_id <- (map["tvdb_id"], convertToInt)
-		status <- map["status"]
+		status <- (map["status"], convertToInt)
 		kinopoisk_id <- (map["kinopoisk_id"], convertToInt)
 		kinopoisk_votes <- (map["kinopoisk_votes"], convertToInt)
 		kinopoisk_rating <- (map["kinopoisk_rating"], convertToFloat)
@@ -75,6 +75,13 @@ extension TVShow: Equatable, Comparable {}
 
 func ==(lhs: TVShow, rhs: TVShow) -> Bool {
 	return lhs.sid == rhs.sid && lhs.sid == rhs.sid
+}
+
+infix operator • { associativity left precedence 140 } // Compating by rating operator
+func •(lhs: TVShow, rhs: TVShow) -> Bool { // Comparing by new episodes
+	if lhs.unwatched > 0 && rhs.unwatched > 0 { return lhs.title < rhs.title }
+	if lhs.unwatched == 0 && rhs.unwatched == 0 { return lhs.title < rhs.title }
+	return lhs.unwatched > rhs.unwatched
 }
 
 func <(lhs: TVShow, rhs: TVShow) -> Bool { // Comparing by show ID
