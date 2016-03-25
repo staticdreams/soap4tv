@@ -282,25 +282,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
 	}
 	
-	override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-		
-		if let next = context.nextFocusedView as? FeaturedCollectionViewCell {
-			next.setNeedsUpdateConstraints()
-			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
-				next.transform = CGAffineTransformMakeScale(1.2,1.2)
-				self.scrollView.setContentOffset(CGPointZero, animated: true)
-				}, completion: { done in
-			})
-		}
-		
-		if let prev = context.previouslyFocusedView as? FeaturedCollectionViewCell {
-			prev.setNeedsUpdateConstraints()
-			UIView.animateWithDuration(0.1, animations: {
-				prev.transform = CGAffineTransformIdentity
-			})
-		}
-	}
-	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "scheduleSegue" {
 			if let controller = segue.destinationViewController as? HomeScheduleCollectionView {
