@@ -146,7 +146,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	}
 	
 	override var preferredFocusedView: UIView? {
-		return self.seasonsSegment
+		return self.episodesCollection
 	}
 	
 	func setup() {
@@ -199,10 +199,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			//MARK:  Setup segemented control
 			
 			for episode in self.allEpisodes {
-				if episode.watched == true {
+				if episode.watched == false {
 					self.firstUnwatchedSeasonIndex = episode.season!
 				}
 			}
+			self.firstUnwatchedSeasonIndex = (self.firstUnwatchedSeasonIndex > 0) ? self.seasons.count - self.firstUnwatchedSeasonIndex : self.firstUnwatchedSeasonIndex
 			
 			let segments = self.seasons.map {String($0.seasonNumber)}
 			self.seasonsSegment = UISegmentedControl(items: segments)
@@ -217,9 +218,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			self.seasonsSegment.frame.origin.x = 30
 			self.seasonsSegment.selectedSegmentIndex = self.firstUnwatchedSeasonIndex
 			
-			if (self.firstUnwatchedSeasonIndex < self.seasons.first?.seasonNumber) {
-				self.seasonSegmentChanged(self.seasonsSegment)
-			}
+			self.seasonSegmentChanged(self.seasonsSegment)
 			
 			//MARK: Setup background image and poster
 			guard let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id else {
