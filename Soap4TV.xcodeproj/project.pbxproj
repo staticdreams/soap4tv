@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24AE57411CA59B3400120AE4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AE57401CA59B3400120AE4 /* Utils.swift */; };
 		839A9CB46C97900F4783D92E /* Pods_Soap4TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACA1DDEDF2C73FB901964CA /* Pods_Soap4TV.framework */; };
 		D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */; };
 		D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		1C0BC9E64A0351B7723A4A84 /* Pods-Soap4TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soap4TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.release.xcconfig"; sourceTree = "<group>"; };
 		1E72DBACB42E968977C948E2 /* Pods-Soap4TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soap4TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.debug.xcconfig"; sourceTree = "<group>"; };
+		24AE57401CA59B3400120AE4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
 		D000B7171BF5EE8B006AC142 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				D000B7171BF5EE8B006AC142 /* Episode.swift */,
 				D0835AC41C02628200684DF7 /* SwiftyTimer.swift */,
 				D0DF97671C0397B10045BF9C /* Enums.swift */,
+				24AE57401CA59B3400120AE4 /* Utils.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */,
 				D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */,
 				D03057541C098CCB000DD2F1 /* TVShowCell.swift in Sources */,
+				24AE57411CA59B3400120AE4 /* Utils.swift in Sources */,
 				D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */,
 				D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */,
 				D0301F731BF364800093ADDC /* TVShow.swift in Sources */,
