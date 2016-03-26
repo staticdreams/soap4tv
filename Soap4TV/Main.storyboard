@@ -459,6 +459,7 @@
                                 <rect key="frame" x="20" y="976" width="1880" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                 <segments>
+                                    <segment title="Непросмотренные"/>
                                     <segment title="По дате"/>
                                     <segment title="По рейтингу"/>
                                     <segment title="По алфавиту (англ)"/>

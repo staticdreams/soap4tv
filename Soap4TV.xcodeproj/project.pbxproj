@@ -220,6 +220,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D089A37E1BF0AE20006C6F0E /* Build configuration list for PBXNativeTarget "Soap4TV" */;
 			buildPhases = (
+				244166231CA5EA4C007EE4E5 /* Build Number autoincrement */,
 				D2DEE7F7C22C49EE4D9B0C2A /* Check Pods Manifest.lock */,
 				D089A3691BF0AE20006C6F0E /* Sources */,
 				D089A36A1BF0AE20006C6F0E /* Frameworks */,
@@ -310,6 +311,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		244166231CA5EA4C007EE4E5 /* Build Number autoincrement */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Number autoincrement";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(git rev-list --all | wc -l)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		D2DEE7F7C22C49EE4D9B0C2A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

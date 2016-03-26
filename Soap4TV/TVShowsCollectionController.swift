@@ -11,15 +11,27 @@ import SwiftyUserDefaults
 
 private let reuseIdentifier = "showCell"
 
+enum TVShowSection: Int {
+	case unwatched = 0, watched, finished
+}
+
 class TVShowsCollectionController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+	
 	
 	var currentView = PresentedView()
 	var allShows = [TVShow]()
+	var unwatchedShows = [TVShow]()
+	var watchedShows = [TVShow]()
+	var finishedShows = [TVShow]()
+	
 	var data = [TVShow]() {
 		didSet {
 			self.collectionView?.reloadData()
 		}
 	}
+	var isLoading: Bool = false
+	var useUnwatchedSort: Bool = false
+	var sorting = 0
 	
 	var api = API()
 	
@@ -37,46 +49,97 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 		sortingControl.setTitleTextAttributes(selectedSwitchAttributes, forState: .Focused)
 		self.collectionView.remembersLastFocusedIndexPath = true
 		self.collectionView.registerNib(UINib(nibName: "TVShowCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+		
+		self.collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
+		let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+		flow.headerReferenceSize = CGSizeMake(40,30)
+		
+		self.useUnwatchedSort = (self.sortingControl.numberOfSegments > 4)
+
 		if data.count == 0 {loadData()}
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		if isLoading == false { self.loadData() }
+		super.viewWillAppear(animated)
+	}
 	
 	@IBAction func sortingChanged(sender: AnyObject) {
 		refresh(self.sortingControl.selectedSegmentIndex)
 	}
 	
 	private func loadData() {
+		isLoading = true;
 		print("Priliminary data load")
 		guard let token = Defaults[.token] else {
 			print("Failed to get token")
+			isLoading = false
 			return
 		}
 		print("token is: \(token)")
 		api.getTVShows(token, view: currentView) { objects, error in
 			if let tvshows = objects {
 				self.allShows = tvshows
-				self.refresh(0)
+				self.refresh(self.sorting)
 			}
+			self.isLoading = false
 		}
 	}
 	
 	func refresh(sortOption: Int) {
 		var shows = [TVShow]()
 		print("Sort index changed to \(sortOption)")
-		switch(sortOption) {
-		case 0:
-			shows = allShows.sort(>)
-			break
-		case 1:
-			shows = allShows.sort(~)
-			break
-		case 2:
-			shows = allShows.sort(±)
-			break
-		case 3:
-			shows = allShows.sort(§)
-			break
-		default:
-			break
+		self.sorting = sortOption
+		
+		if (self.useUnwatchedSort == true) {
+			DLog("1")
+			switch(sortOption) {
+				case 0:
+					self.unwatchedShows = allShows.filter {$0.unwatched > 0}
+					self.watchedShows = allShows.filter { $0.unwatched == nil && $0.status == 0 }
+					self.finishedShows = allShows.filter { $0.unwatched == nil && $0.status != 0 }
+					
+					self.unwatchedShows = self.unwatchedShows.sort(•)
+					self.watchedShows = self.watchedShows.sort(•)
+					self.finishedShows = self.finishedShows.sort(•)
+					
+					shows = allShows.sort(•)
+					break
+				case 1:
+					shows = allShows.sort(>)
+					break
+				case 2:
+					shows = allShows.sort(~)
+					break
+				case 3:
+					shows = allShows.sort(±)
+					break
+				case 4:
+					shows = allShows.sort(§)
+					break
+				default:
+					break
+			}
+		} else {
+			DLog("2")
+			DLog(sortOption)
+			switch(sortOption) {
+			case 0:
+				shows = allShows.sort(>)
+				DLog(shows.count)
+				break
+			case 1:
+				shows = allShows.sort(~)
+				break
+			case 2:
+				shows = allShows.sort(±)
+				break
+			case 3:
+				shows = allShows.sort(§)
+				break
+			default:
+				break
+			}
 		}
 		self.data = shows
 		collectionView.setContentOffset(CGPointZero, animated: false) // this isn't enough. needs to select first cell
@@ -85,16 +148,53 @@ class TVShowsCollectionController: UIViewController, UICollectionViewDataSource,
 	// MARK: - Collection View Delegate and DataSource
 	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-		return 1
+		let numberOfSections = (self.sorting == 0 && self.useUnwatchedSort) ? 3 : 1
+		return numberOfSections
 	}
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return data.count
+		var numberOfItems = data.count
+		
+		if (self.sorting == 0 && self.useUnwatchedSort) {
+			switch section {
+				case TVShowSection.unwatched.rawValue:
+					numberOfItems = self.unwatchedShows.count
+					break
+				case TVShowSection.watched.rawValue:
+					numberOfItems = self.watchedShows.count
+					break
+				case TVShowSection.finished.rawValue:
+					numberOfItems = self.finishedShows.count
+					break
+				default:
+					break
+			}
+		}
+		
+		return numberOfItems
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TVShowCell
-		let tvshow = data[indexPath.row]
+		
+		var tvshow = data[indexPath.row]
+		
+		if (self.sorting == 0 && self.useUnwatchedSort) {
+			switch indexPath.section {
+				case TVShowSection.unwatched.rawValue:
+					tvshow = self.unwatchedShows[indexPath.row]
+					break
+				case TVShowSection.watched.rawValue:
+					tvshow = self.watchedShows[indexPath.row]
+					break
+				case TVShowSection.finished.rawValue:
+					tvshow = self.finishedShows[indexPath.row]
+					break
+				default:
+					break
+			}
+		}
+		
 		cell.show = tvshow
 		if cell.gestureRecognizers?.count == nil {
 			let tap = UITapGestureRecognizer(target: self, action: #selector(TVShowsCollectionController.tapped(_:)))
