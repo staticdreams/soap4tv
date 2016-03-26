@@ -8,8 +8,15 @@
 
 import ObjectMapper
 
-struct Episode: Mappable {
-	
+protocol EpisodeDelegate: class {
+    func didUpdateImage(imageUrl: NSURL)
+}
+
+
+class Episode: Mappable {
+
+    weak var delegate:EpisodeDelegate?
+
 	var sid: String?
 	var episode: Int?
 	var season: Int?
@@ -19,8 +26,9 @@ struct Episode: Mappable {
 	var season_id: Int?
 	var watched: Bool?
 	var version = [Version]()
+    var screenshotUrl: NSURL?
 	
-	init?(_ map: Map){}
+	required init?(_ map: Map){}
 	
 	let convertToInt = TransformOf<Int, String>(fromJSON: { (value: String?) -> Int? in
 		guard let myInt = value else { return nil }
@@ -35,7 +43,7 @@ struct Episode: Mappable {
 			return nil
 	})
 	
-	mutating func mapping(map: Map) {
+    func mapping(map: Map) {
 		sid <- map["sid"]
 		episode <- (map["episode"], convertToInt)
 		season <- (map["season"], convertToInt)
@@ -45,6 +53,15 @@ struct Episode: Mappable {
 		season_id <- (map["season_id"], convertToInt)
 		watched <- (map["watched"], convertToBool)
 	}
+
+    func addDelegate(newDelegate:EpisodeDelegate?) {
+        delegate = newDelegate
+    }
+
+    func addScreenshotUrl(url:NSURL) {
+        screenshotUrl = url;
+        delegate?.didUpdateImage(url)
+    }
 }
 
 struct Version {
