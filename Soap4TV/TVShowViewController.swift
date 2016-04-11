@@ -283,17 +283,25 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 		}
 		self.episodes = episodes
-        self.episodesCollection.reloadData()
-        if let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id {
-            print("TVDB Token found! Setting poster for the season")
-            self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: season) {
-                print("Setting episodes screenshots")
-                self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken, season: season) {
-//                    self.episodesCollection.reloadData()
-                }
-            }
-        }
-    }
+		UIView.transitionWithView(episodesCollection,
+			duration:0.35,
+			options:UIViewAnimationOptions.TransitionCrossDissolve,
+			animations: { () -> Void in
+				
+			},
+			completion: { done in
+				print("Season poster")
+				if let tvdbtoken = Defaults[.TVDBToken], tvdbid = self.show?.tvdb_id {
+					print("TVDB Token found! Setting poster for the season")
+					self.getPoster(tvdbid, tvdbtoken: tvdbtoken, subKey: season) {
+						print("Setting episodes screenshots")
+						self.getTVDBEpisodes(tvdbid, tvdbtoken: tvdbtoken, season: season) {
+							self.episodesCollection.reloadData()
+						}
+					}
+				} else {}
+		})
+	}
 	
 	// MARK: - TVDB Stuff
 	
@@ -361,17 +369,6 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			print("Episodes screenshots response: \(response)")
 			guard let objects = response else { callback(); return }
 			self.TVDBEpisodes = objects
-            for (_, episode) in self.episodes.enumerate() {
-                //TODO: добавить проверку на отсутствие обложки у элемента
-                let TVDBEpisode = self.TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
-                
-                if let tvdbid = self.show?.tvdb_id, eid = TVDBEpisode?.id {
-                    if let url = NSURL(string: "\(Config.tvdb.baseURL)episodes/\(tvdbid)/\(eid).jpg") {
-                        episode.addScreenshotUrl(url)
-                    }
-                }
-
-            }
 			callback()
 		}
 	}
@@ -442,7 +439,21 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		}
 		let episode = episodes[indexPath.row]
 		var version = [Version]()
-        cell?.prepareWithEpisode(episode)
+		let screenshot = UIImage(named: "default-screenshot")
+		let TVDBEpisode = TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
+
+		if let tvdbid = show?.tvdb_id, eid = TVDBEpisode?.id {
+			if let url = NSURL(string: "\(Config.tvdb.baseURL)episodes/\(tvdbid)/\(eid).jpg") {
+				cell?.screenshot.af_setImageWithURL(url, placeholderImage: screenshot, imageTransition: .CrossDissolve(0.2))
+			}
+		} else {
+			cell?.screenshot.image = screenshot
+		}
+		cell?.episodeTitle.text = String(episode.episode!)+". "+(episode.title_en?.decodeEntity())!
+		cell?.overlay.hidden = episode.watched == true ? false : true
+		cell?.screenshot.layer.borderColor = UIColor.whiteColor().CGColor
+		cell?.screenshot.layer.borderWidth = episode.watched == true ? 0 : 3
+		
 		if Defaults[.subtitles] == false { // Translated version
 			version = episode.version.filter{$0.translate != Translation.Subtitles.rawValue}
 		} else { // Subtitled original version
@@ -523,7 +534,13 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
 		self.firstUnwatchedEpisodepath = NSIndexPath.init(forRow: 0, inSection: 0)
 		
-		if (context.nextFocusedView as? EpisodeCollectionViewCell) != nil {
+		if let next = context.nextFocusedView as? EpisodeCollectionViewCell {
+			next.setNeedsUpdateConstraints()
+			UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .CurveEaseIn, animations: {
+				next.transform = CGAffineTransformMakeScale(1.2,1.2)
+				}, completion: { done in
+			})
+			
 			// если фокус не с ячейки, то выбираем первый непросмотренный эпизод
 			let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell
 			if (prev == nil) {
@@ -543,6 +560,13 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 				self.firstUnwatchedEpisodepath = NSIndexPath.init(forRow: index, inSection: 0)
 				collectionView.setNeedsFocusUpdate()
 			}
+		}
+		
+		if let prev = context.previouslyFocusedView as? EpisodeCollectionViewCell {
+			prev.setNeedsUpdateConstraints()
+			UIView.animateWithDuration(0.1, animations: {
+				prev.transform = CGAffineTransformIdentity
+			})
 		}
 	}
 	
