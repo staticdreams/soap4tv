@@ -47,6 +47,18 @@ struct Episode: Mappable {
 	}
 }
 
+
+// MARK: - CustomStringConvertible
+extension Episode: CustomStringConvertible {
+	
+	/// Description
+	var description: String {
+		return "\n sid : \(sid)\n episode : \(episode)\n season : \(season)\n title_en : \(title_en)\n  title_ru : \(title_ru)\n  spoiler : \(spoiler)\n  season_id : \(season_id)\n  watched : \(watched)\n  version : \(version)\n"
+	}
+	
+}
+
+
 struct Version {
 	var hash: String?
 	var quality: String?
