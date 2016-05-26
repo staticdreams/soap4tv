@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.3.1)
+  - Alamofire (3.4.0)
   - AlamofireImage (2.4.0):
     - Alamofire (~> 3.3)
   - AlamofireObjectMapper (3.0.0):
@@ -7,7 +7,7 @@ PODS:
     - ObjectMapper (~> 1.0)
   - Cosmos (1.2.2)
   - KeychainAccess (2.3.5)
-  - ObjectMapper (1.2.0)
+  - ObjectMapper (1.3.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.0.1)
 
@@ -31,15 +31,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/staticdreams/SwiftyUserDefaults.git
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
   Cosmos: 87c49100c69d2cb2eebfa4eb8d1e801fe29ff774
   KeychainAccess: e283c1981a6c5655e1984cd411c6faf16fa165ae
-  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: 0fc5068f85e88c99bf9dc2f4499f41254426c0f7
 
-PODFILE CHECKSUM: a24b5364790909069034ad17fc410b71e7124ee1
-
-COCOAPODS: 1.0.0.beta.6
+COCOAPODS: 0.39.0

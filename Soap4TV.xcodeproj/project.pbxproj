@@ -1,540 +1,1540 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		24AE57411CA59B3400120AE4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AE57401CA59B3400120AE4 /* Utils.swift */; };
-		3F2C050FC2C5D86C6F338EA3 /* Pods_Soap4TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E89D2440C73F868EB2A6E249 /* Pods_Soap4TV.framework */; };
-		D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */; };
-		D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */; };
-		D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000B7171BF5EE8B006AC142 /* Episode.swift */; };
-		D0301F731BF364800093ADDC /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0301F721BF364800093ADDC /* TVShow.swift */; };
-		D03057521C098CBC000DD2F1 /* TVShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03057511C098CBC000DD2F1 /* TVShowCell.xib */; };
-		D03057541C098CCB000DD2F1 /* TVShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03057531C098CCB000DD2F1 /* TVShowCell.swift */; };
-		D03057561C09B6FB000DD2F1 /* TVShowsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03057551C09B6FB000DD2F1 /* TVShowsCollectionController.swift */; };
-		D0419EE51C0218C1005EC129 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0419EE31C0218C1005EC129 /* FeaturedCollectionViewCell.swift */; };
-		D0419EE61C0218C1005EC129 /* FeaturedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0419EE41C0218C1005EC129 /* FeaturedCollectionViewCell.xib */; };
-		D04FCA5E1C03432400E3A218 /* FocusableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04FCA5D1C03432400E3A218 /* FocusableText.swift */; };
-		D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */; };
-		D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */; };
-		D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */; };
-		D07373801BF0C23800229B92 /* MovieCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */; };
-		D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373821BF0C28900229B92 /* LoginViewController.swift */; };
-		D07373861BF0C2C900229B92 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373851BF0C2C900229B92 /* Config.swift */; };
-		D07373881BF0C67000229B92 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07373871BF0C67000229B92 /* API.swift */; };
-		D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073738A1BF0C8D700229B92 /* Extensions.swift */; };
-		D0835AC51C02628200684DF7 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0835AC41C02628200684DF7 /* SwiftyTimer.swift */; };
-		D086BD051C03660B001424FF /* MovieDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086BD041C03660B001424FF /* MovieDescriptionViewController.swift */; };
-		D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089A3701BF0AE20006C6F0E /* AppDelegate.swift */; };
-		D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D089A3791BF0AE20006C6F0E /* Assets.xcassets */; };
-		D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D089A3811BF0B172006C6F0E /* Main.storyboard */; };
-		D08AA7241C05D9830084E723 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08AA7231C05D9830084E723 /* Home.storyboard */; };
-		D09040061C00B39E005E7974 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09040051C00B39E005E7974 /* HomeViewController.swift */; };
-		D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C801BFF3D0E001448B7 /* ScheduleTableViewCell.swift */; };
-		D0A29C831BFF3D0E001448B7 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */; };
-		D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */; };
-		D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */; };
-		D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */; };
-		D0C7595F1C14B40D000EF3DA /* ShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C7595E1C14B40D000EF3DA /* ShadowLabel.swift */; };
-		D0CE6D711C134DD800F4B378 /* EpisodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */; };
-		D0CE6D721C134DD800F4B378 /* EpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */; };
-		D0DB031E1C0783880095BEAF /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */; };
-		D0DB031F1C0783880095BEAF /* ScheduleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */; };
-		D0DB03211C07863D0095BEAF /* HomeScheduleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */; };
-		D0DF97681C0397B10045BF9C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF97671C0397B10045BF9C /* Enums.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		065C2D01375D4E7255431C86 /* Pods-Soap4TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soap4TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.release.xcconfig"; sourceTree = "<group>"; };
-		24AE57401CA59B3400120AE4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
-		D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
-		D000B7171BF5EE8B006AC142 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
-		D0301F721BF364800093ADDC /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
-		D03057511C098CBC000DD2F1 /* TVShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVShowCell.xib; sourceTree = "<group>"; };
-		D03057531C098CCB000DD2F1 /* TVShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowCell.swift; sourceTree = "<group>"; };
-		D03057551C09B6FB000DD2F1 /* TVShowsCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowsCollectionController.swift; sourceTree = "<group>"; };
-		D0419EE31C0218C1005EC129 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
-		D0419EE41C0218C1005EC129 /* FeaturedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCollectionViewCell.xib; sourceTree = "<group>"; };
-		D04FCA5D1C03432400E3A218 /* FocusableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusableText.swift; sourceTree = "<group>"; };
-		D05862491BFA5CF0004F20F3 /* Soap4TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Soap4TV-Bridging-Header.h"; sourceTree = "<group>"; };
-		D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
-		D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCollectionCell.xib; sourceTree = "<group>"; };
-		D07373821BF0C28900229B92 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D07373851BF0C2C900229B92 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		D07373871BF0C67000229B92 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		D073738A1BF0C8D700229B92 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		D0835AC41C02628200684DF7 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
-		D086BD041C03660B001424FF /* MovieDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDescriptionViewController.swift; sourceTree = "<group>"; };
-		D089A36D1BF0AE20006C6F0E /* Soap4TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soap4TV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D089A3701BF0AE20006C6F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D089A3791BF0AE20006C6F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D089A37B1BF0AE20006C6F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D089A3811BF0B172006C6F0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D08AA7231C05D9830084E723 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		D09040051C00B39E005E7974 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		D0A29C801BFF3D0E001448B7 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
-		D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
-		D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
-		D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
-		D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		D0C7595E1C14B40D000EF3DA /* ShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLabel.swift; sourceTree = "<group>"; };
-		D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCollectionViewCell.swift; sourceTree = "<group>"; };
-		D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
-		D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
-		D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCollectionViewCell.xib; sourceTree = "<group>"; };
-		D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScheduleCollectionView.swift; sourceTree = "<group>"; };
-		D0DF97671C0397B10045BF9C /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		E89D2440C73F868EB2A6E249 /* Pods_Soap4TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soap4TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14A78B96DB9084087B538F5 /* Pods-Soap4TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soap4TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.debug.xcconfig"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		D089A36A1BF0AE20006C6F0E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F2C050FC2C5D86C6F338EA3 /* Pods_Soap4TV.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		01DE0C43D96984F3E40C480D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F14A78B96DB9084087B538F5 /* Pods-Soap4TV.debug.xcconfig */,
-				065C2D01375D4E7255431C86 /* Pods-Soap4TV.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4053673903B078FB213C56B8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E89D2440C73F868EB2A6E249 /* Pods_Soap4TV.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D02C46EE1BF2B535000B7238 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				D07373851BF0C2C900229B92 /* Config.swift */,
-				D073738A1BF0C8D700229B92 /* Extensions.swift */,
-				D0301F721BF364800093ADDC /* TVShow.swift */,
-				D000B7171BF5EE8B006AC142 /* Episode.swift */,
-				D0835AC41C02628200684DF7 /* SwiftyTimer.swift */,
-				D0DF97671C0397B10045BF9C /* Enums.swift */,
-				24AE57401CA59B3400120AE4 /* Utils.swift */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		D07373811BF0C26200229B92 /* Custom Elements */ = {
-			isa = PBXGroup;
-			children = (
-				D073737D1BF0C23800229B92 /* MovieCollectionCell.swift */,
-				D073737E1BF0C23800229B92 /* MovieCollectionCell.xib */,
-				D000B7131BF5EA31006AC142 /* EpisodeTableViewCell.swift */,
-				D000B7141BF5EA31006AC142 /* EpisodeTableViewCell.xib */,
-				D0A29C801BFF3D0E001448B7 /* ScheduleTableViewCell.swift */,
-				D0A29C811BFF3D0E001448B7 /* ScheduleTableViewCell.xib */,
-				D0419EE31C0218C1005EC129 /* FeaturedCollectionViewCell.swift */,
-				D0419EE41C0218C1005EC129 /* FeaturedCollectionViewCell.xib */,
-				D03057531C098CCB000DD2F1 /* TVShowCell.swift */,
-				D03057511C098CBC000DD2F1 /* TVShowCell.xib */,
-				D04FCA5D1C03432400E3A218 /* FocusableText.swift */,
-				D0DB031C1C0783880095BEAF /* ScheduleCollectionViewCell.swift */,
-				D0DB031D1C0783880095BEAF /* ScheduleCollectionViewCell.xib */,
-				D0CE6D6F1C134DD800F4B378 /* EpisodeCollectionViewCell.swift */,
-				D0CE6D701C134DD800F4B378 /* EpisodeCollectionViewCell.xib */,
-				D0C7595E1C14B40D000EF3DA /* ShadowLabel.swift */,
-			);
-			name = "Custom Elements";
-			sourceTree = "<group>";
-		};
-		D07373841BF0C29800229B92 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				D07373821BF0C28900229B92 /* LoginViewController.swift */,
-				D07373871BF0C67000229B92 /* API.swift */,
-				D03057551C09B6FB000DD2F1 /* TVShowsCollectionController.swift */,
-				D0B416F71BF499F500BBDD52 /* TVShowViewController.swift */,
-				D0B47FCD1BFA3B500029E4FA /* PlayerViewController.swift */,
-				D068CBF21BFBBDAE0012C434 /* SearchViewController.swift */,
-				D068CBF41BFC5D9A0012C434 /* MainNavigationController.swift */,
-				D0A29C841BFF3D76001448B7 /* ScheduleTableViewController.swift */,
-				D09040051C00B39E005E7974 /* HomeViewController.swift */,
-				D086BD041C03660B001424FF /* MovieDescriptionViewController.swift */,
-				D0DB03201C07863D0095BEAF /* HomeScheduleCollectionView.swift */,
-			);
-			name = App;
-			sourceTree = "<group>";
-		};
-		D089A3641BF0AE20006C6F0E = {
-			isa = PBXGroup;
-			children = (
-				D089A36F1BF0AE20006C6F0E /* Soap4TV */,
-				D089A36E1BF0AE20006C6F0E /* Products */,
-				01DE0C43D96984F3E40C480D /* Pods */,
-				4053673903B078FB213C56B8 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		D089A36E1BF0AE20006C6F0E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D089A36D1BF0AE20006C6F0E /* Soap4TV.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D089A36F1BF0AE20006C6F0E /* Soap4TV */ = {
-			isa = PBXGroup;
-			children = (
-				D02C46EE1BF2B535000B7238 /* Helpers */,
-				D07373841BF0C29800229B92 /* App */,
-				D07373811BF0C26200229B92 /* Custom Elements */,
-				D089A3701BF0AE20006C6F0E /* AppDelegate.swift */,
-				D089A3811BF0B172006C6F0E /* Main.storyboard */,
-				D08AA7231C05D9830084E723 /* Home.storyboard */,
-				D089A3791BF0AE20006C6F0E /* Assets.xcassets */,
-				D089A37B1BF0AE20006C6F0E /* Info.plist */,
-				D05862491BFA5CF0004F20F3 /* Soap4TV-Bridging-Header.h */,
-			);
-			path = Soap4TV;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		D089A36C1BF0AE20006C6F0E /* Soap4TV */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D089A37E1BF0AE20006C6F0E /* Build configuration list for PBXNativeTarget "Soap4TV" */;
-			buildPhases = (
-				D3C16B216209CFB613C2C8E8 /* 📦 Check Pods Manifest.lock */,
-				244166231CA5EA4C007EE4E5 /* Build Number autoincrement */,
-				D089A3691BF0AE20006C6F0E /* Sources */,
-				D089A36A1BF0AE20006C6F0E /* Frameworks */,
-				D089A36B1BF0AE20006C6F0E /* Resources */,
-				636CE9435A78B689A64A6E61 /* 📦 Embed Pods Frameworks */,
-				2B5A18D51861B61524FE8CA2 /* 📦 Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Soap4TV;
-			productName = Soap4TV;
-			productReference = D089A36D1BF0AE20006C6F0E /* Soap4TV.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		D089A3651BF0AE20006C6F0E /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = "Peter Tikhomirov";
-				TargetAttributes = {
-					D089A36C1BF0AE20006C6F0E = {
-						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 5ES6HGC5J6;
-						SystemCapabilities = {
-							com.apple.BackgroundModes.appletvos = {
-								enabled = 0;
-							};
-						};
-					};
-				};
-			};
-			buildConfigurationList = D089A3681BF0AE20006C6F0E /* Build configuration list for PBXProject "Soap4TV" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = D089A3641BF0AE20006C6F0E;
-			productRefGroup = D089A36E1BF0AE20006C6F0E /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				D089A36C1BF0AE20006C6F0E /* Soap4TV */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		D089A36B1BF0AE20006C6F0E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D08AA7241C05D9830084E723 /* Home.storyboard in Resources */,
-				D0A29C831BFF3D0E001448B7 /* ScheduleTableViewCell.xib in Resources */,
-				D07373801BF0C23800229B92 /* MovieCollectionCell.xib in Resources */,
-				D0419EE61C0218C1005EC129 /* FeaturedCollectionViewCell.xib in Resources */,
-				D000B7161BF5EA31006AC142 /* EpisodeTableViewCell.xib in Resources */,
-				D089A37A1BF0AE20006C6F0E /* Assets.xcassets in Resources */,
-				D0CE6D721C134DD800F4B378 /* EpisodeCollectionViewCell.xib in Resources */,
-				D03057521C098CBC000DD2F1 /* TVShowCell.xib in Resources */,
-				D089A3821BF0B172006C6F0E /* Main.storyboard in Resources */,
-				D0DB031F1C0783880095BEAF /* ScheduleCollectionViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		244166231CA5EA4C007EE4E5 /* Build Number autoincrement */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Number autoincrement";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(git rev-list --all | wc -l)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
-		};
-		2B5A18D51861B61524FE8CA2 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		636CE9435A78B689A64A6E61 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3C16B216209CFB613C2C8E8 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		D089A3691BF0AE20006C6F0E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0A29C851BFF3D76001448B7 /* ScheduleTableViewController.swift in Sources */,
-				D068CBF51BFC5D9A0012C434 /* MainNavigationController.swift in Sources */,
-				D03057541C098CCB000DD2F1 /* TVShowCell.swift in Sources */,
-				24AE57411CA59B3400120AE4 /* Utils.swift in Sources */,
-				D073738B1BF0C8D700229B92 /* Extensions.swift in Sources */,
-				D07373831BF0C28900229B92 /* LoginViewController.swift in Sources */,
-				D0301F731BF364800093ADDC /* TVShow.swift in Sources */,
-				D09040061C00B39E005E7974 /* HomeViewController.swift in Sources */,
-				D0419EE51C0218C1005EC129 /* FeaturedCollectionViewCell.swift in Sources */,
-				D000B7151BF5EA31006AC142 /* EpisodeTableViewCell.swift in Sources */,
-				D0DF97681C0397B10045BF9C /* Enums.swift in Sources */,
-				D03057561C09B6FB000DD2F1 /* TVShowsCollectionController.swift in Sources */,
-				D07373861BF0C2C900229B92 /* Config.swift in Sources */,
-				D0A29C821BFF3D0E001448B7 /* ScheduleTableViewCell.swift in Sources */,
-				D000B7181BF5EE8B006AC142 /* Episode.swift in Sources */,
-				D073737F1BF0C23800229B92 /* MovieCollectionCell.swift in Sources */,
-				D086BD051C03660B001424FF /* MovieDescriptionViewController.swift in Sources */,
-				D04FCA5E1C03432400E3A218 /* FocusableText.swift in Sources */,
-				D0DB031E1C0783880095BEAF /* ScheduleCollectionViewCell.swift in Sources */,
-				D0B47FCE1BFA3B500029E4FA /* PlayerViewController.swift in Sources */,
-				D068CBF31BFBBDAE0012C434 /* SearchViewController.swift in Sources */,
-				D0CE6D711C134DD800F4B378 /* EpisodeCollectionViewCell.swift in Sources */,
-				D089A3711BF0AE20006C6F0E /* AppDelegate.swift in Sources */,
-				D07373881BF0C67000229B92 /* API.swift in Sources */,
-				D0C7595F1C14B40D000EF3DA /* ShadowLabel.swift in Sources */,
-				D0B416F81BF499F500BBDD52 /* TVShowViewController.swift in Sources */,
-				D0DB03211C07863D0095BEAF /* HomeScheduleCollectionView.swift in Sources */,
-				D0835AC51C02628200684DF7 /* SwiftyTimer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin XCBuildConfiguration section */
-		D089A37C1BF0AE20006C6F0E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = appletvos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		D089A37D1BF0AE20006C6F0E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = appletvos;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D089A37F1BF0AE20006C6F0E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F14A78B96DB9084087B538F5 /* Pods-Soap4TV.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = Soap4TV/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.staticdreams.Soap4TV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Soap4TV/Soap4TV-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		D089A3801BF0AE20006C6F0E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 065C2D01375D4E7255431C86 /* Pods-Soap4TV.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = Soap4TV/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.staticdreams.Soap4TV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Soap4TV/Soap4TV-Bridging-Header.h";
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		D089A3681BF0AE20006C6F0E /* Build configuration list for PBXProject "Soap4TV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D089A37C1BF0AE20006C6F0E /* Debug */,
-				D089A37D1BF0AE20006C6F0E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D089A37E1BF0AE20006C6F0E /* Build configuration list for PBXNativeTarget "Soap4TV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D089A37F1BF0AE20006C6F0E /* Debug */,
-				D089A3801BF0AE20006C6F0E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = D089A3651BF0AE20006C6F0E /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>01DE0C43D96984F3E40C480D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F14A78B96DB9084087B538F5</string>
+				<string>065C2D01375D4E7255431C86</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>065C2D01375D4E7255431C86</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-Soap4TV.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>244166231CA5EA4C007EE4E5</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Build Number autoincrement</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>buildNumber=$(git rev-list --all | wc -l)
+/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "${PROJECT_DIR}/${INFOPLIST_FILE}"</string>
+		</dict>
+		<key>24AE57401CA59B3400120AE4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Utils.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>24AE57411CA59B3400120AE4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>24AE57401CA59B3400120AE4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2B5A18D51861B61524FE8CA2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>2F5A9C4D42F7EE1594950CA9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>3F2C050FC2C5D86C6F338EA3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E89D2440C73F868EB2A6E249</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4053673903B078FB213C56B8</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E89D2440C73F868EB2A6E249</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>636CE9435A78B689A64A6E61</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>D000B7131BF5EA31006AC142</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>EpisodeTableViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D000B7141BF5EA31006AC142</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>EpisodeTableViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D000B7151BF5EA31006AC142</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D000B7131BF5EA31006AC142</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D000B7161BF5EA31006AC142</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D000B7141BF5EA31006AC142</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D000B7171BF5EE8B006AC142</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Episode.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D000B7181BF5EE8B006AC142</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D000B7171BF5EE8B006AC142</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D02C46EE1BF2B535000B7238</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D07373851BF0C2C900229B92</string>
+				<string>D073738A1BF0C8D700229B92</string>
+				<string>D0301F721BF364800093ADDC</string>
+				<string>D000B7171BF5EE8B006AC142</string>
+				<string>D0835AC41C02628200684DF7</string>
+				<string>D0DF97671C0397B10045BF9C</string>
+				<string>24AE57401CA59B3400120AE4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Helpers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0301F721BF364800093ADDC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TVShow.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0301F731BF364800093ADDC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0301F721BF364800093ADDC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D03057511C098CBC000DD2F1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>TVShowCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D03057521C098CBC000DD2F1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D03057511C098CBC000DD2F1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D03057531C098CCB000DD2F1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TVShowCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D03057541C098CCB000DD2F1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D03057531C098CCB000DD2F1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D03057551C09B6FB000DD2F1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TVShowsCollectionController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D03057561C09B6FB000DD2F1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D03057551C09B6FB000DD2F1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0419EE31C0218C1005EC129</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FeaturedCollectionViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0419EE41C0218C1005EC129</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>FeaturedCollectionViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0419EE51C0218C1005EC129</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0419EE31C0218C1005EC129</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0419EE61C0218C1005EC129</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0419EE41C0218C1005EC129</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D04FCA5D1C03432400E3A218</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FocusableText.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D04FCA5E1C03432400E3A218</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D04FCA5D1C03432400E3A218</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D05862491BFA5CF0004F20F3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Soap4TV-Bridging-Header.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D068CBF21BFBBDAE0012C434</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SearchViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D068CBF31BFBBDAE0012C434</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D068CBF21BFBBDAE0012C434</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D068CBF41BFC5D9A0012C434</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MainNavigationController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D068CBF51BFC5D9A0012C434</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D068CBF41BFC5D9A0012C434</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D073737D1BF0C23800229B92</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MovieCollectionCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D073737E1BF0C23800229B92</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>MovieCollectionCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D073737F1BF0C23800229B92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D073737D1BF0C23800229B92</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D07373801BF0C23800229B92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D073737E1BF0C23800229B92</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D07373811BF0C26200229B92</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D073737D1BF0C23800229B92</string>
+				<string>D073737E1BF0C23800229B92</string>
+				<string>D000B7131BF5EA31006AC142</string>
+				<string>D000B7141BF5EA31006AC142</string>
+				<string>D0A29C801BFF3D0E001448B7</string>
+				<string>D0A29C811BFF3D0E001448B7</string>
+				<string>D0419EE31C0218C1005EC129</string>
+				<string>D0419EE41C0218C1005EC129</string>
+				<string>D03057531C098CCB000DD2F1</string>
+				<string>D03057511C098CBC000DD2F1</string>
+				<string>D04FCA5D1C03432400E3A218</string>
+				<string>D0DB031C1C0783880095BEAF</string>
+				<string>D0DB031D1C0783880095BEAF</string>
+				<string>D0CE6D6F1C134DD800F4B378</string>
+				<string>D0CE6D701C134DD800F4B378</string>
+				<string>D0C7595E1C14B40D000EF3DA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Custom Elements</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D07373821BF0C28900229B92</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>LoginViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D07373831BF0C28900229B92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D07373821BF0C28900229B92</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D07373841BF0C29800229B92</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D07373821BF0C28900229B92</string>
+				<string>D07373871BF0C67000229B92</string>
+				<string>D03057551C09B6FB000DD2F1</string>
+				<string>D0B416F71BF499F500BBDD52</string>
+				<string>D0B47FCD1BFA3B500029E4FA</string>
+				<string>D068CBF21BFBBDAE0012C434</string>
+				<string>D068CBF41BFC5D9A0012C434</string>
+				<string>D0A29C841BFF3D76001448B7</string>
+				<string>D09040051C00B39E005E7974</string>
+				<string>D086BD041C03660B001424FF</string>
+				<string>D0DB03201C07863D0095BEAF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>App</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D07373851BF0C2C900229B92</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Config.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D07373861BF0C2C900229B92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D07373851BF0C2C900229B92</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D07373871BF0C67000229B92</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>API.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D07373881BF0C67000229B92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D07373871BF0C67000229B92</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D073738A1BF0C8D700229B92</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Extensions.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D073738B1BF0C8D700229B92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D073738A1BF0C8D700229B92</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0835AC41C02628200684DF7</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SwiftyTimer.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0835AC51C02628200684DF7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0835AC41C02628200684DF7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D086BD041C03660B001424FF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MovieDescriptionViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D086BD051C03660B001424FF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D086BD041C03660B001424FF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D089A3641BF0AE20006C6F0E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D089A36F1BF0AE20006C6F0E</string>
+				<string>D089A36E1BF0AE20006C6F0E</string>
+				<string>01DE0C43D96984F3E40C480D</string>
+				<string>4053673903B078FB213C56B8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A3651BF0AE20006C6F0E</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0710</string>
+				<key>LastUpgradeCheck</key>
+				<string>0710</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Peter Tikhomirov</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>D089A36C1BF0AE20006C6F0E</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.1</string>
+						<key>DevelopmentTeam</key>
+						<string>345VKAJA5N</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.BackgroundModes.appletvos</key>
+							<dict>
+								<key>enabled</key>
+								<string>0</string>
+							</dict>
+						</dict>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>D089A3681BF0AE20006C6F0E</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>D089A3641BF0AE20006C6F0E</string>
+			<key>productRefGroup</key>
+			<string>D089A36E1BF0AE20006C6F0E</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>D089A36C1BF0AE20006C6F0E</string>
+			</array>
+		</dict>
+		<key>D089A3681BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D089A37C1BF0AE20006C6F0E</string>
+				<string>D089A37D1BF0AE20006C6F0E</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D089A3691BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D0A29C851BFF3D76001448B7</string>
+				<string>D068CBF51BFC5D9A0012C434</string>
+				<string>D03057541C098CCB000DD2F1</string>
+				<string>24AE57411CA59B3400120AE4</string>
+				<string>D073738B1BF0C8D700229B92</string>
+				<string>D07373831BF0C28900229B92</string>
+				<string>D0301F731BF364800093ADDC</string>
+				<string>D09040061C00B39E005E7974</string>
+				<string>D0419EE51C0218C1005EC129</string>
+				<string>D000B7151BF5EA31006AC142</string>
+				<string>D0DF97681C0397B10045BF9C</string>
+				<string>D03057561C09B6FB000DD2F1</string>
+				<string>D07373861BF0C2C900229B92</string>
+				<string>D0A29C821BFF3D0E001448B7</string>
+				<string>D000B7181BF5EE8B006AC142</string>
+				<string>D073737F1BF0C23800229B92</string>
+				<string>D086BD051C03660B001424FF</string>
+				<string>D04FCA5E1C03432400E3A218</string>
+				<string>D0DB031E1C0783880095BEAF</string>
+				<string>D0B47FCE1BFA3B500029E4FA</string>
+				<string>D068CBF31BFBBDAE0012C434</string>
+				<string>D0CE6D711C134DD800F4B378</string>
+				<string>D089A3711BF0AE20006C6F0E</string>
+				<string>D07373881BF0C67000229B92</string>
+				<string>D0C7595F1C14B40D000EF3DA</string>
+				<string>D0B416F81BF499F500BBDD52</string>
+				<string>D0DB03211C07863D0095BEAF</string>
+				<string>D0835AC51C02628200684DF7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D089A36A1BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3F2C050FC2C5D86C6F338EA3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D089A36B1BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D08AA7241C05D9830084E723</string>
+				<string>D0A29C831BFF3D0E001448B7</string>
+				<string>D07373801BF0C23800229B92</string>
+				<string>D0419EE61C0218C1005EC129</string>
+				<string>D000B7161BF5EA31006AC142</string>
+				<string>D089A37A1BF0AE20006C6F0E</string>
+				<string>D0CE6D721C134DD800F4B378</string>
+				<string>D03057521C098CBC000DD2F1</string>
+				<string>D089A3821BF0B172006C6F0E</string>
+				<string>D0DB031F1C0783880095BEAF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D089A36C1BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>D089A37E1BF0AE20006C6F0E</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D3C16B216209CFB613C2C8E8</string>
+				<string>244166231CA5EA4C007EE4E5</string>
+				<string>D089A3691BF0AE20006C6F0E</string>
+				<string>D089A36A1BF0AE20006C6F0E</string>
+				<string>D089A36B1BF0AE20006C6F0E</string>
+				<string>636CE9435A78B689A64A6E61</string>
+				<string>2B5A18D51861B61524FE8CA2</string>
+				<string>2F5A9C4D42F7EE1594950CA9</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Soap4TV</string>
+			<key>productName</key>
+			<string>Soap4TV</string>
+			<key>productReference</key>
+			<string>D089A36D1BF0AE20006C6F0E</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>D089A36D1BF0AE20006C6F0E</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Soap4TV.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>D089A36E1BF0AE20006C6F0E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D089A36D1BF0AE20006C6F0E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A36F1BF0AE20006C6F0E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D02C46EE1BF2B535000B7238</string>
+				<string>D07373841BF0C29800229B92</string>
+				<string>D07373811BF0C26200229B92</string>
+				<string>D089A3701BF0AE20006C6F0E</string>
+				<string>D089A3811BF0B172006C6F0E</string>
+				<string>D08AA7231C05D9830084E723</string>
+				<string>D089A3791BF0AE20006C6F0E</string>
+				<string>D089A37B1BF0AE20006C6F0E</string>
+				<string>D05862491BFA5CF0004F20F3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Soap4TV</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A3701BF0AE20006C6F0E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A3711BF0AE20006C6F0E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D089A3701BF0AE20006C6F0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D089A3791BF0AE20006C6F0E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A37A1BF0AE20006C6F0E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D089A3791BF0AE20006C6F0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D089A37B1BF0AE20006C6F0E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A37C1BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>appletvos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>3</string>
+				<key>TVOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D089A37D1BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>appletvos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>3</string>
+				<key>TVOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>D089A37E1BF0AE20006C6F0E</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>D089A37F1BF0AE20006C6F0E</string>
+				<string>D089A3801BF0AE20006C6F0E</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D089A37F1BF0AE20006C6F0E</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>F14A78B96DB9084087B538F5</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>App Icon &amp; Top Shelf Image</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Soap4TV/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.staticdreams.Soap4TV</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>Soap4TV/Soap4TV-Bridging-Header.h</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TVOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>D089A3801BF0AE20006C6F0E</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>065C2D01375D4E7255431C86</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>App Icon &amp; Top Shelf Image</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Soap4TV/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.staticdreams.Soap4TV</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>Soap4TV/Soap4TV-Bridging-Header.h</string>
+				<key>TVOS_DEPLOYMENT_TARGET</key>
+				<string>9.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>D089A3811BF0B172006C6F0E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D089A3821BF0B172006C6F0E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D089A3811BF0B172006C6F0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D08AA7231C05D9830084E723</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Home.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D08AA7241C05D9830084E723</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D08AA7231C05D9830084E723</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D09040051C00B39E005E7974</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>HomeViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D09040061C00B39E005E7974</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D09040051C00B39E005E7974</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0A29C801BFF3D0E001448B7</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ScheduleTableViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0A29C811BFF3D0E001448B7</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>ScheduleTableViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0A29C821BFF3D0E001448B7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0A29C801BFF3D0E001448B7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0A29C831BFF3D0E001448B7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0A29C811BFF3D0E001448B7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0A29C841BFF3D76001448B7</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ScheduleTableViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0A29C851BFF3D76001448B7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0A29C841BFF3D76001448B7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0B416F71BF499F500BBDD52</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TVShowViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0B416F81BF499F500BBDD52</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0B416F71BF499F500BBDD52</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0B47FCD1BFA3B500029E4FA</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>PlayerViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0B47FCE1BFA3B500029E4FA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0B47FCD1BFA3B500029E4FA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0C7595E1C14B40D000EF3DA</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ShadowLabel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0C7595F1C14B40D000EF3DA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0C7595E1C14B40D000EF3DA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0CE6D6F1C134DD800F4B378</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>EpisodeCollectionViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0CE6D701C134DD800F4B378</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>EpisodeCollectionViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0CE6D711C134DD800F4B378</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0CE6D6F1C134DD800F4B378</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0CE6D721C134DD800F4B378</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0CE6D701C134DD800F4B378</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0DB031C1C0783880095BEAF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ScheduleCollectionViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0DB031D1C0783880095BEAF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>ScheduleCollectionViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0DB031E1C0783880095BEAF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0DB031C1C0783880095BEAF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0DB031F1C0783880095BEAF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0DB031D1C0783880095BEAF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0DB03201C07863D0095BEAF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>HomeScheduleCollectionView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0DB03211C07863D0095BEAF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0DB03201C07863D0095BEAF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D0DF97671C0397B10045BF9C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Enums.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0DF97681C0397B10045BF9C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0DF97671C0397B10045BF9C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D3C16B216209CFB613C2C8E8</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>&#128230; Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>E89D2440C73F868EB2A6E249</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_Soap4TV.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>F14A78B96DB9084087B538F5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-Soap4TV.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-Soap4TV/Pods-Soap4TV.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>D089A3651BF0AE20006C6F0E</string>
+</dict>
+</plist>
