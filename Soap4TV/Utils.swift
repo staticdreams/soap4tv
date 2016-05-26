@@ -11,12 +11,14 @@ import Foundation
 /**
 Лог-функция с выводом файла, метода и строки, откуда вызывается. Пример использования: DLog("привет")
 
-- parameter message:      текст, который надо вывести
-- parameter fullPath:     путь до файла, который вызывается
-- parameter line:         номер строки в файле
+- parameter messages: тексты/объекты, которые надо вывести
+- parameter fullPath: путь до файла, который вызывается
+- parameter line: номер строки в файле
 - parameter functionName: название метода/функции вызова
 */
-func DLog(message: AnyObject, fullPath: String = #file, line: Int = #line, functionName: String = #function) {
+func DLog(messages: Any..., fullPath: String = #file, line: Int = #line, functionName: String = #function) {
 	let file = NSURL.fileURLWithPath(fullPath)
-	print("\(file.pathComponents!.last) -> \(functionName) -> line \(line) : \(message)")
+	for message in messages {
+		print("\(file.pathComponents!.last!):\(line) -> \(functionName) \(message)")
+	}
 }
