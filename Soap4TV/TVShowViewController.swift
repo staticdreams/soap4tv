@@ -14,32 +14,6 @@ import Cosmos
 
 private let reuseIdentifier = "EpisodeCell"
 
-enum Quality: String {
-	case HD = "720p"
-	case SD = "SD"
-	init() {
-		self = .HD
-	}
-}
-
-enum Translation: String {
-	case Translator
-	case Subtitles = " Субтитры"
-	init() {
-		self = .Translator
-	}
-}
-
-enum ButtonState: String {
-	case Like = "like"
-	case Dislike = "unlike"
-	case Subtitle = "speech-bubble"
-	case Translation = "talk"
-	func image() -> UIImage {
-		return UIImage(named: self.rawValue)!
-	}
-}
-
 struct Season {
 	let seasonNumber: Int
 	let seasonId: Int
