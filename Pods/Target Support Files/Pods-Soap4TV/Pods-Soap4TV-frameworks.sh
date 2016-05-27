@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -84,22 +84,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AlamofireImage/AlamofireImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AlamofireObjectMapper/AlamofireObjectMapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Cosmos/Cosmos.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
+  install_framework "Pods-Soap4TV/Alamofire.framework"
+  install_framework "Pods-Soap4TV/AlamofireImage.framework"
+  install_framework "Pods-Soap4TV/AlamofireObjectMapper.framework"
+  install_framework "Pods-Soap4TV/Cosmos.framework"
+  install_framework "Pods-Soap4TV/KeychainAccess.framework"
+  install_framework "Pods-Soap4TV/ObjectMapper.framework"
+  install_framework "Pods-Soap4TV/SwiftyJSON.framework"
+  install_framework "Pods-Soap4TV/SwiftyUserDefaults.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AlamofireImage/AlamofireImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AlamofireObjectMapper/AlamofireObjectMapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Cosmos/Cosmos.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework"
+  install_framework "Pods-Soap4TV/Alamofire.framework"
+  install_framework "Pods-Soap4TV/AlamofireImage.framework"
+  install_framework "Pods-Soap4TV/AlamofireObjectMapper.framework"
+  install_framework "Pods-Soap4TV/Cosmos.framework"
+  install_framework "Pods-Soap4TV/KeychainAccess.framework"
+  install_framework "Pods-Soap4TV/ObjectMapper.framework"
+  install_framework "Pods-Soap4TV/SwiftyJSON.framework"
+  install_framework "Pods-Soap4TV/SwiftyUserDefaults.framework"
 fi
