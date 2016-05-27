@@ -275,6 +275,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 					}
 				} else {
 					self.episodesCollection.reloadData()
+					self.episodesCollection.setNeedsFocusUpdate()
+					self.episodesCollection.updateFocusIfNeeded()
 				}
 		})
 	}
