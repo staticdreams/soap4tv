@@ -128,7 +128,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 				let sortedShows = shows.sort(>)
 				self.featuredShows = sortedShows.takeElements(Config.maxNumberFeatured)
 				self.newShowsCollectionView.reloadData()
-				delay(0.5) {
+				delay(0.2) {
 					let indexPath = NSIndexPath(forRow: 0, inSection: 0)
 					self.newShowsCollectionView.delegate?.collectionView!(self.newShowsCollectionView, didSelectItemAtIndexPath: indexPath)
 				}

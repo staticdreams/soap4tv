@@ -88,8 +88,12 @@ func <(lhs: TVShow, rhs: TVShow) -> Bool { // Comparing by show ID
 	return lhs.sid < rhs.sid
 }
 
-func >(lhs: TVShow, rhs: TVShow) -> Bool { // Comparing by year
-	return lhs.year > rhs.year
+func >(lhs: TVShow, rhs: TVShow) -> Bool { // Comparing by year && newest tv show
+	if lhs.year == rhs.year {
+		return lhs.sid > rhs.sid
+	} else {
+		return lhs.year > rhs.year
+	}
 }
 
 infix operator ~ { associativity left precedence 140 } // Compating by rating operator
