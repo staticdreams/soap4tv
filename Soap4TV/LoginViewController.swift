@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		loginField.text = Defaults.hasKey(.login) ? Defaults[.login]! : ""
 		passwordField.text = (loginField.text!.count > 0) ? keychain[ loginField.text! ] : ""
 		
-		tvdb.login(Config.tvdb.username, password: Config.tvdb.password, apikey: Config.tvdb.apikey) { result, error in
+		tvdb.login(Config.tvdb.username, userkey: Config.tvdb.userKey, apikey: Config.tvdb.apikey) { result, error in
 			if let error = error {
 				print("Error logging into TVDB: \(error)")
 				Defaults[.TVDBToken] = nil

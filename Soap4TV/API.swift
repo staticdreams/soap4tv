@@ -76,7 +76,6 @@ struct API {
 		]
 		let suffix = view == .MyShows ? "/my/" : ""
 		manager?.request(.GET, Config.URL.base+"/api/soap"+suffix, headers: headers)
-//			.responseArray { (response: Response<[TVShow], NSError>) in
 			.responseJSON { response in
 				switch response.result {
 				case .Success(let data):
@@ -275,9 +274,9 @@ struct TVDB {
 		manager = Alamofire.Manager(configuration: configuration)
 	}
 	
-	func login(login: String, password:String, apikey:String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
+	func login(login: String, userkey:String, apikey:String, completionHandler: (responseObject: JSON?, error: ErrorType?) -> ()) {
 		let headers = ["Content-Type": "application/json"]
-		let parameters = ["username": login, "userpass": password, "apikey": apikey]
+		let parameters = ["username": login, "userkey": userkey, "apikey": apikey]
 		
 		manager?.request(.POST, Config.tvdb.apiURL+"/login", headers: headers, parameters:parameters, encoding: .JSON)
 			.responseJSON { response in
