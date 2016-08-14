@@ -91,9 +91,10 @@ class PlayerViewController: AVPlayerViewController {
 		} else {
 			
 			self.player!.play()
-			self.addPlayerPeriodicObserver()
 			
 		}
+		
+		self.addPlayerPeriodicObserver()
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
