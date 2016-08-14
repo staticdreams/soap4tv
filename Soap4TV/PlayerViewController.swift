@@ -40,39 +40,104 @@ class PlayerViewController: AVPlayerViewController {
 	// Delegate
 	var playerDelegate: PlayerViewControllerDelegate?
 	
+	// First play flag
+	var firstPlay = true
+	
 	
 	/// MARK: - Overrided
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		// Notifications
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appWillResignActive(_:)), name: UIApplicationWillResignActiveNotification, object: nil)
+		
+		
 		let url = NSURL(string: videoURL)
-		player = AVPlayer(URL: url!)
+		self.player = AVPlayer(URL: url!)
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		player!.play()
 		
-		self.addPlayerPeriodicObserver()
+		// check if can continue playing
+		if self.firstPlay == true {
+			let lastPosition = NSUserDefaults.standardUserDefaults().numberForKey((self.episode.version.first?.eid)!)
+			
+			if lastPosition != nil {
+				
+				let alertController = UIAlertController(title: "", message: "Продложить воспроизведение?", preferredStyle: .Alert)
+				
+				let continueAction = UIAlertAction(title: "Продолжить", style: .Default, handler: { (action) in
+					let time = CMTime(seconds: lastPosition!.doubleValue, preferredTimescale: 1000)
+					self.player?.seekToTime(time)
+					self.player!.play()
+				})
+				
+				let startFromBeginAction = UIAlertAction(title: "Начать сначала", style: .Default, handler: { (action) in
+					self.player!.play()
+				})
+				
+				alertController.addAction(continueAction)
+				alertController.addAction(startFromBeginAction)
+				
+				self.presentViewController(alertController, animated: true, completion: {
+					
+				})
+			} else {
+				self.player!.play()
+			}
+			
+			self.firstPlay = false
+		} else {
+			
+			self.player!.play()
+			self.addPlayerPeriodicObserver()
+			
+		}
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		self.removePlayerPeriodicObserver()
 		self.player!.pause()
+		
+		self.saveCurrentPosition()
 	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		
 		self.removePlayerPeriodicObserver()
-		player = nil
+		self.player = nil
 	}
 	
 }
 
 
+// MARK: - Notifications
+extension PlayerViewController {
+	
+	/**
+	Application will resign active notification recieved
+	
+	- parameter notification: notification
+	*/
+	func appWillResignActive(notification: NSNotification) {
+		self.saveCurrentPosition()
+	}
+}
+
+
 // MARK: - Self methods
 extension PlayerViewController {
+	
+	/**
+	Save current video position
+	*/
+	private func saveCurrentPosition() {
+		let currentTime = Double(CMTimeGetSeconds(self.player!.currentTime()))
+		NSUserDefaults.standardUserDefaults().setValue( NSNumber(double: currentTime), forKey: (self.episode.version.first?.eid)!)
+	}
 	
 	/**
 	Add player periodic observer to check if we played 80% of video to mark episode as watched
@@ -121,7 +186,7 @@ extension PlayerViewController {
 	func removePlayerPeriodicObserver() {
 		
 		if let playerObserver = self.playerObserver {
-			player?.removeTimeObserver(playerObserver)
+			self.player?.removeTimeObserver(playerObserver)
 		}
 		
 		self.playerObserver = nil
