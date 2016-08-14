@@ -30,8 +30,11 @@ func ==(lhs: Season, rhs: Season) -> Bool {
 }
 
 
-class TVShowViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+/// TV Show View Controller
+class TVShowViewController: UIViewController {
 	
+	
+	// MARK: - Properties
 	var show: TVShow?
 	var episodes = [Episode]()
 	var allEpisodes = [Episode]()
@@ -52,6 +55,8 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 	var api = API()
 	var tv = TVDB()
 	
+	
+	// MARK: - Outlets
 	@IBOutlet weak var backgroundImage: UIImageView!
 	@IBOutlet weak var poster: UIImageView!
 	
@@ -94,34 +99,27 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		translationLabel.text = Defaults[.subtitles]! ? "Субтитры": "Перевод"
 		translationButton.setImage(translationImage, forState: UIControlState.Normal)
 	}
-
-	@IBAction func likeTapped(sender: AnyObject) {
-		
-		guard let showWatching = show?.watching, showId = show?.sid else {
-			return
-		}
-		show?.watching = !showWatching
-		api.toggleWatch(token, show: String(showId), status: !showWatching) { response, error in
-			print(response)
-		}
-		likeLabel.text = show?.watching == true ? "Удалить из моих сериалов": "Добавить в мои сериалы"
-		let image = show?.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
-		likeButton.setImage(image, forState: UIControlState.Normal)
-	}
-
-	@IBAction func translationTapped(sender: AnyObject) {
-		if let state = Defaults[.subtitles] {
-			Defaults[.subtitles] = !state
-			translationLabel.text = Defaults[.subtitles]! ? "Субтитры": "Перевод"
-			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
-			translationButton.setImage(image, forState: UIControlState.Normal)
-			self.episodesCollection.reloadData()
-		}
-	}
 	
 	override var preferredFocusedView: UIView? {
 		return self.episodesCollection
 	}
+	
+	/*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	if segue.identifier == "scheduleSegue" {
+	if let destination = segue.destinationViewController as? ScheduleTableViewController {
+	destination.sid = show?.sid
+	destination.token = self.token
+	}
+	}
+	}*/
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
+}
+
+
+extension TVShowViewController {
 	
 	func setup() {
 		currentTranslation = Defaults.hasKey(.translation) ? Defaults[.translation] : Translation().rawValue
@@ -281,7 +279,31 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		})
 	}
 	
-	// MARK: - TVDB Stuff
+	
+	
+	func updateEpisodeWatchedStatus(index: NSIndexPath, status: Bool) {
+		let cell = episodesCollection.cellForItemAtIndexPath(index) as! EpisodeCollectionViewCell
+		cell.overlay.hidden = status == true ? false : true
+		cell.screenshot.layer.borderWidth = status == true ? 0 : 3
+		episodes[index.row].watched = status
+	}
+	
+	func updateAllEpisodesAsWatched() {
+		for cell in episodesCollection.visibleCells() as! [EpisodeCollectionViewCell] {
+			cell.overlay.hidden = false
+			cell.screenshot.layer.borderWidth = 0
+		}
+		for (index, _) in episodes.enumerate() {
+			episodes[index].watched = true
+		}
+	}
+	
+
+}
+
+
+// MARK: - TVDB Stuff
+extension TVShowViewController {
 	
 	func getBackgroundImage(tvdb: Int, tvdbtoken: String, callback: () -> ()) {
 		
@@ -303,7 +325,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 					return
 				}
 				// Works, but is VERY processor expensive
-//				self.backgroundImage.af_setImageWithURL(url, placeholderImage: nil, filter: BlurFilter(blurRadius: 1))
+				//				self.backgroundImage.af_setImageWithURL(url, placeholderImage: nil, filter: BlurFilter(blurRadius: 1))
 				self.backgroundImage.af_setImageWithURL(url)
 				let lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
 				let lightBlurView = UIVisualEffectView(effect: lightBlur)
@@ -331,7 +353,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 					callback()
 					return
 				}
-//				self.posterURL = NSURL()
+				//				self.posterURL = NSURL()
 				self.poster.af_setImageWithURL(url, placeholderImage: nil, imageTransition: .CrossDissolve(0.2))
 				callback()
 			} else {
@@ -351,25 +373,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		}
 	}
 	
-	func updateEpisodeWatchedStatus(index: NSIndexPath, status: Bool) {
-		let cell = episodesCollection.cellForItemAtIndexPath(index) as! EpisodeCollectionViewCell
-		cell.overlay.hidden = status == true ? false : true
-		cell.screenshot.layer.borderWidth = status == true ? 0 : 3
-		episodes[index.row].watched = status
-	}
-	
-	func updateAllEpisodesAsWatched() {
-		for cell in episodesCollection.visibleCells() as! [EpisodeCollectionViewCell] {
-			cell.overlay.hidden = false
-			cell.screenshot.layer.borderWidth = 0
-		}
-		for (index, _) in episodes.enumerate() {
-			episodes[index].watched = true
-		}
-	}
-	
-	// MARK: - Soap4me Stuff
-	
+}
+
+
+// MARK: - Soap4me Stuff
+extension TVShowViewController {
 	
 	func getEpisodes(token: String, show: Int, callback: () -> ()) {
 		var seasons = [Season]()
@@ -385,26 +393,43 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 		}
 	}
-
 	
-	/*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "scheduleSegue" {
-			if let destination = segue.destinationViewController as? ScheduleTableViewController {
-				destination.sid = show?.sid
-				destination.token = self.token
-			}
+}
+
+
+// MARK: - Actions
+extension TVShowViewController {
+	
+	@IBAction func likeTapped(sender: AnyObject) {
+		
+		guard let showWatching = show?.watching, showId = show?.sid else {
+			return
 		}
-	}*/
+		show?.watching = !showWatching
+		api.toggleWatch(token, show: String(showId), status: !showWatching) { response, error in
+			print(response)
+		}
+		likeLabel.text = show?.watching == true ? "Удалить из моих сериалов": "Добавить в мои сериалы"
+		let image = show?.watching == true ? ButtonState.Dislike.image() :  ButtonState.Like.image()
+		likeButton.setImage(image, forState: UIControlState.Normal)
+	}
+	
+	@IBAction func translationTapped(sender: AnyObject) {
+		if let state = Defaults[.subtitles] {
+			Defaults[.subtitles] = !state
+			translationLabel.text = Defaults[.subtitles]! ? "Субтитры": "Перевод"
+			let image = Defaults[.subtitles]! ? ButtonState.Subtitle.image() :  ButtonState.Translation.image()
+			translationButton.setImage(image, forState: UIControlState.Normal)
+			self.episodesCollection.reloadData()
+		}
+	}
+	
+}
 
-	// MARK: - Episodes Collection View Data Source and Delegate
-	
-	func indexPathForPreferredFocusedViewInCollectionView(collectionView: UICollectionView) -> NSIndexPath? {
-		return self.firstUnwatchedEpisodepath
-	}
-	
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-		return 1
-	}
+
+
+// MARK: - UICollectionViewDataSource
+extension TVShowViewController: UICollectionViewDataSource {
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return episodes.count
@@ -419,7 +444,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		var version = [Version]()
 		let screenshot = UIImage(named: "default-screenshot")
 		let TVDBEpisode = TVDBEpisodes.filter {$0.airedEpisodeNumber == episode.episode && $0.airedSeason == episode.season}.first
-
+		
 		if let tvdbid = show?.tvdb_id, eid = TVDBEpisode?.id {
 			if let url = NSURL(string: "\(Config.tvdb.baseURL)episodes/\(tvdbid)/\(eid).jpg") {
 				cell?.screenshot.af_setImageWithURL(url, placeholderImage: screenshot, imageTransition: .CrossDissolve(0.2))
@@ -438,17 +463,23 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
 		}
 		if version.count > 0 {
-//			cell?.translate.text = version[0].translate
+			//			cell?.translate.text = version[0].translate
 			cell?.episodeTitle.textColor = UIColor.whiteColor()
-//			cell?.episodeNumber.textColor = UIColor.blackColor()
+			//			cell?.episodeNumber.textColor = UIColor.blackColor()
 		} else {
-//			cell?.translate.text = "-"
+			//			cell?.translate.text = "-"
 			cell?.episodeTitle.textColor = UIColor.grayColor()
-//			cell?.episodeNumber.textColor = UIColor.grayColor()
+			//			cell?.episodeNumber.textColor = UIColor.grayColor()
 		}
 		return cell!
-	
+		
 	}
+	
+}
+
+
+// MARK: - UICollectionViewDelegate
+extension TVShowViewController: UICollectionViewDelegate {
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let episode = episodes[indexPath.row]
@@ -492,7 +523,7 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			}
 		}
 		alert.addAction(watchedButton)
-
+		
 		let watchedAllButton = UIAlertAction(title: "Отметить весь сезон как просмотренный", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
 			self.api.markAllWatched(self.token, show: episode.sid!, season: episode.season!) { response, error in
 				if let _ = response {
@@ -508,6 +539,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 		alert.addAction(cancelButton)
 		self.presentViewController(alert, animated: true, completion: nil)
 	}
+	
+	func indexPathForPreferredFocusedViewInCollectionView(collectionView: UICollectionView) -> NSIndexPath? {
+		return self.firstUnwatchedEpisodepath
+	}
+	
 	
 	func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
 		self.firstUnwatchedEpisodepath = NSIndexPath.init(forRow: 0, inSection: 0)
@@ -547,9 +583,11 @@ class TVShowViewController: UIViewController, UICollectionViewDataSource, UIColl
 			})
 		}
 	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-	}
 
 }
+
+
+
+
+
+
