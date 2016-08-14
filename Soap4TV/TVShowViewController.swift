@@ -427,6 +427,38 @@ extension TVShowViewController {
 }
 
 
+// MARK: - PlayerViewControllerDelegate
+extension TVShowViewController: PlayerViewControllerDelegate {
+	
+	/**
+	Player did play most of episode
+	
+	- parameter episode: episode
+	*/
+	func didPlayMostOfEpisode(episode: Episode) {
+		
+		var episodeIndex = 0
+		
+		for (index, ep) in self.episodes.enumerate() {
+			if ep.version.first?.eid == episode.version.first?.eid {
+				episodeIndex = index
+				
+				break
+			}
+		}
+		
+		self.api.markWatched(self.token, episode: (episode.version.first?.eid)!, isWatched: true) {response, error in
+			if let _ = response {
+				let indexPath = NSIndexPath(forItem: episodeIndex, inSection: 0)
+				self.updateEpisodeWatchedStatus(indexPath, status: true)
+			}
+		}
+		
+	}
+	
+}
+
+
 
 // MARK: - UICollectionViewDataSource
 extension TVShowViewController: UICollectionViewDataSource {
@@ -490,32 +522,36 @@ extension TVShowViewController: UICollectionViewDelegate {
 			version = episode.version.filter{$0.translate == Translation.Subtitles.rawValue}
 		}
 		
-		let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+		let alert = UIAlertController(title: "Что будем делать?", message: nil, preferredStyle: .Alert)
 		
 		for button in version {
-			let button = UIAlertAction(title: "Смотреть эпизод в "+button.quality!, style: UIAlertActionStyle.Default) { action in
+			let button = UIAlertAction(title: "Смотреть эпизод в " + button.quality!, style: .Default) { action in
 				if let videohash = button.hash, eid = button.eid, sid = episode.sid {
 					
 					let hashString =  md5(string: "\(self.token)\(eid)\(sid)\(videohash)")
 					let url = "\(Config.URL.cdn)/\(self.token)/\(eid)/\(hashString)/"
+					
 					self.api.callback(hashString, token: self.token, eid: eid) { result in
-						let player = AVPlayer(URL: NSURL(string: url)!)
-						let playerController = self.storyboard?.instantiateViewControllerWithIdentifier("player") as! AVPlayerViewController
-						playerController.player = player
+						
+						let playerController = self.storyboard?.instantiateViewControllerWithIdentifier("player") as! PlayerViewController
+						playerController.videoURL = url
+						playerController.episode = episode
+						playerController.playerDelegate = self
+						
 						self.presentViewController(playerController, animated: true, completion: nil)
-						playerController.player?.play()
 					}
 					
 				}
 			}
 			alert.addAction(button)
 		}
+		
 		let watchedTitle = episode.watched == true ? "Отметить эпизод непросмотренным" : "Отметить эпизод как просмотренный"
 		var newWatchedStatus = false
 		if let currentWatchedStatus = episode.watched {
 			newWatchedStatus = !currentWatchedStatus
 		}
-		let watchedButton = UIAlertAction(title: watchedTitle, style: UIAlertActionStyle.Default) { (btn) -> Void in
+		let watchedButton = UIAlertAction(title: watchedTitle, style: .Default) { (btn) -> Void in
 			self.api.markWatched(self.token, episode: (version.first?.eid)!, isWatched: newWatchedStatus) {response, error in
 				if let _ = response {
 					self.updateEpisodeWatchedStatus(indexPath, status: newWatchedStatus)
@@ -524,7 +560,7 @@ extension TVShowViewController: UICollectionViewDelegate {
 		}
 		alert.addAction(watchedButton)
 		
-		let watchedAllButton = UIAlertAction(title: "Отметить весь сезон как просмотренный", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+		let watchedAllButton = UIAlertAction(title: "Отметить весь сезон как просмотренный", style: .Default) { (UIAlertAction) -> Void in
 			self.api.markAllWatched(self.token, show: episode.sid!, season: episode.season!) { response, error in
 				if let _ = response {
 					self.updateAllEpisodesAsWatched()
@@ -533,7 +569,7 @@ extension TVShowViewController: UICollectionViewDelegate {
 		}
 		alert.addAction(watchedAllButton)
 		
-		let cancelButton = UIAlertAction(title: "Отмена", style: UIAlertActionStyle.Destructive) { (btn) -> Void in
+		let cancelButton = UIAlertAction(title: "Отмена", style: .Destructive) { (btn) -> Void in
 			
 		}
 		alert.addAction(cancelButton)
