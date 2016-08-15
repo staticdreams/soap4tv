@@ -25,5 +25,9 @@ struct Config {
 	}
 	
 	static let maxNumberFeatured = 20
+
+	
+	// Notifications
+	static let markEpisodeAsWatchedNotification = "MarkEpisodeAsWatchedNotification"
 	
 }
